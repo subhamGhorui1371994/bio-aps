@@ -16,6 +16,7 @@ class BankDtl extends Model
         'BANK_CODE',
         'BANK_NAME',
         'A/C_HOLDER',
+        'A/C_NUMBER',
     ];
 
     protected $primaryKey = 'id';
