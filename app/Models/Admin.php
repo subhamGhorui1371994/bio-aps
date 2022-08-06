@@ -17,6 +17,8 @@ class Admin extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
+        'branch_dtl_id',
+        'username',
         'name',
         'email',
         'password',
