@@ -10,7 +10,7 @@
             <div class="heading-elements"></div>
         </div>
         <div class="panel-body">
-            <h1 class="text-center text-uppercase text-bold"><img src="{{ URL::asset('assets/images/logo-2.png') }}" width="300" class="img-circle"></h1>
+            <h1 class="text-center text-uppercase text-bold"><img src="{{ URL::asset('assets/admin/images/logo_light.png') }}" width="300" class="img-circle"></h1>
             <h1 class="text-center text-uppercase text-bold text-info">Welcome to {{ config('app.name', 'Heritage College of Education') }}</h1>
             <h3 class="text-center text-uppercase text-bold text-danger">Admin panel</h3>
         </div>

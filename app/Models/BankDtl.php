@@ -17,6 +17,17 @@ class BankDtl extends Model
         'BANK_NAME',
         'A/C_HOLDER',
         'A/C_NUMBER',
+        'BRANCH_NAME',
+        'BRANCH_CODE',
+        'ADDRESS',
+        'IFSC_CODE',
+        'MICR',
+        'SWIFT_CODE',
+        'BR_CODE',
+        'OP_BL',
+        'CL_BL',
+        'YEAR',
+        'CO_ID',
     ];
 
     protected $primaryKey = 'id';
