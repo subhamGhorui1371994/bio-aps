@@ -102,7 +102,7 @@ class AdminController extends Controller
                 'updated_at' => date('Y-m-d H:i:s'),
             ]
         ];
-
+        // test
         foreach($data as $i => $item) {
             $Admin = new Admin();
             $Admin->fill($item);
