@@ -20,7 +20,7 @@
                                     <i class="icon-newspaper2"></i><span>Company Banks</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{Request::segment(3) ==='bank-list' ? 'active' : ''}}">
+                            <li class="nav-item {{(Request::segment(2) ==='bank-list' && empty(Request::segment(3))) ? 'active' : ''}}">
                                 <a href="{!! URL::to('admin/bank-list') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>All Bank</span>
                                 </a>
