@@ -11,7 +11,7 @@
                     <li class="{{Request::segment(2) ==='dashboard' ? 'active' : ''}}"><a href="{!! URL::to('admin/dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 
                     <li class="nav-item nav-item-submenu {{Request::segment(2) ==='mandatory-disclosure' ? 'active' : ''}}">
-                        <a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Mandatory Disclosure</span></a>
+                        <a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Basic Information</span></a>
 
                         <ul class="nav nav-group-sub" data-submenu-title="Pages">
 
@@ -25,7 +25,6 @@
                                     <i class="icon-newspaper2"></i><span>All Bank</span>
                                 </a>
                             </li>
-                            <li class="{{Request::segment(2) ==='contact' ? 'active' : ''}}"><a href="{!! URL::to('admin/contact') !!}"><i class="icon-newspaper2"></i> <span>contact   </span></a></li>
                         </ul>
                     </li>
                 </ul>
