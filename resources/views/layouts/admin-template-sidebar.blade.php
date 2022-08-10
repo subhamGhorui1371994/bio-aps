@@ -25,6 +25,16 @@
                                     <i class="icon-newspaper2"></i><span>All Bank</span>
                                 </a>
                             </li>
+                            <li class="nav-item {{(Request::segment(2) ==='employee-dtl' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/employee-dtl') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>Employee Detail</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='emp-department' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/emp-department') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>Employee Department</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
