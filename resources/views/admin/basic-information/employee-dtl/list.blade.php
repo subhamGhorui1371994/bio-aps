@@ -6,7 +6,7 @@
 
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title text-bold">Employee Detail</h3>
+            <h3 class="panel-title text-bold">Employee List</h3>
             {{-- <div class="heading-elements">
                 <a href="{{ url('admin/service/create') }}" class="btn btn-primary">Add Service</a>
             </div> --}}
@@ -57,7 +57,7 @@
                         className: 'text-center',
                         width: '10%',
                         mRender: function (data, type, row) {
-                            return '<a href="' + base_url + '/admin/employee-dtl/employee-dtl-data/' + row.ID + '" style="margin-right: 1.5rem"><i class="icon-eye"></i></a>';
+                            return '<a href="' + base_url + '/admin/employee-dtl/' + row.ID + '" style="margin-right: 1.5rem"><i class="icon-eye"></i></a>';
                         },
                     },
                 ],

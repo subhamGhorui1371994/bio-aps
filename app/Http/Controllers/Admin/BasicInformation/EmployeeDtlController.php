@@ -90,8 +90,8 @@ class EmployeeDtlController extends Controller
         ]);
     }
 
-    public function employeeDtlData($ID, Request $request){
-        $employeeDtlData = EmployeeDtl::where('ID', $ID)->first();
-        return view('pages.employee-dtl-data', compact('employeeDtlData'));
+    public function show($id, Request $request){
+        $employeeDtlData = EmployeeDtl::where('ID', $id)->first();
+        return view('admin.basic-information.employee-dtl.employee-details', compact('employeeDtlData'));
     }
 }

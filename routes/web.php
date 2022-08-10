@@ -47,7 +47,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('employee-dtl', 'App\Http\Controllers\Admin\BasicInformation\EmployeeDtlController');
         Route::post('employee-dtl/get-list', [EmployeeDtlController::class, 'employee_dtl_list_ajax']);
         Route::get('employee-dtl/delete/{id}', [EmployeeDtlController::class, 'destroy']);
-        Route::get('employee-dtl/employee-dtl-data/{ID}',[EmployeeDtlController::class,'employeeDtlData']);
 
         Route::model('EmpDepartment', 'App\Models\EmpDepartment');
         Route::resource('emp-department', 'App\Http\Controllers\Admin\BasicInformation\EmpDepartmentController');
