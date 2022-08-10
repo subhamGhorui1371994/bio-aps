@@ -36,7 +36,7 @@ class BranchDtl extends Model
         'ADMINorBRANCH',
     ];
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'ID';
     protected $table = 'branch_dtl';
 
     public function __construct()

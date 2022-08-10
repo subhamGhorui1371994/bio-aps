@@ -51,16 +51,18 @@
                     {data: 'BRANCH_NAME', title: 'BRANCH NAME'},
                     {data: 'BRANCH_CODE', title: 'BRANCH CODE'},
                     // {title: 'Created', data: 'created_at', className: 'text-center'},
-                    // {
-                    //     title: 'Action',
-                    //     data: null,
-                    //     className: 'text-center',
-                    //     width: '10%',
-                    //     mRender: function (data, type, row) {
-                    //         return '<a href="' + base_url + '/admin/notice/' + row.id + '/edit" style="margin-right: 1.5rem"><i class="icon-pencil"></i></a>' +
-                    //             '<a class="delete-action" data-id="' + row.id + '"><i class="icon-trash" style="color:red;"></i></a>';
-                    //     },
-                    // },
+                    {
+                        title: 'Action',
+                        data: null,
+                        className: 'text-center',
+                        width: '10%',
+                        mRender: function (data, type, row) {
+                            // return '<a href="' + base_url + '/admin/notice/' + row.id + '/edit" style="margin-right: 1.5rem"><i class="icon-eye"></i></a>';
+                            // return '<a href="' + base_url + '/bank-dtl-data/' + row.ID + '" style="margin-right: 1.5rem"><i class="icon-eye"></i></a>';
+                            // return '<a href="' + base_url + '/admin/bank-dtl-data/' + row.ID + '" style="margin-right: 1.5rem"><i class="icon-eye"></i></a>';
+                            return '<a href="' + base_url + '/admin/bank-dtl/bank-dtl-data/' + row.ID + '" style="margin-right: 1.5rem"><i class="icon-eye"></i></a>'; //routes note
+                        },
+                    },
                 ],
                 initComplete: function (settings, json) {
 

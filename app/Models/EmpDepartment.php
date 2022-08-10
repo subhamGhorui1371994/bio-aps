@@ -19,7 +19,7 @@ class EmpDepartment extends Model
         'NAME',
     ];
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'ID';
     protected $table = 'emp_department';
 
     public function __construct()

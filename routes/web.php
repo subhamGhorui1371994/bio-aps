@@ -33,6 +33,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('bank-dtl', 'App\Http\Controllers\Admin\BasicInformation\BankDtlController');
         Route::post('bank-dtl/get-list', [BankDtlController::class, 'bank_dtl_list_ajax']);
         Route::get('bank-dtl/delete/{id}', [BankDtlController::class, 'destroy']);
+        // Route::get('bank-dtl/{ID}', [BankDtlController::class, 'BankDtlId']);
+        // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);
+        Route::get('bank-dtl/bank-dtl-data/{ID}',[BankDtlController::class,'bankDtlData']); // list.blade note
 
         Route::model('BankList', 'App\Models\BankList');
         Route::resource('bank-list', 'App\Http\Controllers\Admin\BasicInformation\BankListController');
@@ -43,6 +46,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('employee-dtl', 'App\Http\Controllers\Admin\BasicInformation\EmployeeDtlController');
         Route::post('employee-dtl/get-list', [EmployeeDtlController::class, 'employee_dtl_list_ajax']);
         Route::get('employee-dtl/delete/{id}', [EmployeeDtlController::class, 'destroy']);
+        Route::get('employee-dtl/employee-dtl-data/{ID}',[EmployeeDtlController::class,'employeeDtlData']);
 
         Route::model('EmpDepartment', 'App\Models\EmpDepartment');
         Route::resource('emp-department', 'App\Http\Controllers\Admin\BasicInformation\EmpDepartmentController');
@@ -50,3 +54,4 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('emp-department/delete/{id}', [EmpDepartmentController::class, 'destroy']);
     });
 });
+// Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);

@@ -10,6 +10,8 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
+use Illuminate\Support\Facades\DB;
+
 class EmployeeDtlController extends Controller
 {
     /**
@@ -86,5 +88,10 @@ class EmployeeDtlController extends Controller
             "recordsFiltered" => $details['recordsTotal'],
             "data" => $details['data'],
         ]);
+    }
+
+    public function employeeDtlData($ID, Request $request){
+        $employeeDtlData = EmployeeDtl::where('ID', $ID)->first();
+        return view('pages.employee-dtl-data', compact('employeeDtlData'));
     }
 }

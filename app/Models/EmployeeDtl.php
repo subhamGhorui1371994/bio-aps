@@ -36,7 +36,7 @@ class EmployeeDtl extends Model
         'DEPT',
     ];
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'ID';
     protected $table = 'employee_dtl';
 
     public function __construct()

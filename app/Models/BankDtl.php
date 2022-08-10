@@ -30,7 +30,7 @@ class BankDtl extends Model
         'CO_ID',
     ];
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'ID';
     protected $table = 'bank_dtl';
 
     public function __construct()

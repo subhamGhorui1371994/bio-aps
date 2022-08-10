@@ -10,6 +10,8 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 
+use Illuminate\Support\Facades\DB;
+
 class BankDtlController extends Controller
 {
     /**
@@ -86,5 +88,10 @@ class BankDtlController extends Controller
             "recordsFiltered" => $details['recordsTotal'],
             "data" => $details['data'],
         ]);
+    }
+
+    public function bankDtlData($ID, Request $request){
+        $bankDtlData = BankDtl::where('ID', $ID)->first();
+        return view('pages.bank-dtl-data', compact('bankDtlData'));
     }
 }

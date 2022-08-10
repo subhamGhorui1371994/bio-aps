@@ -51,16 +51,15 @@
                     {data: 'EMPLOYEE_NAME', title: 'EMPLOYEE NAME'},
                     {data: 'EMPLOYEE_CODE', title: 'EMPLOYEE CODE'},
                     // {title: 'Created', data: 'created_at', className: 'text-center'},
-                    // {
-                    //     title: 'Action',
-                    //     data: null,
-                    //     className: 'text-center',
-                    //     width: '10%',
-                    //     mRender: function (data, type, row) {
-                    //         return '<a href="' + base_url + '/admin/notice/' + row.id + '/edit" style="margin-right: 1.5rem"><i class="icon-pencil"></i></a>' +
-                    //             '<a class="delete-action" data-id="' + row.id + '"><i class="icon-trash" style="color:red;"></i></a>';
-                    //     },
-                    // },
+                    {
+                        title: 'Action',
+                        data: null,
+                        className: 'text-center',
+                        width: '10%',
+                        mRender: function (data, type, row) {
+                            return '<a href="' + base_url + '/admin/employee-dtl/employee-dtl-data/' + row.ID + '" style="margin-right: 1.5rem"><i class="icon-eye"></i></a>';
+                        },
+                    },
                 ],
                 initComplete: function (settings, json) {
 
