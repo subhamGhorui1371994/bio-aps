@@ -11,8 +11,9 @@ use App\Http\Controllers\Admin\BasicInformation\EmployeeDtlController;
 use App\Http\Controllers\Admin\BasicInformation\EmpDepartmentController;
 
 
-
-
+Route::get('/', function () {
+    return redirect('/admin');
+});
 
 Route::get('admin', [AdminAuthController::class, 'getLogin']);
 
