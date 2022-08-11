@@ -92,6 +92,6 @@ class BankDtlController extends Controller
 
     public function bankDtlData($ID, Request $request){
         $bankDtlData = BankDtl::where('ID', $ID)->first();
-        return view('pages.bank-dtl-data', compact('bankDtlData'));
+        return view('admin.basic-information.bank-dtl.bank-details', compact('bankDtlData'));
     }
 }
