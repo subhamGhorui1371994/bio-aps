@@ -35,7 +35,7 @@
             $('#portfolioList').DataTable({
                 processing: true,
                 serverSide: true,
-                pageLength: 10,
+                pageLength: 100,
                 ajax: {
                     url: base_url + '/admin/bank-list/get-list',
                     type: 'POST',
@@ -44,7 +44,7 @@
                 aoColumnDefs: [
                     {bSortable: false, aTargets: []},
                 ],
-                order: [[0, 'desc']],
+                order: [[0, 'asc']],
                 columns: [
                     {data: 'id', title: 'ID'},
                     {data: 'bank_name', title: 'BANK NAME'},
