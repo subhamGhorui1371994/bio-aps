@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\BranchDtl;
+use App\Models\UserPermissions;
 
 class AdminAuthController extends Controller
 {
@@ -54,8 +56,14 @@ class AdminAuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+
+        // admin@hotmail.com admin@ml
         if (auth()->guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
             $user = auth()->guard('admin')->user();
+
+            $branchDtl = BranchDtl::where('ID',$user->branch_dtl_id)->first();
+
+            $UserPermissions = UserPermissions::where(['EMP_CODE' => $branchDtl->EMPLOYEE_CODE])->first();
 
             $session['admin']['auth'] = [
                 'id' => $user->id,
