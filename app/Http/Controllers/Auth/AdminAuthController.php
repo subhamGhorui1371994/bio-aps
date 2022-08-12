@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\BranchDtl;
 use App\Models\UserPermissions;
+use App\Models\FinancialYear;
 
 class AdminAuthController extends Controller
 {
@@ -62,20 +63,51 @@ class AdminAuthController extends Controller
             $user = auth()->guard('admin')->user();
 
             $branchDtl = BranchDtl::where('ID',$user->branch_dtl_id)->first();
+            if(!empty($branchDtl)) {
 
-            $UserPermissions = UserPermissions::where(['EMP_CODE' => $branchDtl->EMPLOYEE_CODE])->first();
+                $UserPermissions = UserPermissions::where(['EMP_CODE' => $branchDtl->EMPLOYEE_CODE])->first();
 
-            $session['admin']['auth'] = [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-                'logged_in' => true,
-            ];
+                if(!empty($UserPermissions)) {
+                    if($UserPermissions->STATUS) {
+                        $financialYear = FinancialYear::orderBy('ID', 'desc')->first();
+                        $session['admin']['auth'] = [
+                            'id' => $user->id,
+                            'name' => $user->name,
+                            'email' => $user->email,
+                            'logged_in' => true,
+                            'from' => $financialYear->FROM,
+                            'to' => $financialYear->TO,
+                            'yr_name' => $financialYear->NAME,
+                            'userMail' => $branchDtl->USERNAME,
+                            'EMP' => $branchDtl->EMPLOYEE_CODE,
+                            'login_timestamp' => time(),
+                            'ADMINorBRANCH' => $branchDtl->ADMINorBRANCH,
+                            'BRANCH_CODE' => $branchDtl->BRANCH_CODE,
+                            'chk' => true,
+                            'power' => [
+                                'PURCHASE' => $UserPermissions->PURCHASE,
+                                'SALES' => $UserPermissions->SALES,
+                                'PAYMENT' => $UserPermissions->PAYMENT,
+                                'QUOTATION' => $UserPermissions->QUOTATION,
+                                'ACCOUNTS' => $UserPermissions->ACCOUNTS,
+                                'REPORT' => $UserPermissions->REPORT,
+                                'ADDS' => $UserPermissions->ADDS,
+                                'BRANCH' => $UserPermissions->BRANCH
+                            ]
+                        ];
 
-            Session::put($session);
-            Session::put('success', 'Logged in successfully.');
-            return redirect()->route('dashboard');
-
+                        Session::put($session);
+                        Session::put('success', 'Logged in successfully.');
+                        return redirect()->route('dashboard');
+                    } else {
+                        return back()->with('error', 'Your given username or password is wrong.');
+                    }
+                } else {
+                    return back()->with('error', 'Your given username or password is wrong.');
+                }
+            } else {
+                return back()->with('error', 'Your given username or password is wrong.');
+            }
         } else {
             return back()->with('error', 'Your given username or password is wrong.');
         }
