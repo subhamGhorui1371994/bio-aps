@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -18,8 +19,13 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function dashboard()
+    public function dashboard(Request $request)
     {
+
+        // $clientIP = request()->ip();
+        // dd($clientIP);
+        $clientIP = request()->getClientIp();
+        p($clientIP);
         $breadcrumb_title = 'Dashboard';
         return view('admin.dashboard', compact('breadcrumb_title'));
     }
@@ -35,7 +41,8 @@ class AdminController extends Controller
         return view('admin.change-password', compact('breadcrumb_title'));
     }
 
-    public function dbSync() {
+    public function dbSync()
+    {
         $data = [
             [
                 'branch_dtl_id' => 1,
@@ -45,7 +52,7 @@ class AdminController extends Controller
                 'password' => '$2a$12$qSKf4zKq/UnTZH8469b/F.G.PmNhdCg.gI6pgMry9H.pYkQ6Runiu',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-            ],[
+            ], [
                 'branch_dtl_id' => 2,
                 'name' => 'oriss',
                 'username' => 'oriss',
@@ -53,7 +60,7 @@ class AdminController extends Controller
                 'password' => '$2a$12$5SIoi0DZs9PzKJkbHy/DdOp9j79kfTYWnKSNvNl/lYossGx97XTU2',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-            ],[
+            ], [
                 'branch_dtl_id' => 3,
                 'name' => 'assa',
                 'username' => 'assa',
@@ -61,7 +68,7 @@ class AdminController extends Controller
                 'password' => '$2a$12$aXJK.1DIVu.9rw0hTNAbeOJfOZHVvO8bpmDCLFJX7A3n8uHN.yX3y',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-            ],[
+            ], [
                 'branch_dtl_id' => 12,
                 'name' => 'tripur',
                 'username' => 'tripur',
@@ -69,7 +76,7 @@ class AdminController extends Controller
                 'password' => '$2a$12$MkDReCJfjQm.P6tV1QrAK.t2ldVntGfxWi46i/6LT46dtvkD.QU/a',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-            ],[
+            ], [
                 'branch_dtl_id' => 15,
                 'name' => 'parthik',
                 'username' => 'parthik',
@@ -77,7 +84,7 @@ class AdminController extends Controller
                 'password' => '$2a$12$GBEXvbRrCAxwFRhtwOauju1lfqMvaxlVm0U4A4fRK8zeFQkPMqPZe',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-            ],[
+            ], [
                 'branch_dtl_id' => 17,
                 'name' => 'srijit',
                 'username' => 'srijit',
@@ -85,7 +92,7 @@ class AdminController extends Controller
                 'password' => '$2a$12$kVZwSrJwVWG68jRhnOs79e5TfaIvhNvSXvqZ1o7qEGlVtwb5v9yaq',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-            ],[
+            ], [
                 'branch_dtl_id' => 19,
                 'name' => 'sampa',
                 'username' => 'sampa',
@@ -93,7 +100,7 @@ class AdminController extends Controller
                 'password' => '$2a$12$zrP5z1ieZdG9d/TbQf5b..xjxL98TOF/HTgoV4Ng0NC1RRQwA8u56',
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-            ],[
+            ], [
                 'branch_dtl_id' => 20,
                 'name' => 'Arnab32',
                 'username' => 'Arnab32',
@@ -104,7 +111,7 @@ class AdminController extends Controller
             ]
         ];
         // test
-        foreach($data as $i => $item) {
+        foreach ($data as $i => $item) {
             $Admin = new Admin();
             $Admin->fill($item);
             $Admin->save();

@@ -76,7 +76,8 @@
 
             <!-- Advanced login -->
                 <form action="{{ route('adminLoginPost') }}" method="post">
-                    {!! csrf_field() !!}
+                    {{-- {!! csrf_field() !!} --}}
+                    @csrf
                     <div class="panel panel-body login-form">
                         <div class="text-center">
                             <div class="icon-object border-warning-400 text-warning-400"><i class="icon-people"></i></div>
