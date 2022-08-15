@@ -35,6 +35,31 @@
                                     <i class="icon-newspaper2"></i><span>Employee Department</span>
                                 </a>
                             </li>
+                            <li class="nav-item {{(Request::segment(2) ==='currency' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/currency') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>Currency</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='product-category' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/product-category') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>Product Category</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='product-type' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/product-type') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>Product Type</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='product-unit' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/product-unit') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>Product Unit</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='state-list' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/state-list') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>State List</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
