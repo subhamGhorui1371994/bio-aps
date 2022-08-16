@@ -21,11 +21,6 @@ class AdminController extends Controller
      */
     public function dashboard(Request $request)
     {
-
-        // $clientIP = request()->ip();
-        // dd($clientIP);
-        $clientIP = request()->getClientIp();
-        p($clientIP);
         $breadcrumb_title = 'Dashboard';
         return view('admin.dashboard', compact('breadcrumb_title'));
     }

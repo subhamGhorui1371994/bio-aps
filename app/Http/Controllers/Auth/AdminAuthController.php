@@ -98,6 +98,16 @@ class AdminAuthController extends Controller
 
                         Session::put($session);
                         Session::put('success', 'Logged in successfully.');
+                        $time = date("h:i:s:a");
+                        $date = date("Y-m-d");
+                        $clientIP = $request->ip();
+                        // admin_log_report a data save hobe
+                        $data = [
+                            'timestamp' => date("h:i:s:a"),
+                            'date' => date("Y-m-d")
+                        ];
+
+                        //Model call kore data save korbe
                         return redirect()->route('dashboard');
                     } else {
                         return back()->with('error', 'Your given username or password is wrong.');
