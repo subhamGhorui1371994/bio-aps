@@ -16,11 +16,11 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown dropdown-user">
-{{--                <a class="dropdown-toggle" data-toggle="dropdown">--}}
-{{--                    <img src="{{ URL::asset('assets/admin/images/user-icon.png') }}" alt="">--}}
-{{--                    <span>{{ auth()->guard('admin')->user()->name }}</span>--}}
-{{--                    <i class="caret"></i>--}}
-{{--                </a>--}}
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="{{ URL::asset('assets/admin/images/user-icon.png') }}" alt="">
+                    <span>{{ auth()->guard('admin')->user()->name }}</span>
+                    <i class="caret"></i>
+                </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
 {{--                    <li><a href="{!! URL::to('admin/change-password') !!}"><i class="icon-user-lock"></i> Change Password</a></li>--}}
