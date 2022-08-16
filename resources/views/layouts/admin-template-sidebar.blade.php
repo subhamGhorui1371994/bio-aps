@@ -10,12 +10,12 @@
                     <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
                     <li class="{{Request::segment(2) ==='dashboard' ? 'active' : ''}}"><a href="{!! URL::to('admin/dashboard') !!}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
 
-                    <li class="nav-item nav-item-submenu {{Request::segment(2) ==='mandatory-disclosure' ? 'active' : ''}}">
+                    <li class="nav-item nav-item-submenu">
                         <a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>Basic Information</span></a>
 
                         <ul class="nav nav-group-sub" data-submenu-title="Pages">
 
-                            <li class="nav-item {{(Request::segment(2) ==='bank-dtl' && empty(Request::segment(3))) ? 'active' : ''}}">
+                            <li class="nav-item {{(Request::segment(2) ==='bank-dtl') ? 'active' : ''}}">
                                 <a href="{!! URL::to('admin/bank-dtl') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Company Banks</span>
                                 </a>
