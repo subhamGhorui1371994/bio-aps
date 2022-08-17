@@ -1188,3 +1188,18 @@
 .icon-unfold:before{content:"\e9fe";}
 .icon-versions:before{content:"\e9ff";}
 .icon-x:before{content:"\ea00";}
+
+
+
+/*******************/
+.navbar-logo-custom {
+    margin-top: -7px !important;
+    width: 90px !important;
+    height: 33px !important;
+}
+.logo-custom {
+    margin-top: 2px !important;
+    width: 90px !important;
+    height: 33px !important;
+}
+/*******************/
