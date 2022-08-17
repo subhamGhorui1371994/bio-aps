@@ -10,6 +10,8 @@ use App\Models\BranchDtl;
 use App\Models\UserPermissions;
 use App\Models\FinancialYear;
 
+use App\Models\AdminLogReport;
+
 class AdminAuthController extends Controller
 {
     /*
@@ -62,13 +64,13 @@ class AdminAuthController extends Controller
         if (auth()->guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
             $user = auth()->guard('admin')->user();
 
-            $branchDtl = BranchDtl::where('ID',$user->branch_dtl_id)->first();
-            if(!empty($branchDtl)) {
+            $branchDtl = BranchDtl::where('ID', $user->branch_dtl_id)->first();
+            if (!empty($branchDtl)) {
 
                 $UserPermissions = UserPermissions::where(['EMP_CODE' => $branchDtl->EMPLOYEE_CODE])->first();
 
-                if(!empty($UserPermissions)) {
-                    if($UserPermissions->STATUS) {
+                if (!empty($UserPermissions)) {
+                    if ($UserPermissions->STATUS) {
                         $financialYear = FinancialYear::orderBy('ID', 'desc')->first();
                         $session['admin']['auth'] = [
                             'id' => $user->id,
@@ -98,16 +100,32 @@ class AdminAuthController extends Controller
 
                         Session::put($session);
                         Session::put('success', 'Logged in successfully.');
-                        $time = date("h:i:s:a");
-                        $date = date("Y-m-d");
+                        $time = date("h:i:sa");
+                        $date = date("l,d-m-Y");
                         $clientIP = $request->ip();
                         // admin_log_report a data save hobe
                         $data = [
-                            'timestamp' => date("h:i:s:a"),
-                            'date' => date("Y-m-d")
+                            'username' => $branchDtl->USERNAME,
+                            'branch_name' => $branchDtl->BRANCH_NAME,
+                            'IP' => $clientIP,
+                            'timestamp' => $time,
+                            'date' => $date,
+                            'logout' => $clientIP,
                         ];
 
+                        
                         //Model call kore data save korbe
+                        $AdminLogReport = new AdminLogReport();
+
+                        $AdminLogReport->username = $data[0];
+                        $AdminLogReport->branch_name = $data[1];
+                        $AdminLogReport->IP = $data[2];
+                        $AdminLogReport->timestamp = $data[3];
+                        $AdminLogReport->date = $data[4];
+                        $AdminLogReport->logout = $data[5];
+                        // p($AdminLogReport);
+                        $AdminLogReport->save();
+
                         return redirect()->route('dashboard');
                     } else {
                         return back()->with('error', 'Your given username or password is wrong.');
@@ -121,7 +139,6 @@ class AdminAuthController extends Controller
         } else {
             return back()->with('error', 'Your given username or password is wrong.');
         }
-
     }
 
     /**
