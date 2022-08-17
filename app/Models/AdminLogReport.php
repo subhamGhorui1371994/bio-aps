@@ -23,6 +23,7 @@ class AdminLogReport extends Model
         'logout',
     ];
 
+    public $timestamps = false;
     protected $primaryKey = 'ID';
     protected $table = 'admin_log_report';
 

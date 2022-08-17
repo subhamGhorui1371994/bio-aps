@@ -100,30 +100,15 @@ class AdminAuthController extends Controller
 
                         Session::put($session);
                         Session::put('success', 'Logged in successfully.');
-                        $time = date("h:i:sa");
-                        $date = date("l,d-m-Y");
-                        $clientIP = $request->ip();
-                        // admin_log_report a data save hobe
-                        $data = [
-                            'username' => $branchDtl->USERNAME,
-                            'branch_name' => $branchDtl->BRANCH_NAME,
-                            'IP' => $clientIP,
-                            'timestamp' => $time,
-                            'date' => $date,
-                            'logout' => $clientIP,
-                        ];
 
-                        
-                        //Model call kore data save korbe
                         $AdminLogReport = new AdminLogReport();
 
-                        $AdminLogReport->username = $data[0];
-                        $AdminLogReport->branch_name = $data[1];
-                        $AdminLogReport->IP = $data[2];
-                        $AdminLogReport->timestamp = $data[3];
-                        $AdminLogReport->date = $data[4];
-                        $AdminLogReport->logout = $data[5];
-                        // p($AdminLogReport);
+                        $AdminLogReport->username = $branchDtl->USERNAME;
+                        $AdminLogReport->branch_name = $branchDtl->BRANCH_NAME;
+                        $AdminLogReport->IP = $request->ip();
+                        $AdminLogReport->timestamp = date("h:i:s:a");
+                        $AdminLogReport->date = date("Y-m-d");
+                        $AdminLogReport->logout = '';
                         $AdminLogReport->save();
 
                         return redirect()->route('dashboard');
