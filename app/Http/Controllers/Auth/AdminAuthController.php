@@ -72,7 +72,7 @@ class AdminAuthController extends Controller
                 if (!empty($UserPermissions)) {
                     if ($UserPermissions->STATUS) {
                         $financialYear = FinancialYear::orderBy('ID', 'desc')->first();
-                        $session['admin']['auth'] = [
+                        $session['auth'] = [
                             'id' => $user->id,
                             'name' => $user->name,
                             'email' => $user->email,
@@ -98,7 +98,7 @@ class AdminAuthController extends Controller
                             ]
                         ];
 
-                        Session::put($session);
+                        Session::put('admin',$session);
                         Session::put('success', 'Logged in successfully.');
 
                         $AdminLogReport = new AdminLogReport();
