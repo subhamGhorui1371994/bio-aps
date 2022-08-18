@@ -61,16 +61,17 @@
                 </a>
             </div>
         </div>
-        <div class="panel-body">
+
+        {{-- <div class="panel-body">
             <h1 class="text-center text-uppercase text-bold"><img
                     src="{{ URL::asset('assets/admin/images/bio_apps_logo.png') }}" width="180px" class=""></h1>
 
 
-            {{-- <h1 class="text-center text-uppercase text-bold text-info">Welcome to
+            <h1 class="text-center text-uppercase text-bold text-info">Welcome to
                 {{ config('app.name', 'Heritage College of Education') }}</h1>
-            <h3 class="text-center text-uppercase text-bold text-danger">Admin panel</h3> --}}
+            <h3 class="text-center text-uppercase text-bold text-danger">Admin panel</h3>
 
-            {{-- <div class="row">
+            <div class="row">
                 <div class="col-md-6">
                     <div>
                         <canvas id="myChart"></canvas>
@@ -79,8 +80,9 @@
                 <div class="col-md-6">
                     <canvas style="max-height: 385px" id="myChart1"></canvas>
                 </div>
-            </div> --}}
-        </div>
+            </div>
+        </div> --}}
+
         <figure class="highcharts-figure">
             <div id="container"></div>
             <p class="highcharts-description">

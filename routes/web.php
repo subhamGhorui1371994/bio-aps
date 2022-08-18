@@ -14,7 +14,8 @@ use App\Http\Controllers\Admin\BasicInformation\ProductCategoryController;
 use App\Http\Controllers\Admin\BasicInformation\ProductTypeController;
 use App\Http\Controllers\Admin\BasicInformation\ProductUnitController;
 use App\Http\Controllers\Admin\BasicInformation\StateListController;
-
+use App\Http\Controllers\Admin\BasicInformation\AdminLogReportController;
+use App\Http\Controllers\Admin\BasicInformation\FinancialYearController;
 
 
 
@@ -85,6 +86,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('state-list', 'App\Http\Controllers\Admin\BasicInformation\StateListController');
         Route::post('state-list/get-list', [StateListController::class, 'state_list_list_ajax']);
         Route::get('state-list/delete/{id}', [StateListController::class, 'destroy']);
+
+        Route::model('FinancialYear', 'App\Models\FinancialYear');
+        Route::resource('financial-year', 'App\Http\Controllers\Admin\BasicInformation\FinancialYearController');
+        Route::post('financial-year/get-list', [FinancialYearController::class, 'financial_year_list_ajax']);
+        Route::get('financial-year/delete/{id}', [FinancialYearController::class, 'destroy']);
+        Route::get('financial-year/set-financial-year/{id}', [FinancialYearController::class, 'setFinancialYear']);
     });
 });
 // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);

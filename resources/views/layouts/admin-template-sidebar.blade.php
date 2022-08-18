@@ -20,22 +20,22 @@
                                     <i class="icon-newspaper2"></i><span>Company Banks</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{(Request::segment(2) ==='bank-list' && empty(Request::segment(3))) ? 'active' : ''}}">
+                            <li class="nav-item {{(Request::segment(2) ==='bank-list') ? 'active' : ''}}">
                                 <a href="{!! URL::to('admin/bank-list') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>All Bank</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{(Request::segment(2) ==='employee-dtl' && empty(Request::segment(3))) ? 'active' : ''}}">
+                            <li class="nav-item {{(Request::segment(2) ==='employee-dtl') ? 'active' : ''}}">
                                 <a href="{!! URL::to('admin/employee-dtl') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Employee Detail</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{(Request::segment(2) ==='emp-department' && empty(Request::segment(3))) ? 'active' : ''}}">
+                            <li class="nav-item {{(Request::segment(2) ==='emp-department') ? 'active' : ''}}">
                                 <a href="{!! URL::to('admin/emp-department') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Employee Department</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{(Request::segment(2) ==='currency' && empty(Request::segment(3))) ? 'active' : ''}}">
+                            <li class="nav-item {{(Request::segment(2) ==='currency') ? 'active' : ''}}">
                                 <a href="{!! URL::to('admin/currency') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Currency</span>
                                 </a>
@@ -58,6 +58,11 @@
                             <li class="nav-item {{(Request::segment(2) ==='state-list' && empty(Request::segment(3))) ? 'active' : ''}}">
                                 <a href="{!! URL::to('admin/state-list') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>State List</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='financial-year') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/financial-year') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>Financial Year</span>
                                 </a>
                             </li>
                         </ul>
