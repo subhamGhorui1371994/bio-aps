@@ -9,7 +9,7 @@ use App\Models\FinancialYear;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Illuminate\Support\Facades\Session;
 
 class FinancialYearController extends Controller
 {
@@ -88,12 +88,14 @@ class FinancialYearController extends Controller
             "data" => $details['data'],
         ]);
     }
-    public function setFinancialYear(Request $request, $id){
-
-        $currentSessionAuthValue= $request->session()->get('key', 'admin');
-        $currentSessionAuthValue['auth']['form']=$request->post('FROM');
-        $currentSessionAuthValue['auth']['to']=$request->post('TO');
-        $currentSessionAuthValue['auth']['yr_name']=$request->post('NAME');
+    public function setFinancialYear($id){
+        $selectedFy = FinancialYear::where('id', $id)->first();
+        $currentSessionAuthValue= Session::get('admin');
+        $currentSessionAuthValue['auth']['form']=$selectedFy->FROM;
+        $currentSessionAuthValue['auth']['to']=$selectedFy->TO;
+        $currentSessionAuthValue['auth']['yr_name']=$selectedFy->NAME;
+        Session::put('admin',$currentSessionAuthValue);
+        Session::put('success', 'Financial year '. $selectedFy->NAME . ' set successfully!');
         return redirect('admin/financial-year');
     }
 }
