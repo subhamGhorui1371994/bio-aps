@@ -67,6 +67,246 @@
                             </li>
                         </ul>
                     </li>
+                    {{-- new add --}}
+                    <li class="nav-item nav-item-submenu">
+                        <a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>ADD</span></a>
+
+                        <ul class="nav nav-group-sub" data-submenu-title="Pages">
+
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>BRANCH</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>CATEGORY</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>PRICE LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>UPDATE OP STOCK</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>VENDOR</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>CUSTOMER</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>EMPLOYEE</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>DELIVERY STATUS</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>LEDGER</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>USER</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>E-TABLE</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{-- new purchase --}}
+                    <li class="nav-item nav-item-submenu">
+                        <a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>PURCHASE</span></a>
+
+                        <ul class="nav nav-group-sub" data-submenu-title="Pages">
+
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>PURCHASE ORDER</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>PURCHASE ORDER SUMMARY</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>PURCHASE ORDER LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>PURCHASE DCHALLAN LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>PURCHASE INVOICE LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>DEBITNOTE LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>LINK LIST</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{-- new supply --}}
+                    <li class="nav-item nav-item-submenu">
+                        <a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>SUPPLY</span></a>
+
+                        <ul class="nav nav-group-sub" data-submenu-title="Pages">
+
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>SHALES ORDERD SUMMARY</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>SHALES ORDERD DETAILS</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>TAX INVOICE LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>EXPORT LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>LIASO</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>PROVISIONAL LIASO LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>(INR)LIASO TAXINV LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>(FC)LIASO TAXINV LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>INTERNALCHALLAN</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>DCHALLAN LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>CREDITNOTE LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>DEBITNOTE</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>PBG</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>PBG LIST</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{-- new payment --}}
+                    <li class="nav-item nav-item-submenu">
+                        <a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>PAYMENT</span></a>
+
+                        <ul class="nav nav-group-sub" data-submenu-title="Pages">
+
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>PAYMENT</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>RECEIVE</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{-- new quotation --}}
+                    <li class="nav-item nav-item-submenu">
+                        <a href="#" class="nav-link"><i class="icon-color-sampler"></i> <span>QUOTATION</span></a>
+
+                        <ul class="nav nav-group-sub" data-submenu-title="Pages">
+
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>ENQUIRY</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>SALES LEAD</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>ADD QUOTATION</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>QUOTATION LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon') ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>ADD TENDER</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {{(Request::segment(2) ==='coming-soon' && empty(Request::segment(3))) ? 'active' : ''}}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>EMD STATEMENT</span>
+                                </a>
+                            </li>
+                             </ul>
+                    </li>
                 </ul>
             </div>
         </div>
