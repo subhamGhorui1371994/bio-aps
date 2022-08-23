@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => ['adminAfterLogin']], function () {
         Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+        Route::get('coming-soon', [AdminController::class, 'comingSoon'])->name('comingSoon');
 
         Route::model('BankDtl', 'App\Models\BankDtl');
         Route::resource('bank-dtl', 'App\Http\Controllers\Admin\BasicInformation\BankDtlController');
