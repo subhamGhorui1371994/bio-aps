@@ -226,10 +226,10 @@
                                 </span>
                             </a>
                             <ul class="nav nav-group-sub" data-submenu-title="Pages">
-                                @foreach ($selectedFy as $id => $selectedFy)
+                                @foreach ($allFy as $id => $fy)
                                     <li>
                                         <a
-                                            href="{{ url('/admin/financial-year/set-financial-year/' . $id) }}">{{ $selectedFy }}</a>
+                                            href="{{ url('/admin/financial-year/set-financial-year/' . $id) }}">{{ $fy }}</a>
                                     </li>
                                 @endforeach
                             </ul>

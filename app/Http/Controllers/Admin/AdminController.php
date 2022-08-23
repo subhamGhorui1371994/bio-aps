@@ -23,12 +23,18 @@ class AdminController extends Controller
     public function dashboard(Request $request)
     {
         $breadcrumb_title = 'Dashboard';
-        $selectedFy = DB::table('financial_year')->pluck('NAME','ID');
-        // p($selectedFy);
-        return view('admin.dashboard', compact('breadcrumb_title','selectedFy'));
+        $allFy = DB::table('financial_year')->pluck('NAME','ID');
+        $sessionData = Session::get('admin');
+
+        $selectedBranch = [
+            'ADMINorBRANCH' => $sessionData['auth']['ADMINorBRANCH']
+        ];
+        $selectedFy = $sessionData['auth']['yr_name'];
+        return view('admin.dashboard', compact('breadcrumb_title','selectedFy', 'allFy'));
     }
     public function comingSoon(){
-        return view('admin.coming-soon');
+        $selectedFy = DB::table('financial_year')->pluck('NAME','ID');
+        return view('admin.coming-soon', compact('selectedFy'));
     }
 
     /**
