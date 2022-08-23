@@ -80,68 +80,68 @@
 
                         <ul class="nav nav-group-sub" data-submenu-title="Pages">
 
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>VOUCHER</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>VOUCHER LIST</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>JOURNAL</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>JOURNAL LIST</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>TRIAL BALANCE </span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>LEDGER STATEMENT</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>PARTY LEDGER </span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>BRAND SALES</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>BRAND PURCHASE </span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>CASH BOOK</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>BANK BOOK </span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>ADD BANK </span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>CONTRA</span>
                                 </a>
                             </li>
@@ -154,28 +154,28 @@
 
                         <ul class="nav nav-group-sub" data-submenu-title="Pages">
 
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Soon</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Soon</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Soon</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Soon</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Soon</span>
                                 </a>
                             </li>
@@ -188,28 +188,28 @@
 
                         <ul class="nav nav-group-sub" data-submenu-title="Pages">
 
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Soon</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Soon</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Soon</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Soon</span>
                                 </a>
                             </li>
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>Soon</span>
                                 </a>
                             </li>
@@ -242,8 +242,8 @@
 
                         <ul class="nav nav-group-sub" data-submenu-title="Pages">
 
-                            <li class="nav-item {{ Request::segment(2) === 'soon' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'coming-soon' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>ADD COMPANY</span>
                                 </a>
                             </li>

@@ -27,6 +27,9 @@ class AdminController extends Controller
         // p($selectedFy);
         return view('admin.dashboard', compact('breadcrumb_title','selectedFy'));
     }
+    public function comingSoon(){
+        return view('admin.coming-soon');
+    }
 
     /**
      * Show change password view
