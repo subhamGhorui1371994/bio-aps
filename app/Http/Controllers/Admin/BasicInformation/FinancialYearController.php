@@ -96,6 +96,6 @@ class FinancialYearController extends Controller
         $currentSessionAuthValue['auth']['yr_name']=$selectedFy->NAME;
         Session::put('admin',$currentSessionAuthValue);
         Session::put('success', 'Financial year '. $selectedFy->NAME . ' set successfully!');
-        return redirect('admin/financial-year');
+        return redirect('admin/dashboard');
     }
 }

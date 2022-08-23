@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -22,7 +23,9 @@ class AdminController extends Controller
     public function dashboard(Request $request)
     {
         $breadcrumb_title = 'Dashboard';
-        return view('admin.dashboard', compact('breadcrumb_title'));
+        $selectedFy = DB::table('financial_year')->pluck('NAME','ID');
+        // p($selectedFy);
+        return view('admin.dashboard', compact('breadcrumb_title','selectedFy'));
     }
 
     /**
@@ -112,4 +115,5 @@ class AdminController extends Controller
             $Admin->save();
         }
     }
+
 }
