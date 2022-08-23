@@ -80,7 +80,7 @@
                     @csrf
                     <div class="panel panel-body login-form">
                         <div class="text-center">
-                            <div class="icon-object border-warning-400 text-warning-400"><i class="icon-people"></i></div>
+                            <div class=""><img src="{{ URL::asset('assets/admin/images/bio_apps_logo.png') }}" width="130" height="50" class=""></div>
                             <h5 class="content-group-lg">Login to your account <small class="display-block">Enter your credentials</small></h5>
                         </div>
 
