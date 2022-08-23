@@ -38,7 +38,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => ['adminAfterLogin']], function () {
         Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-
+        
         Route::model('BankDtl', 'App\Models\BankDtl');
         Route::resource('bank-dtl', 'App\Http\Controllers\Admin\BasicInformation\BankDtlController');
         Route::post('bank-dtl/get-list', [BankDtlController::class, 'bank_dtl_list_ajax']);
