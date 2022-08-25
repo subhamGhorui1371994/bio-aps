@@ -483,7 +483,7 @@
                             </a>
                             <ul class="nav nav-group-sub" data-submenu-title="Pages">
                                 @foreach ($allFy as $id => $fy)
-                                    <li class="nav-item {{ Request::segment(2) === 'dashboard' ? 'active' : '' }}"> {{-- today --}}
+                                    <li class="nav-item"> {{-- today --}}
                                         <a class="nav-link"
                                             href="{{ url('/admin/financial-year/set-financial-year/' . $id) }}">{{ $fy }}</a>
                                     </li>
