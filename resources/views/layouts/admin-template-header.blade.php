@@ -13,8 +13,11 @@
 
     <div class="navbar-collapse collapse" id="navbar-mobile">
         <ul class="nav navbar-nav">
-            <li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+            <li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a>
+            </li>
         </ul>
+
+
 
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown dropdown-user">
@@ -25,11 +28,20 @@
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-right">
-{{--                    <li><a href="{!! URL::to('admin/change-password') !!}"><i class="icon-user-lock"></i> Change Password</a></li>--}}
+                    {{-- <li><a href="{!! URL::to('admin/change-password') !!}"><i class="icon-user-lock"></i> Change Password</a></li> --}}
                     <li><a href="{!! URL::to('admin/logout') !!}"><i class="icon-switch2"></i> Logout</a></li>
                 </ul>
             </li>
         </ul>
+
+        @isset($currentFy)
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                {{-- <a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a> --}}
+                <h5>Financial Year: {{$currentFy}}</h5>
+            </li>
+        </ul>
+        @endisset
     </div>
 </div>
 <!-- /main navbar -->

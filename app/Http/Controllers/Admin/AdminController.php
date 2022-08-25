@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\BranchDtl;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,13 +25,12 @@ class AdminController extends Controller
     {
         $breadcrumb_title = 'Dashboard';
         $allFy = DB::table('financial_year')->pluck('NAME','ID');
+        $allBranch = BranchDtl::where('PREFIX', '!=', '')->get();
         $sessionData = Session::get('admin');
+        $currentFy=$sessionData['auth']['yr_name'];
+        $currentBranchCode = $sessionData['auth']['BRANCH_CODE'];
 
-        $selectedBranch = [
-            'ADMINorBRANCH' => $sessionData['auth']['ADMINorBRANCH']
-        ];
-        $selectedFy = $sessionData['auth']['yr_name'];
-        return view('admin.dashboard', compact('breadcrumb_title','selectedFy', 'allFy'));
+        return view('admin.dashboard', compact('breadcrumb_title','allFy','currentFy', 'currentBranchCode'));
     }
     public function comingSoon(){
         $selectedFy = DB::table('financial_year')->pluck('NAME','ID');
