@@ -29,7 +29,7 @@
 
                 <ul class="dropdown-menu dropdown-menu-right">
                     {{-- <li><a href="{!! URL::to('admin/change-password') !!}"><i class="icon-user-lock"></i> Change Password</a></li> --}}
-                    <li><a href="{!! URL::to('admin/logout') !!}"><i class="icon-switch2"></i> Logout</a></li>
+                    <li><a href="{!! URL::to('admin/logout') !!}"><i class="icon-switch2"></i>Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -38,7 +38,15 @@
         <ul class="nav navbar-nav navbar-right">
             <li>
                 {{-- <a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a> --}}
-                <h5>Financial Year: {{$currentFy}}</h5>
+                <h5><span>Financial Year:</span> {{$currentFy}}</h5>
+            </li>
+        </ul>
+        @endisset
+        @isset($currentBranchName)
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                {{-- <a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a> --}}
+                <h5><span>Branch Name:</span> {{$currentBranchName}}</h5>
             </li>
         </ul>
         @endisset

@@ -1,9 +1,6 @@
 <?php
 
 namespace App\Providers;
-
-use App\Models\BranchDtl;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,9 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $BranchDtl = BranchDtl::first();
-        $xyz = $BranchDtl["USERNAME"];
 
-        View::share('testdata', $xyz);
     }
 }

@@ -85,6 +85,7 @@ class AdminAuthController extends Controller
                             'login_timestamp' => time(),
                             'ADMINorBRANCH' => $branchDtl->ADMINorBRANCH,
                             'BRANCH_CODE' => $branchDtl->BRANCH_CODE,
+                            'BRANCH_NAME' => $branchDtl->BRANCH_NAME,
                             'chk' => true,
                             'power' => [
                                 'PURCHASE' => $UserPermissions->PURCHASE,

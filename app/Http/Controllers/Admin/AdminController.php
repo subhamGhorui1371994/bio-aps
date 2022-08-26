@@ -8,12 +8,21 @@ use App\Models\BranchDtl;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\View;
 class AdminController extends Controller
 {
     public function __construct()
     {
         $this->middleware('adminAfterLogin');
+        View::composer('*', function ($view) {
+            $allFy = DB::table('financial_year')->pluck('NAME', 'ID');
+            $allBranch = BranchDtl::where('PREFIX', '!=', '')->pluck('BRANCH_NAME', 'ID');
+            $sessionData = Session::get('admin');
+            $currentFy = $sessionData['auth']['yr_name'];
+            $currentBranchCode = $sessionData['auth']['BRANCH_CODE'];
+            $currentBranchName = $sessionData['auth']['BRANCH_NAME'];
+            $view->with(['allFy' => $allFy, 'allBranch' => $allBranch,'currentFy' => $currentFy, 'currentBranchCode' => $currentBranchCode, 'currentBranchName' => $currentBranchName]);
+        });
     }
 
     /**
@@ -24,16 +33,19 @@ class AdminController extends Controller
     public function dashboard(Request $request)
     {
         $breadcrumb_title = 'Dashboard';
-        $allFy = DB::table('financial_year')->pluck('NAME','ID');
-        $allBranch = BranchDtl::where('PREFIX', '!=', '')->get();
-        $sessionData = Session::get('admin');
-        $currentFy=$sessionData['auth']['yr_name'];
-        $currentBranchCode = $sessionData['auth']['BRANCH_CODE'];
 
-        return view('admin.dashboard', compact('breadcrumb_title','allFy','currentFy', 'currentBranchCode'));
+        $allFy = DB::table('financial_year')->pluck('NAME', 'ID');
+        $allBranch = BranchDtl::where('PREFIX', '!=', '')->pluck('BRANCH_NAME', 'ID');
+        $sessionData = Session::get('admin');
+        $currentFy = $sessionData['auth']['yr_name'];
+        $currentBranchCode = $sessionData['auth']['BRANCH_CODE'];
+        $currentBranchName = $sessionData['auth']['BRANCH_NAME'];
+
+        return view('admin.dashboard', compact('breadcrumb_title'));
     }
-    public function comingSoon(){
-        $selectedFy = DB::table('financial_year')->pluck('NAME','ID');
+    public function comingSoon()
+    {
+        $selectedFy = DB::table('financial_year')->pluck('NAME', 'ID');
         return view('admin.coming-soon', compact('selectedFy'));
     }
 
@@ -124,5 +136,4 @@ class AdminController extends Controller
             $Admin->save();
         }
     }
-
 }

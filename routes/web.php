@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\BasicInformation\ProductUnitController;
 use App\Http\Controllers\Admin\BasicInformation\StateListController;
 use App\Http\Controllers\Admin\BasicInformation\AdminLogReportController;
 use App\Http\Controllers\Admin\BasicInformation\FinancialYearController;
-
+use App\Http\Controllers\Admin\BasicInformation\BranchDtlController;
 
 
 
@@ -92,6 +92,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('financial-year/get-list', [FinancialYearController::class, 'financial_year_list_ajax']);
         Route::get('financial-year/delete/{id}', [FinancialYearController::class, 'destroy']);
         Route::get('financial-year/set-financial-year/{id}', [FinancialYearController::class, 'setFinancialYear']);
+
+        Route::get('branch_dtl/set-branch-name/{id}', [BranchDtlController::class, 'setBranchName']);
     });
 });
 // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);
