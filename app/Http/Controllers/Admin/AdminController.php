@@ -24,16 +24,24 @@ class AdminController extends Controller
     public function dashboard(Request $request)
     {
         $breadcrumb_title = 'Dashboard';
-        $allFy = DB::table('financial_year')->pluck('NAME','ID');
-        $allBranch = BranchDtl::where('PREFIX', '!=', '')->get();
+
+
+        $allFy = DB::table('financial_year')->pluck('NAME', 'ID');
+        $allBranch = BranchDtl::where('PREFIX', '!=', '')->pluck('BRANCH_NAME', 'ID');
+
+
         $sessionData = Session::get('admin');
-        $currentFy=$sessionData['auth']['yr_name'];
+
+
+        $currentFy = $sessionData['auth']['yr_name'];
         $currentBranchCode = $sessionData['auth']['BRANCH_CODE'];
 
-        return view('admin.dashboard', compact('breadcrumb_title','allFy','currentFy', 'currentBranchCode'));
+
+        return view('admin.dashboard', compact('breadcrumb_title', 'allFy', 'currentFy', 'allBranch', 'currentBranchCode'));
     }
-    public function comingSoon(){
-        $selectedFy = DB::table('financial_year')->pluck('NAME','ID');
+    public function comingSoon()
+    {
+        $selectedFy = DB::table('financial_year')->pluck('NAME', 'ID');
         return view('admin.coming-soon', compact('selectedFy'));
     }
 
@@ -124,5 +132,4 @@ class AdminController extends Controller
             $Admin->save();
         }
     }
-
 }

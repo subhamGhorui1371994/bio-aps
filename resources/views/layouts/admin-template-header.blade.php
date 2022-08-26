@@ -38,7 +38,15 @@
         <ul class="nav navbar-nav navbar-right">
             <li>
                 {{-- <a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a> --}}
-                <h5>Financial Year: {{$currentFy}}</h5>
+                <h5><span>Financial Year:</span> {{$currentFy}}</h5>
+            </li>
+        </ul>
+        @endisset
+        @isset($currentBranchCode)
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                {{-- <a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a> --}}
+                <h5><span>Branch Name:</span> {{$currentBranchCode}}</h5>
             </li>
         </ul>
         @endisset
