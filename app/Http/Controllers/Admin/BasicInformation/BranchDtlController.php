@@ -11,14 +11,13 @@ use Illuminate\Support\Facades\Session;
 class BranchDtlController extends Controller
 {
 
-    public function setBranchCode($id){
+    public function setBranchName($id){
         $selectedBranchCode = BranchDtl::where('id', $id)->first();
-
         $currentSessionAuthValue= Session::get('admin');
         $currentSessionAuthValue['auth']['BRANCH_CODE']=$selectedBranchCode->BRANCH_CODE;
-
+        $currentSessionAuthValue['auth']['BRANCH_NAME']=$selectedBranchCode->BRANCH_NAME;
         Session::put('admin',$currentSessionAuthValue);
-        Session::put('success', 'Branch Code '. $selectedBranchCode->BRANCH_CODE . ' set successfully!');
+        Session::put('success', 'Branch Name '. $selectedBranchCode->BRANCH_NAME .' , and Branch Code '.$selectedBranchCode->BRANCH_CODE . ' set successfully!');
         return redirect()->back();
     }
 }

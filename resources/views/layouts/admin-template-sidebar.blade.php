@@ -401,27 +401,47 @@
 
                             <li class="nav-item ">
                                 <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
-                                    <i class="icon-newspaper2"></i><span>Soon</span>
+                                    <i class="icon-newspaper2"></i><span>OPENING STOCK</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
                                 <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
-                                    <i class="icon-newspaper2"></i><span>Soon</span>
+                                    <i class="icon-newspaper2"></i><span>VENDOR LIST</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
                                 <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
-                                    <i class="icon-newspaper2"></i><span>Soon</span>
+                                    <i class="icon-newspaper2"></i><span>CUSTOMER LIST</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
                                 <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
-                                    <i class="icon-newspaper2"></i><span>Soon</span>
+                                    <i class="icon-newspaper2"></i><span>SUNRY CREDITORS</span>
                                 </a>
                             </li>
                             <li class="nav-item ">
                                 <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
-                                    <i class="icon-newspaper2"></i><span>Soon</span>
+                                    <i class="icon-newspaper2"></i><span>SUNDY DEBTORS</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>PRODUCTS</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>EMPLOYEE LIST</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>HSN</span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                    <i class="icon-newspaper2"></i><span>BIN CARD</span>
                                 </a>
                             </li>
 
@@ -433,14 +453,18 @@
                             <a href="#" class="nav-link">
                                 <i class="icon-color-sampler"></i>
                                 <span>
-                                    CITY
+                                    BRANCH
                                 </span>
                             </a>
                             <ul class="nav nav-group-sub" data-submenu-title="Pages">
                                 @foreach ($allBranch as $id => $branch)
-                                    <li class="nav-item"> {{-- today --}}
-                                        <a class="nav-link"
-                                            href="{{ url('/admin/branch_dtl/set-branch-code/' . $id) }}">{{ $branch }}</a>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ url('/admin/branch_dtl/set-branch-name/' . $id) }}">
+                                            {{ $branch }}
+                                            @if ($branch === $currentBranchName)
+                                                <span style="margin-left: 25px;">&#9989;</span>
+                                            @endif
+                                        </a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -457,9 +481,13 @@
                             </a>
                             <ul class="nav nav-group-sub" data-submenu-title="Pages">
                                 @foreach ($allFy as $id => $fy)
-                                    <li class="nav-item"> {{-- today --}}
-                                        <a class="nav-link"
-                                            href="{{ url('/admin/financial-year/set-financial-year/' . $id) }}">{{ $fy }}</a>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ url('/admin/financial-year/set-financial-year/' . $id) }}">
+                                            {{ $fy }}
+                                            @if ($fy === $currentFy)
+                                                <span style="margin-left: 25px;">&#9989;</span>
+                                            @endif
+                                        </a>
                                     </li>
                                 @endforeach
                             </ul>

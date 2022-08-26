@@ -94,7 +94,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('financial-year/delete/{id}', [FinancialYearController::class, 'destroy']);
         Route::get('financial-year/set-financial-year/{id}', [FinancialYearController::class, 'setFinancialYear']);
 
-        Route::get('branch_dtl/set-branch-code/{id}', [BranchDtlController::class, 'setBranchCode']);
+        Route::get('branch_dtl/set-branch-name/{id}', [BranchDtlController::class, 'setBranchName']);
     });
 });
 // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);
