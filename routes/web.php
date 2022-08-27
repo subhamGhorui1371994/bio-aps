@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\BasicInformation\AdminLogReportController;
 use App\Http\Controllers\Admin\BasicInformation\FinancialYearController;
 use App\Http\Controllers\Admin\BasicInformation\BranchDtlController;
 use App\Http\Controllers\Admin\Setting\CompanyController;
+use App\Http\Controllers\Admin\Quotation\AddQuotationController;
 
 
 Route::get('/', function () {
@@ -94,6 +95,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('financial-year/set-financial-year/{id}', [FinancialYearController::class, 'setFinancialYear']);
 
         Route::get('branch_dtl/set-branch-name/{id}', [BranchDtlController::class, 'setBranchName']);
+
+
+        Route::get('quotation', [AddQuotationController::class, 'index']);
+        Route::post('add-quotation', [AddQuotationController::class, 'addAddQuotation']);
 
         Route::get('company', [CompanyController::class, 'index']);
         Route::post('add-company', [CompanyController::class, 'addCompany']);

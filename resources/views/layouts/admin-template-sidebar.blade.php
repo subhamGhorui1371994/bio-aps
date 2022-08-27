@@ -297,7 +297,7 @@
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                <a href="{!! URL::to('admin/quotation') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>ADD QUOTATION</span>
                                 </a>
                             </li>
