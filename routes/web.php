@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\BasicInformation\StateListController;
 use App\Http\Controllers\Admin\BasicInformation\AdminLogReportController;
 use App\Http\Controllers\Admin\BasicInformation\FinancialYearController;
 use App\Http\Controllers\Admin\BasicInformation\BranchDtlController;
-
+use App\Http\Controllers\Admin\Setting\CompanyController;
 
 
 Route::get('/', function () {
@@ -38,7 +38,6 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => ['adminAfterLogin']], function () {
         Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-        Route::get('coming-soon', [AdminController::class, 'comingSoon'])->name('comingSoon');
 
         Route::model('BankDtl', 'App\Models\BankDtl');
         Route::resource('bank-dtl', 'App\Http\Controllers\Admin\BasicInformation\BankDtlController');
@@ -95,6 +94,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('financial-year/set-financial-year/{id}', [FinancialYearController::class, 'setFinancialYear']);
 
         Route::get('branch_dtl/set-branch-name/{id}', [BranchDtlController::class, 'setBranchName']);
+
+        Route::get('company', [CompanyController::class, 'index']);
+        Route::post('add-company', [CompanyController::class, 'addCompany']);
     });
 });
 // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);
