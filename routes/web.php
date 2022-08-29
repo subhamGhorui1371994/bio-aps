@@ -101,7 +101,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('quotation', [AddQuotationController::class, 'index']);
         Route::post('add-quotation', [AddQuotationController::class, 'addAddQuotation']);
 
-        Route::get('company', [CompanyController::class, 'index']);
+        // Route::get('company', [CompanyController::class, 'index']);
+
+        Route::model('CompanyDtl', 'App\Models\CompanyDtl');
+        Route::resource('company', 'App\Http\Controllers\Admin\Setting\CompanyController');
+        Route::post('company/get-list', [CompanyController::class, 'company_list_ajax']);
+        Route::get('company/delete/{id}', [CompanyController::class, 'destroy']);
+
         Route::post('add-company', [CompanyController::class, 'addCompany']);
     });
 });
