@@ -23,21 +23,21 @@
                     <div class="form-group">
                         <label for="name">To:</label><br>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name"
-                            value="{{ old('name') }}">
+                               value="{{ old('name') }}">
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="designation">DESIGNATION:</label><br>
                         <input type="text" class="form-control" id="designation" name="designation"
-                            placeholder="Enter Designation" value="{{ old('designation') }}">
+                               placeholder="Enter Designation" value="{{ old('designation') }}">
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="department">DEPARTMENT:</label><br>
                         <input type="text" class="form-control" id="department" name="department"
-                            placeholder="Enter Department" value="{{ old('department') }}">
+                               placeholder="Enter Department" value="{{ old('department') }}">
                     </div>
                 </div>
             </div>
@@ -48,21 +48,21 @@
                     <div class="form-group">
                         <label for="kind-attention">KIND ATTENTION:</label><br>
                         <input type="text" class="form-control" id="kind-attention" name="kind-attention"
-                            placeholder="Enter Name" value="{{ old('kind-attention') }}">
+                               placeholder="Enter Name" value="{{ old('kind-attention') }}">
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="enquiry-no">ENQUIRY NO:</label><br>
                         <input type="number" class="form-control" id="enquiry-no" name="enquiry-no"
-                            placeholder="ENQUIRY NO" value="{{ old('enquiry-no') }}">
+                               placeholder="ENQUIRY NO" value="{{ old('enquiry-no') }}">
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="quotation-no">QUOTATION NO:</label><br>
                         <input type="number" class="form-control" id="quotation-no" name="quotation-no"
-                            placeholder="QUOTATION NO" disabled value="{{ old('quotation-no') }}">
+                               placeholder="QUOTATION NO" disabled value="{{ old('quotation-no') }}">
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -88,15 +88,12 @@
                     <div class="form-group">
                         <label for="customer">CUSTOMER:</label><br>
                         <input type="text" class="form-control" id="customer" name="customer" placeholder="Name"
-                            value="{{ old('customer') }}">
+                               value="{{ old('customer') }}">
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label for="sales-person">SALES PERSON :</label><br>
-                        {{-- <select id="sales-person" name="sales-person" class="form-control">
-                            <option value="" selected disabled>SELECT EMPLOYEE</option>
-                        </select> --}}
 
                         <select id="sales-person" name="sales-person" class="form-control">
                             <option value="" selected disabled>SELECT EMPLOYEE</option>
@@ -122,9 +119,14 @@
 @endsection
 
 @section('footer_script')
+    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/select2/dist/js/select2.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ URL::asset('assets/admin/js/jquery-validation/jquery.validate.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ URL::asset('assets/admin/js/jquery-validation/additional-methods.js') }}"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
-            console.log("Hello world!");
+        $(document).ready(function () {
+            $('#sales-person').select2();
         });
     </script>
 @endsection
