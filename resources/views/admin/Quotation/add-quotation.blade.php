@@ -78,12 +78,9 @@
                     <div class="form-group">
                         <label for="days">VALIDITY :</label><br>
                         <select id="days" name="days" class="form-control">
-                            <option value="30" selected> 30 Days</option>
-                            <option value="60"> 60 Days</option>
-                            <option value="90"> 90 Days</option>
-                            <option value="120"> 120 Days</option>
-                            <option value="180"> 180 Days</option>
-                            <option value="365"> 365 Days</option>
+                            @foreach($validityArray as $k => $validity)
+                                <option value={{$k}}> {{$validity}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
