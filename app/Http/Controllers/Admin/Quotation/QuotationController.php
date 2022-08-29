@@ -33,6 +33,11 @@ class QuotationController extends Controller
         return view('admin.Quotation.add-quotation', compact('allCustomer', 'validityArray'));
     }
 
+    /**
+     * Insert Quotation
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function save(Request $request) {
         $validator = Validator::make(
             [
