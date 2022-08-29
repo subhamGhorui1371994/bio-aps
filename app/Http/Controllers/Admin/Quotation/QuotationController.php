@@ -7,26 +7,33 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class AddQuotationController extends Controller
+class QuotationController extends Controller
 {
 
+    public function __construct()
+    {
+    }
+
     public function index(){
+        // We will add Quotation list.
+    }
+
+    public function addAddQuotation(Request $request)
+    {
         $validityArray = [
-          '30' => '30 Days',
-          '60' => '60 Days',
-          '90' => '90 Days',
-          '120' => '120 Days',
-          '180' => '180 Days',
-          '365' => '365 Days',
+            '30' => '30 Days',
+            '60' => '60 Days',
+            '90' => '90 Days',
+            '120' => '120 Days',
+            '180' => '180 Days',
+            '365' => '365 Days',
         ];
         $allCustomer = DB::table('employee_dtl')->pluck('EMPLOYEE_NAME', 'ID');
 
         return view('admin.Quotation.add-quotation', compact('allCustomer', 'validityArray'));
     }
 
-    public function addAddQuotation(Request $request)
-    {
-
+    public function save(Request $request) {
         $validator = Validator::make(
             [
                 'currency' => $request->post('currency'),
