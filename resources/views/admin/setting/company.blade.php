@@ -1,16 +1,6 @@
 @extends('layouts.admin-template')
 @section('content')
     {!! showMessage() !!}
-
-    <div class="panel panel-flat">
-
-        <div class="container">
-
-            
-
-        </div>
-
-    </div>
     <div class="panel panel-flat">
         <div class="container">
             <div class="contact-form-two">
@@ -129,30 +119,29 @@
         </div>
     </div>
 
-    <div class="panel panel-flat">
+    <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title text-bold">MAIN COMPANIES</h3>
             {{-- <div class="heading-elements">
                 <a href="{{ url('admin/service/create') }}" class="btn btn-primary">Add Service</a>
             </div> --}}
         </div>
-        <div class="container">
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover" id="portfolioList" style="width: 100%"></table>
-                </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="portfolioList" style="width: 100%"></table>
             </div>
         </div>
     </div>
-    <div class="panel panel-flat">
+    <div class="panel">
+
         <div class="panel-heading">
             <h3 class="panel-title text-bold">SUPPORTING COMPANIES</h3>
         </div>
-        <div class="container">
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-hover" id="portfolioSupportList" style="width: 100%"></table>
-                </div>
+
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="portfolioSupportList" style="width: 100%">
+                </table>
             </div>
         </div>
     </div>
