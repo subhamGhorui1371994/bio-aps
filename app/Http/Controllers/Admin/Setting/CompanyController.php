@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers\Admin\Setting;
 
-use App\Http\Controllers\Controller;
+use App\Models\CompanyDtl;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class CompanyController extends Controller
 {
     public function index()
     {
-        return view('admin.setting.company');
+        $CompanyDtl = CompanyDtl::where('CO_LOGO', '!=', '')->first();
+        // p($allBranch);
+        return view('admin.setting.company',compact('CompanyDtl'));
 
     }
-    public function addCompany(Request $request){
+    public function addCompany(Request $request)
+    {
 
         $validator = Validator::make(
             [
@@ -21,29 +25,94 @@ class CompanyController extends Controller
                 'address' => $request->post('address'),
                 'country' => $request->post('country'),
                 'state' => $request->post('state'),
+                'city' => $request->post('city'),
                 'pin' => $request->post('pin'),
-                'email' => $request->post('message'),
-                'contactno' => $request->post('contactno'),
+                'contact' => $request->post('contact'),
+                'email' => $request->post('email'),
                 'gstin' => $request->post('gstin'),
                 'pan' => $request->post('pan'),
-                'companyurl' => $request->post('companyurl'),
+                'url' => $request->post('url'),
             ],
             [
                 'name' => 'required|max:255',
                 'address' => 'required|max:255',
                 'country' => 'required',
                 'state' => 'required',
-                'pin' => 'required|min:7|max:7',
+                'city' => 'required',
+                'pin' => 'required|min:4|max:6',
+                'contact' => 'required',
                 'email' => 'required|email',
-                'contact' => 'required|min:10|max:10',
                 'gstin' => 'required',
                 'pan' => 'required',
-                'companyurl' => 'required|url',
+                'url' => 'required',
             ]
         );
         if ($validator->fails()) {
             return redirect('admin/company')->withErrors($validator)->withInput();
         }
+
+        $company = new CompanyDtl();
+
+        $company->CO_NAME = $request->post('name');
+        $company->ADDRESS = $request->post('address');
+        $company->COUNTRY = $request->post('country');
+        $company->STATE = $request->post('state');
+        $company->CITY = $request->post('city');
+        $company->PIN = $request->post('pin');
+        $company->PHONE = $request->post('contact');
+        $company->EMAIL = $request->post('email');
+        $company->GSTIN = $request->post('gstin');
+        $company->PAN = $request->post('pan');
+        $company->URL = $request->post('url');
+
+        $company->save();
+        return redirect()->back()->withSuccess("Submit Successfully");
     }
 
+    public function company_list_ajax(Request $request)
+    {
+        $limit = $offset = 0;
+
+        $order_column_by = $order_column = $search = '';
+
+        if (isset($request->start)) {
+            $offset = $request->start;
+        }
+        if (isset($request->length)) {
+            $limit = $request->length;
+        }
+
+        if (isset($request->order[0])) {
+            if (isset($request->order[0]['dir'])) {
+                $order_column_by = $request->order[0]['dir'];
+            }
+        }
+
+        if (isset($request->order[0])) {
+            if (isset($request->order[0]['column'])) {
+                if ($request->order[0]['column'] == 0) {
+                    $order_column = 'CO_NAME';
+                } elseif ($request->order[0]['column'] == 1) {
+                    $order_column = 'ADDRESS';
+                } elseif ($request->order[0]['column'] == 2) {
+                    $order_column = 'EMAIL';
+                }
+            }
+        }
+
+        if (isset($request->search['value'])) {
+            if (!empty($request->search['value'])) {
+                $search = $request->search['value'];
+            }
+        }
+        $details = CompanyDtl::getListDataTable($order_column, $order_column_by, $limit, $offset, $search);
+
+        return json_encode([
+            "draw" => $request->draw,
+            "recordsTotal" => $details['recordsTotal'],
+            "recordsFiltered" => $details['recordsTotal'],
+            "data" => $details['data'],
+        ]);
+    }
 }
+

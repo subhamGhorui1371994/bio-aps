@@ -30,9 +30,30 @@ class CompanyDtl extends Model
 
     protected $primaryKey = 'ID';
     protected $table = 'company_dtl';
+    public $timestamps = false;
 
     public function __construct()
     {
 
+    }
+    static public function getListDataTable($order_column, $order_column_by, $limit, $offset, $search): array
+    {
+        $query = CompanyDtl::where('CO_LOGO', '!=', '')->first();
+
+
+        if (!empty($search)) {
+            $query->where(function ($query) use ($search) {
+                $query->Where('name', 'like', '%' . $search . '%');
+                $query->Where('phone', 'like', '%' . $search . '%');
+            });
+        }
+
+        $query->select('*')->orderBy($order_column, $order_column_by);
+
+        $recordsTotal = $query->count();
+
+        $data = $query->skip($offset)->take($limit)->get()->toArray();
+
+        return ['recordsTotal' => $recordsTotal, 'data' => $data];
     }
 }
