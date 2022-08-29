@@ -106,6 +106,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::model('CompanyDtl', 'App\Models\CompanyDtl');
         Route::resource('company', 'App\Http\Controllers\Admin\Setting\CompanyController');
         Route::post('company/get-list', [CompanyController::class, 'company_list_ajax']);
+        Route::post('company/get-support-list', [CompanyController::class, 'support_company_list_ajax']);
         Route::get('company/delete/{id}', [CompanyController::class, 'destroy']);
 
         Route::post('add-company', [CompanyController::class, 'addCompany']);

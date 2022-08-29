@@ -3,6 +3,15 @@
     {!! showMessage() !!}
 
     <div class="panel panel-flat">
+
+        <div class="container">
+
+            
+
+        </div>
+
+    </div>
+    <div class="panel panel-flat">
         <div class="container">
             <div class="contact-form-two">
                 <div class="sec-title">
@@ -138,14 +147,11 @@
     <div class="panel panel-flat">
         <div class="panel-heading">
             <h3 class="panel-title text-bold">SUPPORTING COMPANIES</h3>
-            {{-- <div class="heading-elements">
-                <a href="{{ url('admin/service/create') }}" class="btn btn-primary">Add Service</a>
-            </div> --}}
         </div>
         <div class="container">
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover" id="portfolioList" style="width: 100%"></table>
+                    <table class="table table-bordered table-hover" id="portfolioSupportList" style="width: 100%"></table>
                 </div>
             </div>
         </div>
@@ -174,7 +180,7 @@
                 },
                 aoColumnDefs: [{
                     bSortable: false,
-                    aTargets: [3]
+                    aTargets: []
                 }, ],
                 order: [
                     [0, 'desc']
@@ -208,6 +214,69 @@
                 initComplete: function(settings, json) {
 
                     $('#portfolioList tbody').on('click', 'tr td .delete-action', function(e) {
+
+                        var delete_id = $(this).data('id');
+
+                        bootbox.confirm('Are you sure you want to delete this notice?',
+                            function(result) {
+                                if (result === true) {
+                                    window.location.href = base_url +
+                                        '/admin/company/delete/' + delete_id;
+                                }
+                            },
+                        );
+                    });
+
+                },
+            });
+
+            $('#portfolioSupportList').DataTable({
+                processing: true,
+                serverSide: true,
+                pageLength: 50,
+                ajax: {
+                    url: base_url + '/admin/company/get-support-list',
+                    type: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    },
+                },
+                aoColumnDefs: [{
+                    bSortable: false,
+                    aTargets: []
+                }, ],
+                order: [
+                    [0, 'desc']
+                ],
+                columns: [{
+                        data: 'CO_NAME',
+                        title: 'Company Name'
+                    },
+                    {
+                        data: 'ADDRESS',
+                        title: 'Address'
+                    },
+                    {
+                        data: 'EMAIL',
+                        title: 'email'
+                    },
+                    // {title: 'Created', data: 'created_at', className: 'text-center'},
+                    {
+                        title: 'Action',
+                        data: null,
+                        className: 'text-center',
+                        width: '10%',
+                        mRender: function(data, type, row) {
+                            return '<a href="' + base_url + '/admin/notice/' + row.id +
+                                '/edit" style="margin-right: 1.5rem"><i class="icon-pencil"></i></a>' +
+                                '<a class="delete-action" data-id="' + row.id +
+                                '"><i class="icon-trash" style="color:red;"></i></a>';
+                        },
+                    },
+                ],
+                initComplete: function(settings, json) {
+
+                    $('#portfolioSupportList tbody').on('click', 'tr td .delete-action', function(e) {
 
                         var delete_id = $(this).data('id');
 
