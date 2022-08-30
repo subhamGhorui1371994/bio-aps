@@ -61,8 +61,8 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="quotation-no">QUOTATION NO:</label><br>
-                        <input type="number" class="form-control" id="quotation-no" name="quotation-no"
-                               placeholder="QUOTATION NO" disabled value="{{ old('quotation-no') }}">
+                        <input type="text" class="form-control" id="quotation-no" name="quotation-no"
+                               placeholder="QUOTATION NO" disabled value="{{ $quotationNo }}">
                     </div>
                 </div>
                 <div class="col-sm-3">

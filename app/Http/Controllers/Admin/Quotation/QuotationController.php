@@ -28,9 +28,21 @@ class QuotationController extends Controller
             '180' => '180 Days',
             '365' => '365 Days',
         ];
+        $session = get_admin_session();
+
+        $quotationNo = "BioQuot/1/".$session['yr_name'];
+        // When wee run a raw sql query.
+        $maxBill = DB::select("SELECT MAX(BILL_ID+1) AS bill_id FROM `quotation_cust_dtl` WHERE `YEAR`='".$session['yr_name']."' AND `BR_CODE`='".$session['BRANCH_CODE']."' ");
+
+        if(!empty($maxBill[0])) {
+            if(!empty($maxBill[0]->bill_id)) {
+                $quotationNo = "BioQuot/".$maxBill[0]->bill_id."/".$session['yr_name'];
+            }
+        }
+
         $allCustomer = DB::table('employee_dtl')->pluck('EMPLOYEE_NAME', 'ID');
 
-        return view('admin.Quotation.add-quotation', compact('allCustomer', 'validityArray'));
+        return view('admin.Quotation.add-quotation', compact('allCustomer', 'validityArray', 'quotationNo'));
     }
 
     /**
