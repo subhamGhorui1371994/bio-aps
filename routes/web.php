@@ -111,6 +111,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('company/delete/{id}', [CompanyController::class, 'destroy']);
 
         Route::post('add-company', [CompanyController::class, 'addCompany']);
+        Route::post('company', [CompanyController::class, 'company_list_ajax']);
     });
 });
 // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);
