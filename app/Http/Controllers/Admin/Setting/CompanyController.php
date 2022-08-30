@@ -17,7 +17,6 @@ class CompanyController extends Controller
     public function index()
     {
         return view('admin.setting.company');
-
     }
 
     /**
@@ -47,11 +46,9 @@ class CompanyController extends Controller
             if (isset($request->order[0]['column'])) {
                 if ($request->order[0]['column'] == 0) {
                     $order_column = 'CO_NAME';
-                }
-                elseif ($request->order[0]['column'] == 1) {
+                } elseif ($request->order[0]['column'] == 1) {
                     $order_column = 'ADDRESS';
-                }
-                elseif ($request->order[0]['column'] == 2) {
+                } elseif ($request->order[0]['column'] == 2) {
                     $order_column = 'EMAIL';
                 }
             }
@@ -95,11 +92,9 @@ class CompanyController extends Controller
             if (isset($request->order[0]['column'])) {
                 if ($request->order[0]['column'] == 0) {
                     $order_column = 'CO_NAME';
-                }
-                elseif ($request->order[0]['column'] == 1) {
+                } elseif ($request->order[0]['column'] == 1) {
                     $order_column = 'ADDRESS';
-                }
-                elseif ($request->order[0]['column'] == 2) {
+                } elseif ($request->order[0]['column'] == 2) {
                     $order_column = 'EMAIL';
                 }
             }
@@ -121,7 +116,8 @@ class CompanyController extends Controller
         ]);
     }
 
-    public function addCompany(Request $request){
+    public function addCompany(Request $request)
+    {
 
         $validator = Validator::make(
             [
@@ -130,28 +126,44 @@ class CompanyController extends Controller
                 'country' => $request->post('country'),
                 'state' => $request->post('state'),
                 'pin' => $request->post('pin'),
-                'email' => $request->post('message'),
-                'contactno' => $request->post('contactno'),
+                'contact' => $request->post('contact'),
+                'email' => $request->post('email'),
                 'gstin' => $request->post('gstin'),
                 'pan' => $request->post('pan'),
-                'companyurl' => $request->post('companyurl'),
+                'url' => $request->post('url'),
             ],
             [
                 'name' => 'required|max:255',
                 'address' => 'required|max:255',
                 'country' => 'required',
                 'state' => 'required',
-                'pin' => 'required|min:7|max:7',
+                'pin' => 'required|min:4|max:6',
+                'contact' => 'required',
                 'email' => 'required|email',
-                'contact' => 'required|min:10|max:10',
                 'gstin' => 'required',
                 'pan' => 'required',
-                'companyurl' => 'required|url',
+                'url' => 'required',
             ]
         );
         if ($validator->fails()) {
             return redirect('admin/company')->withErrors($validator)->withInput();
         }
-    }
 
+        $company = new CompanyDtl();
+
+        $company->CO_NAME = $request->post('name');
+        $company->ADDRESS = $request->post('address');
+        $company->COUNTRY = $request->post('country');
+        $company->STATE = $request->post('state');
+        $company->CITY = $request->post('city');
+        $company->PIN = $request->post('pin');
+        $company->PHONE = $request->post('contact');
+        $company->EMAIL = $request->post('email');
+        $company->GSTIN = $request->post('gstin');
+        $company->PAN = $request->post('pan');
+        $company->URL = $request->post('url');
+
+        $company->save();
+        return redirect()->back()->withSuccess("Submit Successfully");
+    }
 }

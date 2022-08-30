@@ -28,9 +28,9 @@ class CompanyDtl extends Model
         'GSTIN',
     ];
 
-    protected $primaryKey = 'ID';
     protected $table = 'company_dtl';
-
+    protected $primaryKey = 'ID';
+    public $timestamps = false;
     public function __construct()
     {
 

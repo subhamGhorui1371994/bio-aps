@@ -8,21 +8,20 @@
                     <span class="border-bottom">
                         <h2>Add Company</h2>
                     </span>
-
                 </div>
                 {{ Form::open(['url' => url('admin/add-company'), 'class' => 'row col-offset-md-3', 'id' => '']) }}
                 @csrf
                 {{-- <form class="col-md-8 col-offset-md-3 "> --}}
                 <div class="col-12 form-group">
-                    <label for="Name" class="form-label">Name</label>
-                    <input type="text" class="form-control" name="name" id="Name" placeholder="Enter Company Name">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter Company Name">
                     @error('name')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="col-12 form-group">
-                    <label for="inputAddress" class="form-label">Address</label>
-                    <input type="text" class="form-control" name="address" id="inputAddress"
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" name="address" id="address"
                         placeholder="Enter Company Address">
                     @error('address')
                         <p class="text-danger">{{ $message }}</p>
@@ -30,8 +29,8 @@
                 </div>
                 <div class="row form-group ">
                     <div class="col-sm-3">
-                        <label for="inputcountry" class="form-label">Country</label>
-                        <input type="text" class="form-control" name="country" id="inputcountry"
+                        <label for="country" class="form-label">Country</label>
+                        <input type="text" class="form-control" name="country" id="country"
                             placeholder="Enter Company Country">
                         @error('country')
                             <p class="text-danger">{{ $message }}</p>
@@ -39,16 +38,16 @@
                     </div>
 
                     <div class="col-sm-3">
-                        <label for="inputstate" class="form-label">State</label>
-                        <input type="text" class="form-control" name="state" id="inputstate"
+                        <label for="state" class="form-label">State</label>
+                        <input type="text" class="form-control" name="state" id="state"
                             placeholder="Enter Company State">
                         @error('state')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-sm-3">
-                        <label for="inputcity" class="form-label">City</label><br>
-                        <select id="inputcity" class="form-control">
+                        <label for="city" class="form-label">City</label><br>
+                        <select name="city" id="city" class="form-control">
                             <option selected>Choose...</option>
                             <option>Kolkata</option>
                             <option>Mumbai</option>
@@ -57,8 +56,8 @@
                         </select>
                     </div>
                     <div class="col-sm-3">
-                        <label for="PIN" class="form-label">PIN</label>
-                        <input type="text" class="form-control" name="pin" id="PIN" placeholder="Enter PIN No">
+                        <label for="pin" class="form-label">PIN</label>
+                        <input type="text" class="form-control" name="pin" id="pin" placeholder="Enter PIN No">
                         @error('pin')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -68,8 +67,8 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-4">
-                        <label for="Contact" class="form-label">Contact No.</label>
-                        <input type="text" class="form-control" name="contact" id="contactno"
+                        <label for="contact" class="form-label">Contact No.</label>
+                        <input type="text" class="form-control" name="contact" id="contact"
                             placeholder="Enter Company Contact No">
                         @error('contact')
                             <p class="text-danger">{{ $message }}</p>
@@ -86,26 +85,26 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-4">
-                        <label for="GSTIN" class="form-label">GSTIN</label>
-                        <input type="test" class="form-control" name="gstin" id="GSTIN"
+                        <label for="gstin" class="form-label">GSTIN</label>
+                        <input type="test" class="form-control" name="gstin" id="gstin"
                             placeholder="Enter Company GSTIN">
                         @error('gstin')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-sm-4">
-                        <label for="PAN" class="form-label">PAN No.</label>
-                        <input type="text" class="form-control" name="pan" id="PAN"
+                        <label for="pan" class="form-label">PAN No.</label>
+                        <input type="text" class="form-control" name="pan" id="pan"
                             placeholder="Enter PAN No.">
                         @error('pan')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-sm-4">
-                        <label for="companyurl" class="form-label">Company URL</label>
-                        <input type="text" class="form-control" name="companyurl" id="url"
+                        <label for="url" class="form-label">Company URL</label>
+                        <input type="text" class="form-control" name="url" id="url"
                             placeholder="Enter Company URL">
-                        @error('companyurl')
+                        @error('url')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
