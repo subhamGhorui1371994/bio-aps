@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class CompanyController extends Controller
 {
     /**
-     * Show the application dashboard.
-     *
-     * @return Application|Factory|View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -152,6 +150,7 @@ class CompanyController extends Controller
         $company = new CompanyDtl();
 
         $company->CO_NAME = $request->post('name');
+        $company->CO_LOGO = '';
         $company->ADDRESS = $request->post('address');
         $company->COUNTRY = $request->post('country');
         $company->STATE = $request->post('state');
