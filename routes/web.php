@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\BasicInformation\AdminLogReportController;
 use App\Http\Controllers\Admin\BasicInformation\FinancialYearController;
 use App\Http\Controllers\Admin\BasicInformation\BranchDtlController;
 use App\Http\Controllers\Admin\Setting\CompanyController;
-use App\Http\Controllers\Admin\Quotation\AddQuotationController;
+use App\Http\Controllers\Admin\Quotation\QuotationController;
 
 
 Route::get('/', function () {
@@ -98,10 +98,18 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('branch_dtl/set-branch-name/{id}', [BranchDtlController::class, 'setBranchName']);
 
 
-        Route::get('quotation', [AddQuotationController::class, 'index']);
-        Route::post('add-quotation', [AddQuotationController::class, 'addAddQuotation']);
+        Route::get('quotation', [QuotationController::class, 'index']);
+        Route::get('add-quotation', [QuotationController::class, 'addAddQuotation']);
+        Route::post('add-quotation', [QuotationController::class, 'save']);
 
-        Route::get('company', [CompanyController::class, 'index']);
+        // Route::get('company', [CompanyController::class, 'index']);
+
+        Route::model('CompanyDtl', 'App\Models\CompanyDtl');
+        Route::resource('company', 'App\Http\Controllers\Admin\Setting\CompanyController');
+        Route::post('company/get-list', [CompanyController::class, 'company_list_ajax']);
+        Route::post('company/get-support-list', [CompanyController::class, 'support_company_list_ajax']);
+        Route::get('company/delete/{id}', [CompanyController::class, 'destroy']);
+
         Route::post('add-company', [CompanyController::class, 'addCompany']);
         Route::post('company', [CompanyController::class, 'company_list_ajax']);
     });
