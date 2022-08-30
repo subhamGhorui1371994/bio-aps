@@ -11,21 +11,22 @@
                 </div>
                 {{ Form::open(['url' => url('admin/add-company'), 'class' => 'row col-offset-md-3', 'id' => '']) }}
                 @csrf
-                {{-- <form class="col-md-8 col-offset-md-3 "> --}}
-                <div class="col-12 form-group">
+                <div class="row form-group">
+                    <div class="col-sm-12 form-group">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" name="name" id="name" placeholder="Enter Company Name">
                     @error('name')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="col-12 form-group">
+                    <div class="col-sm-12 form-group">
                     <label for="address" class="form-label">Address</label>
                     <input type="text" class="form-control" name="address" id="address"
                         placeholder="Enter Company Address">
                     @error('address')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
+                </div>
                 </div>
                 <div class="row form-group ">
                     <div class="col-sm-3">
@@ -36,7 +37,6 @@
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
-
                     <div class="col-sm-3">
                         <label for="state" class="form-label">State</label>
                         <input type="text" class="form-control" name="state" id="state"
@@ -63,7 +63,6 @@
                         @enderror
                         <samp>
                     </div>
-
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-4">
@@ -109,11 +108,12 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-12 form-group">
+                <div class="row form-group">
+                    <div class="col-sm-12 form-group">
                     <button type="submit" class="btn btn-primary">Save</button>
                 </div>
+                </div>
                 {{ Form::close() }}
-
             </div>
         </div>
     </div>
