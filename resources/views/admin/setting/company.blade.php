@@ -152,6 +152,8 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
+            var isAdmin = '{{ $isAdmin }}';
+            // console.log(isAdmin);
             $('#portfolioList').DataTable({
                 processing: true,
                 serverSide: true,
@@ -252,10 +254,14 @@
                         className: 'text-center',
                         width: '10%',
                         mRender: function(data, type, row) {
-                            return '<a href="' + base_url + '/admin/notice/' + row.id +
-                                '/edit" style="margin-right: 1.5rem"><i class="icon-pencil"></i></a>' +
-                                '<a class="delete-action" data-id="' + row.id +
-                                '"><i class="icon-trash" style="color:red;"></i></a>';
+                            if (isAdmin) {
+                                return '<a href="' + base_url + '/admin/notice/' + row.id +
+                                    '/edit" style="margin-right: 1.5rem"><i class="icon-pencil"></i></a>' +
+                                    '<a class="delete-action" data-id="' + row.id +
+                                    '"><i class="icon-trash" style="color:red;"></i></a>';
+                            } else {
+                                return '';
+                            }
                         },
                     },
                 ],

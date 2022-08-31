@@ -14,7 +14,12 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('admin.setting.company');
+        $isAdmin = false;
+        $session = get_admin_session();
+        if ($session['userMail']='admin') {
+            $isAdmin = true;
+        }
+        return view('admin.setting.company',compact('isAdmin'));
     }
 
     /**

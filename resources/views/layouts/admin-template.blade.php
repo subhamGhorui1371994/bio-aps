@@ -23,6 +23,7 @@
     <script type="text/javascript">
 
         var base_url = '{!! url('/') !!}';
+        
 
     </script>
 
