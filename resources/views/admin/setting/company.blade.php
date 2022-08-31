@@ -1,15 +1,14 @@
 @extends('layouts.admin-template')
 
 @section('content')
-
     {!! showMessage() !!}
 
     <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title text-bold">Add Company</h3>
-{{--            <div class="heading-elements">--}}
-{{--                <a href="{{ url('admin/service') }}" class="btn btn-primary">List Service</a>--}}
-{{--            </div>--}}
+            {{-- <div class="heading-elements"> --}}
+            {{-- <a href="{{ url('admin/service') }}" class="btn btn-primary">List Service</a> --}}
+            {{-- </div> --}}
         </div>
         <div class="panel-body">
             {{ Form::open(['url' => url('admin/add-company'), 'class' => 'row col-offset-md-3', 'id' => '']) }}
@@ -18,15 +17,15 @@
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" name="name" id="name" placeholder="Enter Company Name">
                     @error('name')
-                    <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="col-sm-12 form-group">
                     <label for="address" class="form-label">Address</label>
                     <input type="text" class="form-control" name="address" id="address"
-                           placeholder="Enter Company Address">
+                        placeholder="Enter Company Address">
                     @error('address')
-                    <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -34,17 +33,17 @@
                 <div class="col-sm-3 form-group">
                     <label for="country" class="form-label">Country</label>
                     <input type="text" class="form-control" name="country" id="country"
-                           placeholder="Enter Company Country">
+                        placeholder="Enter Company Country">
                     @error('country')
-                    <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="col-sm-3 form-group">
                     <label for="state" class="form-label">State</label>
                     <input type="text" class="form-control" name="state" id="state"
-                           placeholder="Enter Company State">
+                        placeholder="Enter Company State">
                     @error('state')
-                    <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="col-sm-3 form-group">
@@ -61,7 +60,7 @@
                     <label for="pin" class="form-label">PIN</label>
                     <input type="text" class="form-control" name="pin" id="pin" placeholder="Enter PIN No">
                     @error('pin')
-                    <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -69,17 +68,17 @@
                 <div class="col-sm-4 form-group">
                     <label for="contact" class="form-label">Contact No.</label>
                     <input type="text" class="form-control" name="contact" id="contact"
-                           placeholder="Enter Company Contact No">
+                        placeholder="Enter Company Contact No">
                     @error('contact')
-                    <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="col-sm-8 form-group">
                     <label for="email" class="form-label">Email Address</label>
                     <input type="email" class="form-control" name="email" id="email"
-                           placeholder="Enter Company Email Address">
+                        placeholder="Enter Company Email Address">
                     @error('email')
-                    <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -87,25 +86,24 @@
                 <div class="col-sm-4 form-group">
                     <label for="gstin" class="form-label">GSTIN</label>
                     <input type="test" class="form-control" name="gstin" id="gstin"
-                           placeholder="Enter Company GSTIN">
+                        placeholder="Enter Company GSTIN">
                     @error('gstin')
-                    <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="col-sm-4 form-group">
                     <label for="pan" class="form-label">PAN No.</label>
-                    <input type="text" class="form-control" name="pan" id="pan"
-                           placeholder="Enter PAN No.">
+                    <input type="text" class="form-control" name="pan" id="pan" placeholder="Enter PAN No.">
                     @error('pan')
-                    <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="col-sm-4 form-group">
                     <label for="url" class="form-label">Company URL</label>
                     <input type="text" class="form-control" name="url" id="url"
-                           placeholder="Enter Company URL">
+                        placeholder="Enter Company URL">
                     @error('url')
-                    <p class="text-danger">{{ $message }}</p>
+                        <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -143,8 +141,6 @@
             </div>
         </div>
     </div>
-
-
 @endsection
 @section('footer_script')
     <link href="//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" id="theme" rel="stylesheet">
@@ -187,18 +183,18 @@
                         title: 'email'
                     },
                     // {title: 'Created', data: 'created_at', className: 'text-center'},
-                    {
-                        title: 'Action',
-                        data: null,
-                        className: 'text-center',
-                        width: '10%',
-                        mRender: function(data, type, row) {
-                            return '<a href="' + base_url + '/admin/notice/' + row.id +
-                                '/edit" style="margin-right: 1.5rem"><i class="icon-pencil"></i></a>' +
-                                '<a class="delete-action" data-id="' + row.id +
-                                '"><i class="icon-trash" style="color:red;"></i></a>';
-                        },
-                    },
+                    // {
+                    //     title: 'Action',
+                    //     data: null,
+                    //     className: 'text-center',
+                    //     width: '10%',
+                    //     mRender: function(data, type, row) {
+                    //         return '<a href="' + base_url + '/admin/notice/' + row.id +
+                    //             '/edit" style="margin-right: 1.5rem"><i class="icon-pencil"></i></a>' +
+                    //             '<a class="delete-action" data-id="' + row.id +
+                    //             '"><i class="icon-trash" style="color:red;"></i></a>';
+                    //     },
+                    // },
                 ],
                 initComplete: function(settings, json) {
 
@@ -232,7 +228,7 @@
                 },
                 aoColumnDefs: [{
                     bSortable: false,
-                    aTargets: []
+                    aTargets: [3]
                 }, ],
                 order: [
                     [0, 'desc']
