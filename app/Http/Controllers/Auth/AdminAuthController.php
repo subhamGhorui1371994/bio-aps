@@ -117,7 +117,7 @@ class AdminAuthController extends Controller
                         return back()->with('error', 'Your given username or password is wrong.');
                     }
                 } else {
-                    return back()->with('error', 'Your given username or password is wrong.');
+                    return back()->with('error', 'user permission not found.');
                 }
             } else {
                 return back()->with('error', 'Your given username or password is wrong.');
