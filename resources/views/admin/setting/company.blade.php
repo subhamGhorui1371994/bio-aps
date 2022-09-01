@@ -258,7 +258,9 @@
                                 return '<a href="' + base_url + '/admin/notice/' + row.id +
                                     '/edit" style="margin-right: 1.5rem"><i class="icon-pencil"></i></a>' +
                                     '<a class="delete-action" data-id="' + row.id +
-                                    '"><i class="icon-trash" style="color:red;"></i></a>';
+                                    '"><i class="icon-trash" style="color:red;"></i></a>'+
+                                    '<a href="' + base_url + '/admin/company/' + row.ID +
+                                '" style="margin: 1.5rem"><i class="icon-eye"></i></a>';
                             } else {
                                 return '';
                             }

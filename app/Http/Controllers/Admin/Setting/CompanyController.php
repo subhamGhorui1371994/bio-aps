@@ -170,4 +170,8 @@ class CompanyController extends Controller
         $company->save();
         return redirect()->back()->withSuccess("Submit Successfully");
     }
+    public function show($ID, Request $request){
+        $companyDtlData = CompanyDtl::where('ID', $ID)->first();
+        return view('admin.setting.company-details', compact('companyDtlData'));
+    }
 }
