@@ -81,8 +81,8 @@
 
                         <ul class="nav nav-group-sub" data-submenu-title="Pages">
 
-                            <li class="nav-item">
-                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'add-branch' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/add-branch') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>BRANCH</span>
                                 </a>
                             </li>
@@ -296,7 +296,7 @@
                                     <i class="icon-newspaper2"></i><span>SALES LEAD</span>
                                 </a>
                             </li>
-                            <li class="nav-item ">
+                            <li class="nav-item {{ Request::segment(2) === 'add-quotation' ? 'active' : '' }}">
                                 <a href="{!! URL::to('admin/add-quotation') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>ADD QUOTATION</span>
                                 </a>
@@ -500,7 +500,7 @@
 
                         <ul class="nav nav-group-sub" data-submenu-title="Pages">
 
-                            <li class="nav-item ">
+                            <li class="nav-item {{ Request::segment(2) === 'company' ? 'active' : '' }}">
                                 <a href="{!! URL::to('admin/company') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>ADD COMPANY</span>
                                 </a>

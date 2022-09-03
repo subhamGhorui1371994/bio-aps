@@ -27,7 +27,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $breadcrumb_title = 'Product Category';
+        $breadcrumb_title = 'Basic Information / Product Category';
 
         return view('admin.basic-information.product_category.list', compact('breadcrumb_title'));
     }

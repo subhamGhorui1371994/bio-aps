@@ -27,7 +27,7 @@ class StateListController extends Controller
      */
     public function index()
     {
-        $breadcrumb_title = 'State List';
+        $breadcrumb_title = 'Basic Information / State List';
 
         return view('admin.basic-information.state_list.list', compact('breadcrumb_title'));
     }

@@ -14,12 +14,13 @@ class CompanyController extends Controller
      */
     public function index()
     {
+        $breadcrumb_title = 'Setting / Add Company';
         $isAdmin = false;
         $session = get_admin_session();
         if ($session['userMail']='admin') {
             $isAdmin = true;
         }
-        return view('admin.setting.company',compact('isAdmin'));
+        return view('admin.setting.company',compact('isAdmin','breadcrumb_title'));
     }
 
     /**

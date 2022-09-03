@@ -28,7 +28,7 @@ class FinancialYearController extends Controller
      */
     public function index()
     {
-        $breadcrumb_title = 'Financial Year';
+        $breadcrumb_title = 'Basic Information / Financial Year';
 
         return view('admin.basic-information.financial_year.list', compact('breadcrumb_title'));
     }
