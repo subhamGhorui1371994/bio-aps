@@ -2,7 +2,15 @@
 
 @section('content')
     {!! showMessage() !!}
+    <style>
+        .help-block {
+            color: red;
+        }
 
+        .error {
+            color: red;
+        }
+    </style>
     <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title text-bold">Add Branch</h3>
@@ -10,7 +18,7 @@
         <div class="panel-body">
             {{-- <div class="table-responsive"> --}}
             {{-- <table class="table table-bordered table-hover" id="portfolioList" style="width: 100%"></table> --}}
-            {{ Form::open(['url' => url('admin/add-branch'), 'class' => '', 'id' => 'branchForm','files' => true]) }}
+            {{ Form::open(['url' => url('admin/add-branch'), 'class' => '', 'id' => 'branchForm', 'files' => true]) }}
             @csrf
 
             <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
@@ -144,6 +152,52 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#state').select2();
+
+            $("#branchForm").validate({
+                rules: {
+                    'branch-name': "required",
+                    'branch-person': "required",
+                    number: "required",
+                    gst: "required",
+                    date: "required",
+                    address: "required",
+                    city: "required",
+                    pin: "required",
+                    country: "required",
+                    'branch-bill-prefix': "required",
+                    email: "required",
+                },
+                messages: {
+                    number: {
+                        required: "Number Field is required",
+                    },
+                    gst: {
+                        required: "The gst Field is required",
+                    },
+                    date: {
+                        required: "Date Field is required",
+                    },
+                    address: {
+                        required: "The address Field is required",
+                    },
+                    city: {
+                        required: "City Field is required",
+                    },
+                    pin: {
+                        required: "The pin Field is required",
+                    },
+                    state: {
+                        required: "State Field is required",
+                    },
+                    country: {
+                        required: "The country Field is required",
+                    },
+                    email: {
+                        required: "State Field is required",
+                        email: "Email must be a valid email address",
+                    },
+                }
+            });
         });
     </script>
 @endsection

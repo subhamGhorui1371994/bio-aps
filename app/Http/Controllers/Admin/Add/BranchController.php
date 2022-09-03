@@ -20,7 +20,56 @@ class BranchController extends Controller
     }
     public function addBranch(Request $request)
     {
-        
+        $validator = Validator::make(
+            [
+
+                'EMPLOYEE_CODE' => '',
+                'BRANCH_CODE' => '',
+                'BRANCH_NAME' => $request->post('branch-name'),
+                'USERNAME' => '',
+                'LOGIN_PASSWORD' => '',
+                'EMAIL' => $request->post('email'),
+                'TXT_PASS' => '',
+                'BR_DATE' => $request->post('date'),
+                'BR_CONTACT_PERSON' => $request->post('branch-person'),
+                'BR_PHONE' => $request->post('number'),
+                'BR_ADDRESS' => $request->post('address'),
+                'BR_COUNTRY' => $request->post('country'),
+                'BR_STATE' => $request->post('state'),
+                'BR_CITY' => $request->post('city'),
+                'BR_PIN' => $request->post('pin'),
+                'BR_GST' => $request->post('gst'),
+                'STAMP' => '',
+                'PREFIX' => $request->post('branch-bill-prefix'),
+                'ADMINorBRANCH' => '',
+            ],
+            [
+                // 'EMPLOYEE_CODE' => 'required',
+                // 'BRANCH_CODE' => 'required',
+                'BRANCH_NAME' => 'required',
+                // 'USERNAME' => 'required',
+                // 'LOGIN_PASSWORD' => 'required',
+                'EMAIL' => 'required',
+                // 'TXT_PASS' => 'required',
+                'BR_DATE' => 'required',
+                'BR_CONTACT_PERSON' => 'required',
+                'BR_PHONE' => 'required',
+                'BR_ADDRESS' => 'required',
+                'BR_COUNTRY' => 'required',
+                'BR_STATE' => 'required',
+                'BR_CITY' => 'required',
+                'BR_PIN' => 'required',
+                'BR_GST' => 'required',
+                // 'STAMP' => 'required',
+                'PREFIX' => 'required',
+                // 'ADMINorBRANCH' => 'required',
+
+            ]
+        );
+
+        if ($validator->fails()) {
+            return redirect('admin/add-branch')->withErrors($validator)->withInput();
+        }
 
         $signature_file = $request->file('signature');
 
