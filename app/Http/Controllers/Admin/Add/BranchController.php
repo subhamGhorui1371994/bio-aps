@@ -19,10 +19,14 @@ class BranchController extends Controller
         // $allBranchData = $allBranchData[0];
         // $EMPLOYEE_CODE= $allBranch->pluck('EMPLOYEE_CODE');
         // dd($allBranchData);
+        // $session = get_admin_session();
+        // dd($session);
+        // $session['BRANCH_CODE'];
         return view('admin.add.add-branch', compact('stateList', 'breadcrumb_title','allBranchData'));
     }
     public function addBranch(Request $request)
     {
+        $session = get_admin_session();
         $validator = Validator::make(
             [
 
@@ -106,10 +110,10 @@ class BranchController extends Controller
 
 
         $branch->fill([
-            'EMPLOYEE_CODE' => '',
-            'BRANCH_CODE' => '',
+            'EMPLOYEE_CODE' => $session['EMP'],
+            'BRANCH_CODE' => $session['BRANCH_CODE'],
             'BRANCH_NAME' => $request->post('branch-name'),
-            'USERNAME' => '',
+            'USERNAME' => $session['userMail'],
             'LOGIN_PASSWORD' => '',
             'EMAIL' => $request->post('email'),
             'TXT_PASS' => '',
@@ -124,7 +128,7 @@ class BranchController extends Controller
             'BR_GST' => $request->post('gst'),
             'STAMP' => $signature_path ?? null,
             'PREFIX' => $request->post('branch-bill-prefix'),
-            'ADMINorBRANCH' => '',
+            'ADMINorBRANCH' => $session['ADMINorBRANCH'],
         ]);
 
 
