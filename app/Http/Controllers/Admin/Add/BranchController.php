@@ -15,8 +15,11 @@ class BranchController extends Controller
     {
         $breadcrumb_title = 'Add / Add Brach';
         $stateList = DB::table('state_list')->pluck('state_name', 'state_id');
-        // p($stateList);
-        return view('admin.add.add-branch', compact('stateList','breadcrumb_title'));
+        $allBranchData = DB::table('branch_dtl')->get();
+        // $allBranchData = $allBranchData[0];
+        // $EMPLOYEE_CODE= $allBranch->pluck('EMPLOYEE_CODE');
+        // dd($allBranchData);
+        return view('admin.add.add-branch', compact('stateList', 'breadcrumb_title','allBranchData'));
     }
     public function addBranch(Request $request)
     {
@@ -74,7 +77,7 @@ class BranchController extends Controller
         $signature_file = $request->file('signature');
 
         if ($signature_file) {
-            $fileName = 'branch-' . time() . '-'. unique_id() . '.' . $signature_file->extension();
+            $fileName = 'branch-' . time() . '-' . unique_id() . '.' . $signature_file->extension();
             $signature_file->move(public_path('assets/admin/branch/'), $fileName);
             $signature_path = 'assets/admin/branch/' . $fileName;
         }
