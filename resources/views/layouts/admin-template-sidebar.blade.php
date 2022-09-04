@@ -296,7 +296,7 @@
                                     <i class="icon-newspaper2"></i><span>SALES LEAD</span>
                                 </a>
                             </li>
-                            <li class="nav-item ">
+                            <li class="nav-item {{ Request::segment(2) === 'add-quotation' ? 'active' : '' }}">
                                 <a href="{!! URL::to('admin/add-quotation') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>ADD QUOTATION</span>
                                 </a>

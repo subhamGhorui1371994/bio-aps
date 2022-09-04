@@ -18,12 +18,13 @@
     <link href="{{ URL::asset('assets/admin/css/core.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('assets/admin/css/components.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('assets/admin/css/colors.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ URL::asset('assets/admin/css/main-common.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('assets/admin/css/custom.css') }}" rel="stylesheet" type="text/css">
 
     <script type="text/javascript">
 
         var base_url = '{!! url('/') !!}';
-        
+
 
     </script>
 
