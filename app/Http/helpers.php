@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Session;
-
+use Illuminate\Support\Facades\URL;
 /**
  * @return void
  */
