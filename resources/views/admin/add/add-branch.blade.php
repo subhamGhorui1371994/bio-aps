@@ -142,6 +142,12 @@
             {{-- </div> --}}
         </div>
         @if ($allBranchData)
+            <hr>
+            <div class="panel-heading">
+                <h3 class="panel-title text-bold">Add Branch</h3>
+                <br>
+            </div>
+            <br>
             <div class="container">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
@@ -162,7 +168,7 @@
                                     <td>{{ $item->BR_ADDRESS }}</td>
                                     <td><img src="{{ url($item->STAMP) }}" alt="signature-pic" height="20px"></td>
                                     <td>
-                                        <a href="{{url('/admin/branch/'.$item->ID.'/edit')}}">View & Edit</a>
+                                        <a href="{{ url('/admin/branch/' . $item->ID . '/edit') }}">View & Edit</a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -170,8 +176,8 @@
                     </table>
                 </div>
             </div>
+            <br>
         @endif
-        <br>
     </div>
 @endsection
 
