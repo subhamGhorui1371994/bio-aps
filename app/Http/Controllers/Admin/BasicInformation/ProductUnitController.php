@@ -27,7 +27,7 @@ class ProductUnitController extends Controller
      */
     public function index()
     {
-        $breadcrumb_title = 'Product Unit';
+        $breadcrumb_title = 'Basic Information / Product Unit';
 
         return view('admin.basic-information.product_unit.list', compact('breadcrumb_title'));
     }

@@ -29,7 +29,7 @@ class BankDtlController extends Controller
      */
     public function index()
     {
-        $breadcrumb_title = 'Company Banks';
+        $breadcrumb_title = 'Basic Information / Company Banks';
 
         return view('admin.basic-information.bank-dtl.list', compact('breadcrumb_title'));
     }

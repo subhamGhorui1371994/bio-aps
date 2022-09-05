@@ -27,7 +27,7 @@ class CurrencyController extends Controller
      */
     public function index()
     {
-        $breadcrumb_title = 'Currency';
+        $breadcrumb_title = 'Basic Information / Currency';
 
         return view('admin.basic-information.currency.list', compact('breadcrumb_title'));
     }

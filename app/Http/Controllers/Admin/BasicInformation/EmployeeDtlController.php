@@ -29,7 +29,7 @@ class EmployeeDtlController extends Controller
      */
     public function index()
     {
-        $breadcrumb_title = 'Employee Detail';
+        $breadcrumb_title = 'Basic Information / Employee Detail';
 
         return view('admin.basic-information.employee-dtl.list', compact('breadcrumb_title'));
     }

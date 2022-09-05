@@ -38,6 +38,7 @@ class BranchDtl extends Model
 
     protected $primaryKey = 'ID';
     protected $table = 'branch_dtl';
+    public $timestamps = false;
 
     public function __construct()
     {

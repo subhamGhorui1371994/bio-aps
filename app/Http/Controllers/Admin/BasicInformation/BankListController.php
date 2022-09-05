@@ -27,7 +27,7 @@ class BankListController extends Controller
      */
     public function index()
     {
-        $breadcrumb_title = 'All Banks';
+        $breadcrumb_title = 'Basic Information / All Banks';
 
         return view('admin.basic-information.bank-list.list', compact('breadcrumb_title'));
     }

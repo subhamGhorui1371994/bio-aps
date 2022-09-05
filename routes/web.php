@@ -19,7 +19,7 @@ use App\Http\Controllers\Admin\BasicInformation\FinancialYearController;
 use App\Http\Controllers\Admin\BasicInformation\BranchDtlController;
 use App\Http\Controllers\Admin\Setting\CompanyController;
 use App\Http\Controllers\Admin\Quotation\QuotationController;
-
+use App\Http\Controllers\Admin\Add\BranchController;
 
 Route::get('/', function () {
     return redirect('/admin');
@@ -112,6 +112,9 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::post('add-company', [CompanyController::class, 'addCompany']);
         Route::post('company', [CompanyController::class, 'company_list_ajax']);
+
+        Route::get('add-branch', [BranchController::class, 'index']);
+        Route::post('add-branch', [BranchController::class, 'addBranch']);
     });
 });
 // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);

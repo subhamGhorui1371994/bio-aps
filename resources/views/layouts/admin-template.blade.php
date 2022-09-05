@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="_token" content="{{csrf_token()}}"/>
+    <meta name="_token" content="{{ csrf_token() }}" />
 
     <title>{{ config('app.name', 'Heritage College of Education') }}</title>
 
@@ -20,9 +20,9 @@
     <link href="{{ URL::asset('assets/admin/css/colors.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('assets/admin/css/main-common.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('assets/admin/css/custom.css') }}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/jquery-validation/jquery.validate.js') }}"></script>
 
     <script type="text/javascript">
-
         var base_url = '{!! url('/') !!}';
 
 
