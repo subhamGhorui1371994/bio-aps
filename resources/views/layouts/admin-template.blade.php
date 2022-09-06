@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,19 +11,21 @@
 
     <link href="{{ URL::asset('assets/img/logo.png') }}" rel="icon">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
-        type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
 
     <link href="{{ URL::asset('assets/admin/css/icons/icomoon/styles.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('assets/admin/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('assets/admin/css/core.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('assets/admin/css/components.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('assets/admin/css/colors.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ URL::asset('assets/admin/css/main-common.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('assets/admin/css/custom.css') }}" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="{{ URL::asset('assets/admin/js/jquery-validation/jquery.validate.js') }}"></script>
 
     <script type="text/javascript">
         var base_url = '{!! url('/') !!}';
+
+
     </script>
 
     <style></style>
@@ -33,56 +34,56 @@
 
 <body>
 
-    @include('layouts.admin-template-header')
+@include('layouts.admin-template-header')
 
-    <!-- Page container -->
-    <div class="page-container">
+<!-- Page container -->
+<div class="page-container">
 
-        <!-- Page content -->
-        <div class="page-content">
+    <!-- Page content -->
+    <div class="page-content">
 
-            @include('layouts.admin-template-sidebar')
+    @include('layouts.admin-template-sidebar')
 
-            <!-- Main content -->
-            <div class="content-wrapper">
+    <!-- Main content -->
+        <div class="content-wrapper">
 
-                @include('layouts.admin-template-breadcrumb')
+        @include('layouts.admin-template-breadcrumb')
 
-                <!-- Content area -->
-                <div class="content">
+        <!-- Content area -->
+            <div class="content">
 
-                    <!-- Page Content Start -->
-                    @yield('content')
-                    <!-- Page Content End-->
+                <!-- Page Content Start -->
+            @yield('content')
+            <!-- Page Content End-->
 
-                    @include('layouts.admin-template-footer')
-
-                </div>
-                <!-- /content area -->
+                @include('layouts.admin-template-footer')
 
             </div>
-            <!-- /main content -->
+            <!-- /content area -->
 
         </div>
-        <!-- /page content -->
+        <!-- /main content -->
 
     </div>
-    <!-- /page container -->
+    <!-- /page content -->
 
-    <!-- Core JS files -->
-    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/plugins/loaders/pace.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/core/libraries/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/core/libraries/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/plugins/loaders/blockui.min.js') }}"></script>
-    <!-- /core JS files -->
+</div>
+<!-- /page container -->
 
-    <!-- Theme JS files -->
-    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/plugins/forms/styling/uniform.min.js') }}"></script>
+<!-- Core JS files -->
+<script type="text/javascript" src="{{ URL::asset('assets/admin/js/plugins/loaders/pace.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/admin/js/core/libraries/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/admin/js/core/libraries/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/admin/js/plugins/loaders/blockui.min.js') }}"></script>
+<!-- /core JS files -->
 
-    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/core/app.js') }}"></script>
-    <!-- /theme JS files -->
+<!-- Theme JS files -->
+<script type="text/javascript" src="{{ URL::asset('assets/admin/js/plugins/forms/styling/uniform.min.js') }}"></script>
 
-    @yield('footer_script')
+<script type="text/javascript" src="{{ URL::asset('assets/admin/js/core/app.js') }}"></script>
+<!-- /theme JS files -->
+
+@yield('footer_script')
 
 </body>
 
