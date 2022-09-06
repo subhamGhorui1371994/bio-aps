@@ -18,7 +18,7 @@
         <div class="panel-body">
             {{-- <div class="table-responsive"> --}}
             {{-- <table class="table table-bordered table-hover" id="portfolioList" style="width: 100%"></table> --}}
-            {{ Form::open(['url' => url('admin/add-branch'), 'class' => '', 'id' => 'branchForm', 'files' => true]) }}
+            {{ Form::open(['url' => url('admin/branch'), 'class' => '', 'id' => 'branchForm', 'files' => true]) }}
             @csrf
 
             <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
@@ -141,26 +141,26 @@
             {{ Form::close() }}
             {{-- </div> --}}
         </div>
-        @if ($allBranchData)
+        @if ($branch)
             <hr>
             <div class="panel-heading">
                 <h3 class="panel-title text-bold">Add Branch</h3>
                 <br>
             </div>
             <br>
-            <div class="container">
+            <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <thead class="">
                             <tr class="success">
-                                <th>BRANCH NAME </th>
-                                <th>CONTACT PERSON </th>
+                                <th>BRANCH NAME</th>
+                                <th>CONTACT PERSON</th>
                                 <th>ADDRESS</th>
                                 <th>SIGNATURE</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        @foreach ($allBranchData as $item)
+                        @foreach ($branch as $item)
                             <tbody>
                                 <tr>
                                     <td>{{ $item->BRANCH_NAME }}</td>

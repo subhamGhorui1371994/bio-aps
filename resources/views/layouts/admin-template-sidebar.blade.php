@@ -81,8 +81,8 @@
 
                         <ul class="nav nav-group-sub" data-submenu-title="Pages">
 
-                            <li class="nav-item {{ Request::segment(2) === 'add-branch' ? 'active' : '' }}">
-                                <a href="{!! URL::to('admin/add-branch') !!}" class="nav-link">
+                            <li class="nav-item {{ Request::segment(2) === 'branch' ? 'active' : '' }}">
+                                <a href="{!! URL::to('admin/branch') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>BRANCH</span>
                                 </a>
                             </li>

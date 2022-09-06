@@ -113,8 +113,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('add-company', [CompanyController::class, 'addCompany']);
         Route::post('company', [CompanyController::class, 'company_list_ajax']);
 
-        Route::get('add-branch', [BranchController::class, 'index']);
-        Route::post('add-branch', [BranchController::class, 'addBranch']);
+        Route::model('BranchDtl', 'App\Models\BranchDtl');
+        Route::resource('branch', 'App\Http\Controllers\Admin\Add\BranchController');
+        Route::get('branch', [BranchController::class, 'index']);
+        Route::post('branch', [BranchController::class, 'addBranch']);
     });
 });
 // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);
