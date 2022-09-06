@@ -25,7 +25,7 @@ class BranchController extends Controller
         $breadcrumb_title = 'Add / Add Brach';
         $stateList = DB::table('state_list')->pluck('state_name', 'state_id');
         // $allBranch = BranchDtl::where('PREFIX', '!=', '')->pluck('BRANCH_NAME', 'ID');
-        $branch = DB::table('branch_dtl')->where('PREFIX', '=', '')->get();
+        $branch = DB::table('branch_dtl')->where('PREFIX', '!=', '')->get();
         // $branch = $branch[0];
         // $EMPLOYEE_CODE= $allBranch->pluck('EMPLOYEE_CODE');
         // dd($branch);
