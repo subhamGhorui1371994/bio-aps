@@ -164,7 +164,7 @@
                                     <td>{{ $item->BRANCH_NAME }}</td>
                                     <td>{{ $item->BR_CONTACT_PERSON }}</td>
                                     <td>{{ $item->BR_ADDRESS }}</td>
-                                    <td><img src="{{ url($item->STAMP) }}" alt="signature-pic" height="20px"></td>
+                                    <td><img src="{{ url($item->signature) }}" alt="signature-pic" height="20px"></td>
                                     <td>
                                         <a href="{{ url('/admin/branch/' . $item->ID . '/edit') }}">View & Edit</a>
                                     </td>
