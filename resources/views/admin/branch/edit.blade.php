@@ -12,7 +12,7 @@
         </div>
         <div class="panel-body">
             {{-- {{dd($branch)}}; --}}
-            {{ Form::open(['method' => 'PATCH', 'route' => ['branch.update', $branch->ID], 'class' => 'form-vertical', 'id' => 'portfolio_form', 'files' => true]) }}
+            {{ Form::open(['method' => 'PATCH', 'route' => ['branch.update', $branchData->ID], 'class' => 'form-vertical', 'id' => 'portfolio_form', 'files' => true]) }}
 
             {{-- <div class="form-group">
                 <label class="control-label text-bold" for="resource_person_type">Resource Person Type <span class="required-fields">*</span></label>

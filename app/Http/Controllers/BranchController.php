@@ -125,15 +125,16 @@ class BranchController extends Controller
 
 
     /**
-     * @param $branch
+     * @param $branchID
      * @return Application|Factory|View
      */
-    public function edit($branch)
+    public function edit($branchID)
     {
-        // p($branch);
+        $branchData=DB::table('branch_dtl')->find($branchID);
+
         $breadcrumb_title = 'Branch';
 
-        return view('admin.add.branch.edit', compact('breadcrumb_title', 'branch', 'resourcePersonTypes'));
+        return view('admin.branch.edit', compact('breadcrumb_title', 'branchData'));
     }
 
     /**
