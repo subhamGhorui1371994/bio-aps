@@ -43,11 +43,12 @@
                             placeholder="Enter Contact Number" value="{{ old('number') }}">
                     </div>
                 </div>
+
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="gst">Gst:</label><br>
-                        <input type="text" class="form-control" id="gst" name="gst" placeholder="Enter GST"
-                            value="{{ old('gst') }}">
+                        <label for="email">Email:</label><br>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email"
+                            value="{{ old('email') }}">
                     </div>
                 </div>
             </div>
@@ -55,16 +56,9 @@
             <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="date">Open Date:</label><br>
-                        <input type="date" class="form-control" id="date" name="date"
-                            value="{{ date('Y-m-d') }}">
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
                         <label for="address">Address:</label><br>
-                        <textarea class="form-control" id="address" name="address" placeholder="Enter Address" value="{{ old('address') }}"
-                            rows="1"></textarea>
+                        <input type="text" name="address" id="address" class="form-control" placeholder="Enter Address"
+                            value="{{ $branchData->BR_ADDRESS ?? '' }}">
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -74,16 +68,6 @@
                             placeholder="Enter City Name" value="{{ old('city') }}">
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="pin">Pin No:</label><br>
-                        <input type="number" class="form-control" id="pin" name="pin" placeholder="Enter Pin"
-                            value="{{ old('pin') }}">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="state">Setect State :</label><br>
@@ -104,6 +88,17 @@
                             placeholder="Enter Country Name" value="INDIA">
                     </div>
                 </div>
+
+            </div>
+
+            <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="pin">Pin No:</label><br>
+                        <input type="number" class="form-control" id="pin" name="pin" placeholder="Enter Pin"
+                            value="{{ old('pin') }}">
+                    </div>
+                </div>
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="branch-bill-prefix">Bill No Branch Prefix:</label><br>
@@ -111,32 +106,38 @@
                             placeholder="Enter Bill No Branch Prefix" value="{{ old('branch-bill-prefix') }}">
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <div class="form-group">
-                        <label for="email">Email:</label><br>
-                        <input type="email" class="form-control" id="email" name="email"
-                            placeholder="Enter Email" value="{{ old('email') }}">
+                        <label for="date">Open Date:</label><br>
+                        <input type="date" class="form-control" id="date" name="date"
+                            value="{{ date('Y-m-d') }}">
                     </div>
                 </div>
-            </div>
-
-            <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <div class="form-group">
-                        <label class="control-label text-bold" for="signature">Upload Signature</label>
-                        <input type="file" name="signature" id="signature" class="form-control"
+                        <label for="gst">Gst:</label><br>
+                        <input type="text" class="form-control" id="gst" name="gst"
+                            placeholder="Enter GST" value="{{ old('gst') }}">
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label class="control-label" for="signature">Upload Signature</label>
+                        <input type="file" name="signature" id="signature" class="form-control px-1"
                             accept="image/x-png,image/gif,image/jpeg,image/jpg,image/png"
                             data-msg-required="Please select a footer image file.">
                         <span class="validation-errors"></span>
                     </div>
                 </div>
-                <div class="col-sm-3">
+
+            </div>
+            <div class="row" style="">
+                <div class="col-sm-2">
                     <div class="form-group">
-                        <label for="branch-name">&nbsp;</label><br>
-                        <input type="submit" class="form-control bg-primary  mt-2" id="branch-name" value="Save">
+                        <input type="submit" class="form-control bg-primary" id="branch-name" value="Save">
                     </div>
                 </div>
-
             </div>
             {{ Form::close() }}
             {{-- </div> --}}
@@ -144,7 +145,7 @@
         @if ($branch)
             <hr>
             <div class="panel-heading">
-                <h3 class="panel-title text-bold">Add Branch</h3>
+                <h3 class="panel-title text-bold">Branch List</h3>
                 <br>
             </div>
             <br>
@@ -166,7 +167,7 @@
                                     <td>{{ $item->BRANCH_NAME }}</td>
                                     <td>{{ $item->BR_CONTACT_PERSON }}</td>
                                     <td>{{ $item->BR_ADDRESS }}</td>
-                                    <td><img src="{{ url($item->STAMP) }}" alt="signature-pic" height="20px"></td>
+                                    <td><img src="{{ url($item->signature) }}" alt="signature-pic" height="20px"></td>
                                     <td>
                                         <a href="{{ url('/admin/branch/' . $item->ID . '/edit') }}">View & Edit</a>
                                     </td>
@@ -194,12 +195,19 @@
                 rules: {
                     'branch-name': "required",
                     'branch-person': "required",
-                    number: "required",
+                    number: {
+                        required: true,
+                        maxlength: 10,
+                    },
                     gst: "required",
                     date: "required",
                     address: "required",
                     city: "required",
-                    pin: "required",
+                    // pin: "required",
+                    pin: {
+                        required: true,
+                        maxlength: 8,
+                    },
                     country: "required",
                     'branch-bill-prefix': "required",
                     email: "required",
@@ -222,6 +230,7 @@
                     },
                     pin: {
                         required: "The pin Field is required",
+                        min:'The pin fied is minimum 4 char',
                     },
                     state: {
                         required: "State Field is required",
