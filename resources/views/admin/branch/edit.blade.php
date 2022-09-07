@@ -24,124 +24,120 @@
 
 
             <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label for="branch-name">Branch Name:</label><br>
-                        <input type="text" class="form-control" id="branch-name" name="branch-name"
-                            placeholder="Enter Branch Name" value="{{ $branchData->BRANCH_NAME ?? '' }}">
+                <div class="col-md-10">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="branch-name">Branch Name:</label><br>
+                            <input type="text" class="form-control" id="branch-name" name="branch-name"
+                                   placeholder="Enter Branch Name" value="{{ $branchData->BRANCH_NAME ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="branch-person">Contact Person:</label><br>
+                            <input type="text" class="form-control" id="branch-person" name="branch-person"
+                                   placeholder="Enter Contact Person" value="{{ $branchData->BR_CONTACT_PERSON ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="number">Contact No:</label><br>
+                            <input type="number" class="form-control" id="number" name="number"
+                                   placeholder="Enter Contact Number" value="{{ $branchData->BR_PHONE ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="email">Email:</label><br>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email"
+                                   value="{{ $branchData->EMAIL ?? '' }}">
+                        </div>
+                    </div>
+
+                    <div class="col-sm">
+                        {{-- <div class="form-group">
+                            <label for="address">Address:</label><br>
+                            <textarea type='text'; class="form-control" id="address" name="address" placeholder="Enter Address"
+                                value="{{ $branchData->BR_ADDRESS ?? '' }}" rows="1"></textarea>
+                        </div> --}}
+                        <div class="form-group">
+                            <label for="address">Address:</label><br>
+                            <input type="text" name="address" id="address" class="form-control" placeholder="Enter Address" value="{{ $branchData->BR_ADDRESS ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="city">City Name:</label><br>
+                            <input type="text" class="form-control" id="city" name="city"
+                                   placeholder="Enter City Name" value="{{ $branchData->BR_CITY ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="state">Setect State :</label><br>
+                            <select id="state" name="state" class="form-control">
+                                @if ($stateList)
+                                    @foreach ($stateList as $k => $state)
+                                        @if($branchData->BR_STATE === $state)
+                                            <option value="{{ $state }}" selected>{{ $state }}</option>
+                                        @else
+                                            <option value="{{ $state }}">{{ $state }}</option>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </select>
+                            <span class="validation-errors"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="country">Country Name:</label><br>
+                            <input type="text" class="form-control" id="country" name="country"
+                                   placeholder="Enter Country Name" value="INDIA">
+                        </div>
+                    </div>
+
+                    <div class="col-sm px-2">
+                        <div class="form-group">
+                            <label for="pin">Pin No:</label><br>
+                            <input type="number" class="form-control" id="pin" name="pin" placeholder="Enter Pin"
+                                   value="{{ $branchData->BR_PIN ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="col-sm px-2">
+                        <div class="form-group">
+                            <label for="date">Open Date:</label><br>
+                            <input type="date" class="form-control" id="date" name="date"
+                                   value="{{ $branchData->BR_DATE ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="col-sm px-2">
+                        <div class="form-group">
+                            <label for="gst">Gst:</label><br>
+                            <input type="text" class="form-control" id="gst" name="gst"
+                                   placeholder="Enter GST" value="{{ $branchData->BR_GST ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="col-sm px-2">
+                        <div class="form-group">
+                            <label for="branch-bill-prefix">Bill No Branch Prefix:</label><br>
+                            <input type="text" class="form-control" id="branch-bill-prefix" name="branch-bill-prefix"
+                                   placeholder="Enter Bill No Branch Prefix" value="{{ $branchData->PREFIX ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="col-sm px-2">
+                        <div class="form-group">
+                            <label class="control-label text-bold" for="signature">Upload Signature</label>
+                            <input type="file" name="signature" id="signature" class="form-control px-1"
+                                   accept="image/x-png,image/gif,image/jpeg,image/jpg,image/png"
+                                   data-msg-required="Please select a footer image file.">
+                            <span class="validation-errors"></span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label for="branch-person">Contact Person:</label><br>
-                        <input type="text" class="form-control" id="branch-person" name="branch-person"
-                            placeholder="Enter Contact Person" value="{{ $branchData->BR_CONTACT_PERSON ?? '' }}">
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label for="number">Contact No:</label><br>
-                        <input type="number" class="form-control" id="number" name="number"
-                            placeholder="Enter Contact Number" value="{{ $branchData->BR_PHONE ?? '' }}">
-                    </div>
+                <div class="col-md-2" style="margin-top: 25px;margin-bottom: 25px;">
                 </div>
 
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label for="email">Email:</label><br>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email"
-                            value="{{ $branchData->EMAIL ?? '' }}">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
-                <div class="col-sm">
-                    {{-- <div class="form-group">
-                        <label for="address">Address:</label><br>
-                        <textarea type='text'; class="form-control" id="address" name="address" placeholder="Enter Address"
-                            value="{{ $branchData->BR_ADDRESS ?? '' }}" rows="1"></textarea>
-                    </div> --}}
-                    <div class="form-group">
-                        <label for="address">Address:</label><br>
-                        <input type="text" name="address" id="address" class="form-control" placeholder="Enter Address" value="{{ $branchData->BR_ADDRESS ?? '' }}">
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label for="city">City Name:</label><br>
-                        <input type="text" class="form-control" id="city" name="city"
-                            placeholder="Enter City Name" value="{{ $branchData->BR_CITY ?? '' }}">
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label for="state">Setect State :</label><br>
-                        <select id="state" name="state" class="form-control">
-                            <option value="" selected disabled>{{ $branchData->BR_STATE ?? ''  }}</option>
-                            @if ($stateList)
-                                @foreach ($stateList as $k => $state)
-                                    <option value="{{ $state }}">{{ $state }}</option>
-                                @endforeach
-                            @endif
-                        </select>
-                        <span class="validation-errors"></span>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label for="country">Country Name:</label><br>
-                        <input type="text" class="form-control" id="country" name="country"
-                            placeholder="Enter Country Name" value="INDIA">
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
-                <div class="col-sm px-2">
-                    <div class="form-group">
-                        <label for="pin">Pin No:</label><br>
-                        <input type="number" class="form-control" id="pin" name="pin" placeholder="Enter Pin"
-                            value="{{ $branchData->BR_PIN ?? '' }}">
-                    </div>
-                </div>
-                <div class="col-sm px-2">
-                    <div class="form-group">
-                        <label for="date">Open Date:</label><br>
-                        <input type="date" class="form-control" id="date" name="date"
-                            value="{{ $branchData->BR_DATE ?? '' }}">
-                    </div>
-                </div>
-                <div class="col-sm px-2">
-                    <div class="form-group">
-                        <label for="gst">Gst:</label><br>
-                        <input type="text" class="form-control" id="gst" name="gst"
-                            placeholder="Enter GST" value="{{ $branchData->BR_GST ?? '' }}">
-                    </div>
-                </div>
-                <div class="col-sm px-2">
-                    <div class="form-group">
-                        <label for="branch-bill-prefix">Bill No Branch Prefix:</label><br>
-                        <input type="text" class="form-control" id="branch-bill-prefix" name="branch-bill-prefix"
-                            placeholder="Enter Bill No Branch Prefix" value="{{ $branchData->PREFIX ?? '' }}">
-                    </div>
-                </div>
-                <div class="col-sm px-2">
-                    <div class="form-group">
-                        <label class="control-label text-bold" for="signature">Upload Signature</label>
-                        <input type="file" name="signature" id="signature" class="form-control px-1"
-                            accept="image/x-png,image/gif,image/jpeg,image/jpg,image/png"
-                            data-msg-required="Please select a footer image file.">
-                        <span class="validation-errors"></span>
-                    </div>
-                </div>
-                {{-- <div class="col-sm-2 px-2">
-                    <div class="form-group">
-                        <label for="branch-name">&nbsp;</label><br>
-                        <input type="submit" class="form-control bg-primary" id="branch-name" value="Save">
-                    </div>
-                </div> --}}
             </div>
 
 

@@ -132,10 +132,10 @@
                 </div>
 
             </div>
-            <div class="row" style="">
+            <div class="row">
                 <div class="col-sm-2">
                     <div class="form-group">
-                        <input type="submit" class="form-control bg-primary" id="branch-name" value="Save">
+                        <input type="submit" class="btn btn-primary" id="branch-name" value="Save">
                     </div>
                 </div>
             </div>

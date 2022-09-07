@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\BranchDtl;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\UploadedFile;
-
-
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -33,14 +30,8 @@ class BranchController extends Controller
         $session = get_admin_session();
         $validator = Validator::make(
             [
-
-                'EMPLOYEE_CODE' => '',
-                'BRANCH_CODE' => '',
                 'BRANCH_NAME' => $request->post('branch-name'),
-                'USERNAME' => '',
-                'LOGIN_PASSWORD' => '',
                 'EMAIL' => $request->post('email'),
-                'TXT_PASS' => '',
                 'BR_DATE' => $request->post('date'),
                 'BR_CONTACT_PERSON' => $request->post('branch-person'),
                 'BR_PHONE' => $request->post('number'),
@@ -50,19 +41,11 @@ class BranchController extends Controller
                 'BR_CITY' => $request->post('city'),
                 'BR_PIN' => $request->post('pin'),
                 'BR_GST' => $request->post('gst'),
-                'STAMP' => '',
-                'signature' => '',
-                'PREFIX' => $request->post('branch-bill-prefix'),
-                'ADMINorBRANCH' => '',
+                'PREFIX' => $request->post('branch-bill-prefix')
             ],
             [
-                // 'EMPLOYEE_CODE' => 'required',
-                // 'BRANCH_CODE' => 'required',
                 'BRANCH_NAME' => 'required',
-                // 'USERNAME' => 'required',
-                // 'LOGIN_PASSWORD' => 'required',
                 'EMAIL' => 'required',
-                // 'TXT_PASS' => 'required',
                 'BR_DATE' => 'required',
                 'BR_CONTACT_PERSON' => 'required',
                 'BR_PHONE' => 'required',
@@ -72,11 +55,7 @@ class BranchController extends Controller
                 'BR_CITY' => 'required',
                 'BR_PIN' => 'required',
                 'BR_GST' => 'required',
-                // 'STAMP' => 'required',
-                // 'signature' => 'required',
-                'PREFIX' => 'required',
-                // 'ADMINorBRANCH' => 'required',
-
+                'PREFIX' => 'required'
             ]
         );
 
@@ -151,14 +130,8 @@ class BranchController extends Controller
         $session = get_admin_session();
         $validator = Validator::make(
             [
-
-                'EMPLOYEE_CODE' => '',
-                'BRANCH_CODE' => '',
                 'BRANCH_NAME' => $request->post('branch-name'),
-                'USERNAME' => '',
-                'LOGIN_PASSWORD' => '',
                 'EMAIL' => $request->post('email'),
-                'TXT_PASS' => '',
                 'BR_DATE' => $request->post('date'),
                 'BR_CONTACT_PERSON' => $request->post('branch-person'),
                 'BR_PHONE' => $request->post('number'),
@@ -168,19 +141,11 @@ class BranchController extends Controller
                 'BR_CITY' => $request->post('city'),
                 'BR_PIN' => $request->post('pin'),
                 'BR_GST' => $request->post('gst'),
-                'STAMP' => '',
-                'signature' => '',
                 'PREFIX' => $request->post('branch-bill-prefix'),
-                'ADMINorBRANCH' => '',
             ],
             [
-                // 'EMPLOYEE_CODE' => 'required',
-                // 'BRANCH_CODE' => 'required',
                 'BRANCH_NAME' => 'required',
-                // 'USERNAME' => 'required',
-                // 'LOGIN_PASSWORD' => 'required',
                 'EMAIL' => 'required',
-                // 'TXT_PASS' => 'required',
                 'BR_DATE' => 'required',
                 'BR_CONTACT_PERSON' => 'required',
                 'BR_PHONE' => 'required',
@@ -190,10 +155,7 @@ class BranchController extends Controller
                 'BR_CITY' => 'required',
                 'BR_PIN' => 'required',
                 'BR_GST' => 'required',
-                // 'STAMP' => 'required',
-                // 'signature' => 'required',
                 'PREFIX' => 'required',
-                // 'ADMINorBRANCH' => 'required',
 
             ]
         );
@@ -210,33 +172,6 @@ class BranchController extends Controller
                 $signature_file->move(public_path('assets/admin/branch/'), $fileName);
                 $signature_path = 'assets/admin/branch/' . $fileName;
             }
-            $branch->fill([
-                // 'EMPLOYEE_CODE' => $session['EMP'],
-                'EMPLOYEE_CODE' => '',
-                // 'BRANCH_CODE' => $session['BRANCH_CODE'],
-                'BRANCH_CODE' => '',
-                'BRANCH_NAME' => $request->post('branch-name'),
-                // 'USERNAME' => $session['userMail'],
-                'USERNAME' => '',
-                'LOGIN_PASSWORD' => '',
-                'EMAIL' => $request->post('email'),
-                'TXT_PASS' => '',
-                'BR_DATE' => $request->post('date'),
-                'BR_CONTACT_PERSON' => $request->post('branch-person'),
-                'BR_PHONE' => $request->post('number'),
-                'BR_ADDRESS' => $request->post('address'),
-                'BR_COUNTRY' => $request->post('country'),
-                'BR_STATE' => $request->post('state'),
-                'BR_CITY' => $request->post('city'),
-                'BR_PIN' => $request->post('pin'),
-                'BR_GST' => $request->post('gst'),
-                'STAMP' => '',
-                'signature' => $signature_path ?? null,
-                'PREFIX' => $request->post('branch-bill-prefix'),
-                // 'ADMINorBRANCH' => $session['ADMINorBRANCH'],
-                'ADMINorBRANCH' => '',
-            ]);
-            $branch->save();
 
             return redirect('admin/branch')->withSuccess('Branch updated successfully.');
         }
