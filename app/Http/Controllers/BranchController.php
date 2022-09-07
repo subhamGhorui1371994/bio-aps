@@ -51,6 +51,7 @@ class BranchController extends Controller
                 'BR_PIN' => $request->post('pin'),
                 'BR_GST' => $request->post('gst'),
                 'STAMP' => '',
+                'signature' => '',
                 'PREFIX' => $request->post('branch-bill-prefix'),
                 'ADMINorBRANCH' => '',
             ],
@@ -72,6 +73,7 @@ class BranchController extends Controller
                 'BR_PIN' => 'required',
                 'BR_GST' => 'required',
                 // 'STAMP' => 'required',
+                // 'signature' => 'required',
                 'PREFIX' => 'required',
                 // 'ADMINorBRANCH' => 'required',
 
@@ -109,7 +111,8 @@ class BranchController extends Controller
             'BR_CITY' => $request->post('city'),
             'BR_PIN' => $request->post('pin'),
             'BR_GST' => $request->post('gst'),
-            'STAMP' => $signature_path ?? null,
+            'STAMP' => '',
+            'signature' => $signature_path ?? null,
             'PREFIX' => $request->post('branch-bill-prefix'),
             'ADMINorBRANCH' => $session['ADMINorBRANCH'],
         ]);

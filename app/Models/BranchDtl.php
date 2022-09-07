@@ -32,6 +32,7 @@ class BranchDtl extends Model
         'BR_PIN',
         'BR_GST',
         'STAMP',
+        'signature',
         'PREFIX',
         'ADMINorBRANCH',
     ];
