@@ -57,7 +57,8 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="address">Address:</label><br>
-                        <input type="text" name="address" id="address" class="form-control" placeholder="Enter Address" value="{{ $branchData->BR_ADDRESS ?? '' }}">
+                        <input type="text" name="address" id="address" class="form-control" placeholder="Enter Address"
+                            value="{{ $branchData->BR_ADDRESS ?? '' }}">
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -194,12 +195,19 @@
                 rules: {
                     'branch-name': "required",
                     'branch-person': "required",
-                    number: "required",
+                    number: {
+                        required: true,
+                        maxlength: 10,
+                    },
                     gst: "required",
                     date: "required",
                     address: "required",
                     city: "required",
-                    pin: "required",
+                    // pin: "required",
+                    pin: {
+                        required: true,
+                        maxlength: 8,
+                    },
                     country: "required",
                     'branch-bill-prefix': "required",
                     email: "required",
@@ -222,6 +230,7 @@
                     },
                     pin: {
                         required: "The pin Field is required",
+                        min:'The pin fied is minimum 4 char',
                     },
                     state: {
                         required: "State Field is required",

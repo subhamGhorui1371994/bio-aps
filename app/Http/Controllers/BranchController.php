@@ -95,10 +95,13 @@ class BranchController extends Controller
         $branch = new BranchDtl();
 
         $branch->fill([
-            'EMPLOYEE_CODE' => $session['EMP'],
-            'BRANCH_CODE' => $session['BRANCH_CODE'],
+            // 'EMPLOYEE_CODE' => $session['EMP'],
+            'EMPLOYEE_CODE' => '',
+            // 'BRANCH_CODE' => $session['BRANCH_CODE'],
+            'BRANCH_CODE' => '',
             'BRANCH_NAME' => $request->post('branch-name'),
-            'USERNAME' => $session['userMail'],
+            // 'USERNAME' => $session['userMail'],
+            'USERNAME' => '',
             'LOGIN_PASSWORD' => '',
             'EMAIL' => $request->post('email'),
             'TXT_PASS' => '',
@@ -114,7 +117,8 @@ class BranchController extends Controller
             'STAMP' => '',
             'signature' => $signature_path ?? null,
             'PREFIX' => $request->post('branch-bill-prefix'),
-            'ADMINorBRANCH' => $session['ADMINorBRANCH'],
+            // 'ADMINorBRANCH' => $session['ADMINorBRANCH'],
+            'ADMINorBRANCH' => '',
         ]);
 
 
@@ -207,10 +211,13 @@ class BranchController extends Controller
                 $signature_path = 'assets/admin/branch/' . $fileName;
             }
             $branch->fill([
-                'EMPLOYEE_CODE' => $session['EMP'],
-                'BRANCH_CODE' => $session['BRANCH_CODE'],
+                // 'EMPLOYEE_CODE' => $session['EMP'],
+                'EMPLOYEE_CODE' => '',
+                // 'BRANCH_CODE' => $session['BRANCH_CODE'],
+                'BRANCH_CODE' => '',
                 'BRANCH_NAME' => $request->post('branch-name'),
-                'USERNAME' => $session['userMail'],
+                // 'USERNAME' => $session['userMail'],
+                'USERNAME' => '',
                 'LOGIN_PASSWORD' => '',
                 'EMAIL' => $request->post('email'),
                 'TXT_PASS' => '',
@@ -226,7 +233,8 @@ class BranchController extends Controller
                 'STAMP' => '',
                 'signature' => $signature_path ?? null,
                 'PREFIX' => $request->post('branch-bill-prefix'),
-                'ADMINorBRANCH' => $session['ADMINorBRANCH'],
+                // 'ADMINorBRANCH' => $session['ADMINorBRANCH'],
+                'ADMINorBRANCH' => '',
             ]);
             $branch->save();
 
