@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Quotation;
 
+use App\Models\BankDtl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -42,7 +43,9 @@ class QuotationController extends Controller
         // $todayDatessz=date('Y-m-d'); if($todayDatessz>=$_SESSION['from'] && $todayDatessz<=$_SESSION['to']){ $Dayz=$todayDatessz; } else { $Dayz=$_SESSION['to']; }
         $allCustomer = DB::table('employee_dtl')->pluck('EMPLOYEE_NAME', 'ID');
 
-        return view('admin.Quotation.add-quotation', compact('allCustomer', 'validityArray', 'quotationNo'));
+        $bankList = BankDtl::where("CO_ID", 1)->get();
+
+        return view('admin.Quotation.add-quotation', compact('allCustomer', 'validityArray', 'quotationNo', 'bankList'));
     }
 
     /**
