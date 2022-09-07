@@ -2,7 +2,15 @@
 
 @section('content')
     {!! showMessage() !!}
+    <style>
+        .help-block {
+            color: red;
+        }
 
+        .error {
+            color: red;
+        }
+    </style>
     <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title text-bold">Add Resource Person</h3>
@@ -11,123 +19,139 @@
             </div>
         </div>
         <div class="panel-body">
-            {{-- {{dd($branch)}}; --}}
-            {{ Form::open(['method' => 'PATCH', 'route' => ['branch.update', $branchData->ID], 'class' => 'form-vertical', 'id' => 'portfolio_form', 'files' => true]) }}
+            {{-- {{dd($branchData->BR_ADDRESS);}} --}}
+            {{ Form::open(['method' => 'PATCH', 'route' => ['branch.update', $branchData->ID], 'class' => 'form-vertical', 'id' => 'branch_update_form','files' => true ]) }}
 
-            {{-- <div class="form-group">
-                <label class="control-label text-bold" for="resource_person_type">Resource Person Type <span class="required-fields">*</span></label>
-                {!! Form::select('resource_person_type',$resourcePersonTypes, $branch->resource_person_type,['id'=>'resource_person_type', 'class'=>'form-control select-2', 'required'=>'required', 'data-msg-required'=>'Please select resource person type.'])!!}
-                <span class="validation-errors"></span>
-            </div> --}}
 
-            {{-- <div class="form-group resource-person-course">
-                <label class="control-label text-bold" for="resource_person_type">Course <span class="required-fields">*</span></label>
-                {!! Form::select('course[]',['bed'=>'B. Ed.', 'dled' => 'D. El. Ed.'], json_decode($branch->course),['id'=>'course', 'class'=>'form-control select-2', 'multiple'=>'multiple', 'required'=>'required', 'data-msg-required'=>'Please select resource person course.'])!!}
-                <span class="validation-errors"></span>
-            </div> --}}
-
-            {{-- <div class="form-group">
-                <label class="control-label text-bold" for="photo">Photo</label>
-                <input type="file" name="photo" id="photo" class="form-control" data-msg-required="Please select a image for resource person." accept="image/*">
-                <span class="validation-errors"></span>
-            </div> --}}
-
-            {{-- @if ($branch->photo)
-                <div class="form-group">
-                    <img src="{{ URL::asset($resourcePerson->photo) }}" alt="" style="width: 100px;" class="img-thumbnail">
+            <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="branch-name">Branch Name:</label><br>
+                        <input type="text" class="form-control" id="branch-name" name="branch-name"
+                            placeholder="Enter Branch Name" value="{{ $branchData->BRANCH_NAME ?? '' }}">
+                    </div>
                 </div>
-            @endif --}}
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="branch-person">Contact Person:</label><br>
+                        <input type="text" class="form-control" id="branch-person" name="branch-person"
+                            placeholder="Enter Contact Person" value="{{ $branchData->BR_CONTACT_PERSON ?? '' }}">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="number">Contact No:</label><br>
+                        <input type="number" class="form-control" id="number" name="number"
+                            placeholder="Enter Contact Number" value="{{ $branchData->BR_PHONE ?? '' }}">
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label class="control-label text-bold" for="name">Name <span class="required-fields">*</span></label>
-                <input type="text" name="name" id="name" class="form-control" required
-                    data-msg-required="Please enter name." value="{{ $branch->name ?? '' }}">
-                <span class="validation-errors"></span>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="email">Email:</label><br>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email"
+                            value="{{ $branchData->EMAIL ?? '' }}">
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label text-bold" for="phone">Phone Number <span class="required-fields">*</span></label>
-                <input type="tel" name="phone" id="phone" class="form-control" required
-                    data-msg-required="Please enter phone number." value="{{ $branch->phone ?? '' }}">
-                <span class="validation-errors"></span>
+            <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="address">Address:</label><br>
+                        <textarea class="form-control" id="address" name="address" placeholder="Enter Address"
+                            value="{{ $branchData->BR_ADDRESS ?? '' }}" rows="1"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="city">City Name:</label><br>
+                        <input type="text" class="form-control" id="city" name="city"
+                            placeholder="Enter City Name" value="{{ $branchData->BR_CITY ?? '' }}">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="state">Setect State :</label><br>
+                        <select id="state" name="state" class="form-control">
+                            <option value="" selected disabled>Setect State</option>
+                            @if ($stateList)
+                                @foreach ($stateList as $k => $state)
+                                    <option value="{{ $branchData->BR_STATE ?? '' }}">{{ $state }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                        <span class="validation-errors"></span>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="country">Country Name:</label><br>
+                        <input type="text" class="form-control" id="country" name="country"
+                            placeholder="Enter Country Name" value="INDIA">
+                    </div>
+                </div>
+
             </div>
 
-            <div class="form-group">
-                <label class="control-label text-bold" for="email">Email <span class="required-fields">*</span></label>
-                <input type="email" name="email" id="email" class="form-control" required
-                    data-msg-required="Please enter email." value="{{ $branch->email ?? '' }}">
-                <span class="validation-errors"></span>
+            <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
+                <div class="col-sm-2 px-2">
+                    <div class="form-group">
+                        <label for="pin">Pin No:</label><br>
+                        <input type="number" class="form-control" id="pin" name="pin" placeholder="Enter Pin"
+                            value="{{ $branchData->BR_PIN ?? '' }}">
+                    </div>
+                </div>
+                <div class="col-sm-2 px-2">
+                    <div class="form-group">
+                        <label for="date">Open Date:</label><br>
+                        <input type="date" class="form-control" id="date" name="date"
+                            value="{{ $branchData->BR_DATE ?? '' }}">
+                    </div>
+                </div>
+                <div class="col-sm-2 px-2">
+                    <div class="form-group">
+                        <label for="gst">Gst:</label><br>
+                        <input type="text" class="form-control" id="gst" name="gst"
+                            placeholder="Enter GST" value="{{ $branchData->BR_GST ?? '' }}">
+                    </div>
+                </div>
+                <div class="col-sm-2 px-2">
+                    <div class="form-group">
+                        <label for="branch-bill-prefix">Bill No Branch Prefix:</label><br>
+                        <input type="text" class="form-control" id="branch-bill-prefix" name="branch-bill-prefix"
+                            placeholder="Enter Bill No Branch Prefix" value="{{ $branchData->PREFIX ?? '' }}">
+                    </div>
+                </div>
+                <div class="col-sm-2 px-2">
+                    <div class="form-group">
+                        <label class="control-label text-bold" for="signature">Upload Signature</label>
+                        <input type="file" name="signature" id="signature" class="form-control px-1"
+                            accept="image/x-png,image/gif,image/jpeg,image/jpg,image/png"
+                            data-msg-required="Please select a footer image file.">
+                        <span class="validation-errors"></span>
+                    </div>
+                </div>
+                <div class="col-sm-2 px-2">
+                    <div class="form-group">
+                        <label for="branch-name">&nbsp;</label><br>
+                        <input type="submit" class="form-control bg-primary" id="branch-name" value="Save">
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label text-bold" for="subject">Subject <span class="required-fields">*</span></label>
-                <input type="text" name="subject" id="subject" class="form-control" required
-                    data-msg-required="Please enter subject." value="{{ $branch->subject ?? '' }}">
-                <span class="validation-errors"></span>
-            </div>
 
-            <div class="form-group">
-                <label class="control-label text-bold" for="date">Date <span class="required-fields">*</span></label>
-                <input type="date" name="date" id="date" class="form-control" required
-                    data-msg-required="Please enter date." value="{{ $branch->date ?? '' }}">
-                <span class="validation-errors"></span>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label text-bold" for="time">Time <span class="required-fields">*</span></label>
-                <input type="time" name="time" id="time" class="form-control" required
-                    data-msg-required="Please enter time." value="{{ $branch->time ?? '' }}">
-                <span class="validation-errors"></span>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label text-bold" for="message">Message <span class="required-fields">*</span></label>
-                <input type="text" name="message" id="message" class="form-control" required
-                    data-msg-required="Please enter message." value="{{ $branch->message ?? '' }}">
-                <span class="validation-errors"></span>
-            </div>
-
-            {{-- <div class="form-group">
-                <label class="control-label text-bold" for="qualification">Qualification</label>
-                <input type="text" name="qualification" id="qualification" class="form-control" data-msg-required="Please enter qualification." value="{{$resourcePerson->qualification ?? ''}}">
-                <span class="validation-errors"></span>
-            </div> --}}
-
-            {{-- <div class="form-group">
-                <label class="control-label text-bold" for="designation">Designation</label>
-                <input type="text" name="designation" id="designation" class="form-control" data-msg-required="Please enter designation." value="{{$resourcePerson->designation ?? ''}}">
-                <span class="validation-errors"></span>
-            </div> --}}
-
-            {{-- <div class="form-group">
-                <label class="control-label text-bold" for="experience">Experience</label>
-                <input type="text" name="experience" id="experience" class="form-control" data-msg-required="Please enter experience." value="{{$resourcePerson->experience ?? ''}}">
-                <span class="validation-errors"></span>
-            </div> --}}
-
-            {{-- <div class="form-group">
-                <label class="control-label text-bold" for="salary">Salary</label>
-                <input type="text" name="salary" id="salary" class="form-control" data-msg-required="Please enter salary." value="{{$resourcePerson->salary ?? ''}}">
-                <span class="validation-errors"></span>
-            </div> --}}
-
-            {{-- <div class="form-group">
-                <label class="control-label text-bold" for="salary">Salary</label>
-                <input type="text" name="salary" id="salary" class="form-control" data-msg-required="Please enter salary." value="{{$resourcePerson->salary ?? ''}}">
-                <span class="validation-errors"></span>
-            </div> --}}
-
-            <div class="form-group mb-0">
+            {{-- <div class="form-group mb-0">
                 <button type="submit" class="btn btn-primary">Submit <i
                         class="icon-arrow-right14 position-right"></i></button>
-            </div>
+            </div> --}}
 
             {!! Form::close() !!}
         </div>
     </div>
 @endsection
 
-@section('footer_script')
+{{-- @section('footer_script')
     <link href="{{ URL::asset('assets/admin/js/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
     <script type="text/javascript" src="{{ URL::asset('assets/admin/js/select2/dist/js/select2.min.js') }}"></script>
 
@@ -184,6 +208,64 @@
                 },
             });
 
+        });
+    </script>
+@endsection --}}
+@section('footer_script')
+    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/select2/dist/js/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/jquery-validation/jquery.validate.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/jquery-validation/additional-methods.js') }}">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#state').select2();
+
+            $("#branch_update_form").validate({
+                rules: {
+                    'branch-name': "required",
+                    'branch-person': "required",
+                    number: "required",
+                    state: "required",
+                    gst: "required",
+                    date: "required",
+                    address: "required",
+                    city: "required",
+                    pin: "required",
+                    country: "required",
+                    'branch-bill-prefix': "required",
+                    email: "required",
+                },
+                messages: {
+                    number: {
+                        required: "Number Field is required",
+                    },
+                    gst: {
+                        required: "The gst Field is required",
+                    },
+                    date: {
+                        required: "Date Field is required",
+                    },
+                    address: {
+                        required: "The address Field is required",
+                    },
+                    city: {
+                        required: "City Field is required",
+                    },
+                    pin: {
+                        required: "The pin Field is required",
+                    },
+                    state: {
+                        required: "State Field is required",
+                    },
+                    country: {
+                        required: "The country Field is required",
+                    },
+                    email: {
+                        required: "State Field is required",
+                        email: "Email must be a valid email address",
+                    },
+                }
+            });
         });
     </script>
 @endsection
