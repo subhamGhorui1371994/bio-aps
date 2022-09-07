@@ -57,8 +57,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="address">Address:</label><br>
-                        <textarea class="form-control" id="address" name="address" placeholder="Enter Address" value="{{ old('address') }}"
-                            rows="1"></textarea>
+                        <input type="text" name="address" id="address" class="form-control" placeholder="Enter Address" value="{{ $branchData->BR_ADDRESS ?? '' }}">
                     </div>
                 </div>
                 <div class="col-sm-3">
