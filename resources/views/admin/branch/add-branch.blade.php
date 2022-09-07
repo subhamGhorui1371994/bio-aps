@@ -43,23 +43,17 @@
                             placeholder="Enter Contact Number" value="{{ old('number') }}">
                     </div>
                 </div>
+
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="gst">Gst:</label><br>
-                        <input type="text" class="form-control" id="gst" name="gst" placeholder="Enter GST"
-                            value="{{ old('gst') }}">
+                        <label for="email">Email:</label><br>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email"
+                            value="{{ old('email') }}">
                     </div>
                 </div>
             </div>
 
             <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="date">Open Date:</label><br>
-                        <input type="date" class="form-control" id="date" name="date"
-                            value="{{ date('Y-m-d') }}">
-                    </div>
-                </div>
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="address">Address:</label><br>
@@ -74,16 +68,6 @@
                             placeholder="Enter City Name" value="{{ old('city') }}">
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="pin">Pin No:</label><br>
-                        <input type="number" class="form-control" id="pin" name="pin" placeholder="Enter Pin"
-                            value="{{ old('pin') }}">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="state">Setect State :</label><br>
@@ -104,39 +88,53 @@
                             placeholder="Enter Country Name" value="INDIA">
                     </div>
                 </div>
-                <div class="col-sm-3">
+
+            </div>
+
+            <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
+                <div class="col-sm-2 px-2">
+                    <div class="form-group">
+                        <label for="pin">Pin No:</label><br>
+                        <input type="number" class="form-control" id="pin" name="pin" placeholder="Enter Pin"
+                            value="{{ old('pin') }}">
+                    </div>
+                </div>
+                <div class="col-sm-2 px-2">
+                    <div class="form-group">
+                        <label for="date">Open Date:</label><br>
+                        <input type="date" class="form-control" id="date" name="date"
+                            value="{{ date('Y-m-d') }}">
+                    </div>
+                </div>
+                <div class="col-sm-2 px-2">
+                    <div class="form-group">
+                        <label for="gst">Gst:</label><br>
+                        <input type="text" class="form-control" id="gst" name="gst"
+                            placeholder="Enter GST" value="{{ old('gst') }}">
+                    </div>
+                </div>
+                <div class="col-sm-2 px-2">
                     <div class="form-group">
                         <label for="branch-bill-prefix">Bill No Branch Prefix:</label><br>
                         <input type="text" class="form-control" id="branch-bill-prefix" name="branch-bill-prefix"
                             placeholder="Enter Bill No Branch Prefix" value="{{ old('branch-bill-prefix') }}">
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="email">Email:</label><br>
-                        <input type="email" class="form-control" id="email" name="email"
-                            placeholder="Enter Email" value="{{ old('email') }}">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" style="margin-top: 25px;margin-bottom: 25px;">
-                <div class="col-sm-3">
+                <div class="col-sm-2 px-2">
                     <div class="form-group">
                         <label class="control-label text-bold" for="signature">Upload Signature</label>
-                        <input type="file" name="signature" id="signature" class="form-control"
+                        <input type="file" name="signature" id="signature" class="form-control px-1"
                             accept="image/x-png,image/gif,image/jpeg,image/jpg,image/png"
                             data-msg-required="Please select a footer image file.">
                         <span class="validation-errors"></span>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2 px-2">
                     <div class="form-group">
                         <label for="branch-name">&nbsp;</label><br>
-                        <input type="submit" class="form-control bg-primary  mt-2" id="branch-name" value="Save">
+                        <input type="submit" class="form-control bg-primary" id="branch-name" value="Save">
                     </div>
                 </div>
-
             </div>
             {{ Form::close() }}
             {{-- </div> --}}
@@ -144,7 +142,7 @@
         @if ($branch)
             <hr>
             <div class="panel-heading">
-                <h3 class="panel-title text-bold">Add Branch</h3>
+                <h3 class="panel-title text-bold">Branch List</h3>
                 <br>
             </div>
             <br>

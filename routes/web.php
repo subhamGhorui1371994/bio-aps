@@ -19,7 +19,7 @@ use App\Http\Controllers\Admin\BasicInformation\FinancialYearController;
 use App\Http\Controllers\Admin\BasicInformation\BranchDtlController;
 use App\Http\Controllers\Admin\Setting\CompanyController;
 use App\Http\Controllers\Admin\Quotation\QuotationController;
-use App\Http\Controllers\Admin\Add\BranchController;
+use App\Http\Controllers\BranchController;
 
 Route::get('/', function () {
     return redirect('/admin');
@@ -114,7 +114,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('company', [CompanyController::class, 'company_list_ajax']);
 
         Route::model('BranchDtl', 'App\Models\BranchDtl');
-        Route::resource('branch', 'App\Http\Controllers\Admin\Add\BranchController');
+        Route::resource('branch', 'App\Http\Controllers\BranchController');
         Route::get('branch', [BranchController::class, 'index']);
         Route::post('branch', [BranchController::class, 'addBranch']);
     });
