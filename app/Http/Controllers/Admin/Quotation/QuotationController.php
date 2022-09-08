@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Quotation;
 
+use App\Models\BankDtl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+
 
 class QuotationController extends Controller
 {
@@ -14,8 +16,23 @@ class QuotationController extends Controller
     {
     }
 
-    public function index(){
+    public function index()
+    {
         // We will add Quotation list.
+    }
+
+    public function searchPartNo(Request $request)
+    {
+        $searchString = $request->get('q');
+        $data = DB::select("SELECT `YEAR`,`PART_NO`,`VEN_CODE` FROM `product` WHERE (`PART_NO` LIKE '%$searchString%') AND `YEAR`!='' ORDER BY `PART_NO` LIMIT 1000");
+        return json_encode($data);
+    }
+
+    public function searchProducts(Request $request)
+    {
+        $searchString = $request->get('q');
+        $data = DB::select("SELECT * FROM `product` WHERE `DESCRIPTION` LIKE '%$searchString%' ORDER BY `DESCRIPTION` ASC LIMIT 10");
+        return json_encode($data);
     }
 
     public function addAddQuotation(Request $request)
@@ -30,19 +47,19 @@ class QuotationController extends Controller
         ];
         $session = get_admin_session();
 
-        $quotationNo = "BioQuot/1/".$session['yr_name'];
+        $quotationNo = "BioQuot/1/" . $session['yr_name'];
         // When we run a raw sql query.
-        $maxBill = DB::select("SELECT MAX(BILL_ID+1) AS bill_id FROM `quotation_cust_dtl` WHERE `YEAR`='".$session['yr_name']."' AND `BR_CODE`='".$session['BRANCH_CODE']."' ");
+        $maxBill = DB::select("SELECT MAX(BILL_ID+1) AS bill_id FROM `quotation_cust_dtl` WHERE `YEAR`='" . $session['yr_name'] . "' AND `BR_CODE`='" . $session['BRANCH_CODE'] . "' ");
 
-        if(!empty($maxBill[0])) {
-            if(!empty($maxBill[0]->bill_id)) {
-                $quotationNo = "BioQuot/".$maxBill[0]->bill_id."/".$session['yr_name'];
+        if (!empty($maxBill[0])) {
+            if (!empty($maxBill[0]->bill_id)) {
+                $quotationNo = "BioQuot/" . $maxBill[0]->bill_id . "/" . $session['yr_name'];
             }
         }
         // $todayDatessz=date('Y-m-d'); if($todayDatessz>=$_SESSION['from'] && $todayDatessz<=$_SESSION['to']){ $Dayz=$todayDatessz; } else { $Dayz=$_SESSION['to']; }
         $allCustomer = DB::table('employee_dtl')->pluck('EMPLOYEE_NAME', 'ID');
-
-        return view('admin.quotation.add-quotation', compact('allCustomer', 'validityArray', 'quotationNo'));
+        $bankList = BankDtl::where("CO_ID", 1)->get();
+        return view('admin.quotation.add-quotation', compact('allCustomer', 'validityArray', 'quotationNo', 'bankList'));
     }
 
     /**
@@ -50,7 +67,8 @@ class QuotationController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function save(Request $request) {
+    public function save(Request $request)
+    {
         $validator = Validator::make(
             [
                 'currency' => $request->post('currency'),
