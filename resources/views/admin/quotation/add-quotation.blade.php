@@ -135,85 +135,7 @@
                         <div class="col-md-6 text-right text-bold">SAMPLE MANAGER NAME</div>
                     </div>
                 </div>
-                <div class="products_main_div">
-                    <div class="col-md-12 mt-4">
-                        <div class="row">
-                            <div class="col-md-2 text-bold">1. PART NO. (PRODUCT)</div>
-                            <div class="col-md-1 text-bold">MAKE</div>
-                            <div class="col-md-4 text-bold">SPECIFICATION</div>
-                            <div class="col-md-1 text-bold">RATE</div>
-                            <div class="col-md-2 text-bold">RC DISCOUNT</div>
-                            <div class="col-md-2 text-bold">SPECIAL DISCOUNT</div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-1"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-4"><textarea class="form-control" rows="1"></textarea></div>
-                            <div class="col-md-1"><input type="number" class="form-control"></div>
-                            <div class="col-md-2"><input type="number" class="form-control"></div>
-                            <div class="col-md-2"><input type="number" class="form-control"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                        <div class="row">
-                            <div class="col-md-2 text-bold">DISCOUNT AMT</div>
-                            <div class="col-md-1 text-bold">UNIT</div>
-                            <div class="col-md-1 text-bold">QTY</div>
-                            <div class="col-md-2 text-bold">TAXABLE</div>
-                            <div class="col-md-1 text-bold">GST %</div>
-                            <div class="col-md-2 text-bold">GST AMT</div>
-                            <div class="col-md-1 text-bold">CGST</div>
-                            <div class="col-md-1 text-bold">SGST</div>
-                            <div class="col-md-1 text-bold">IGST</div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-1">
-                                <select name="unit_1" class="form-control" id="unit_1">
-                                    <option value="ACT">ACT</option>
-                                    <option value="box">box</option>
-                                    <option value="gm">gm</option>
-                                    <option value="kg">kg</option>
-                                    <option value="Ltr">Ltr</option>
-                                    <option value="ml">ml</option>
-                                    <option value="packet">packet</option>
-                                    <option value="pair">pair</option>
-                                    <option value="pcs" selected="">pcs</option>
-                                    <option value="set">set</option>
-                                    <option value="Sqft">Sqft</option>
-                                </select>
-                            </div>
-                            <div class="col-md-1"><input type="number" class="form-control"></div>
-                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-1"><input type="number" class="form-control"></div>
-                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-1"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-1"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-1"><input type="text" class="form-control" readonly></div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                        <div class="row">
-                            <div class="col-md-2 text-bold">AMOUNT</div>
-                            <div class="col-md-8 text-bold">INSTRUMENT DESCRIPTION</div>
-                            <div class="col-md-1 text-bold">POSITION</div>
-                            <div class="col-md-1 text-bold text-center">REMOVE</div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-8"><textarea rows="4" class="form-control"></textarea></div>
-                            <div class="col-md-1"><input type="text" class="form-control"></div>
-                            <div class="col-md-1 text-center">
-                                <button type="button" class="btn btn-danger"><i class="icon-close2"></i></button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-12 products_main_div">
                 </div>
             </div>
             <hr>
@@ -222,9 +144,17 @@
                     <div class="form-group">
                         <label for="bank_name" class="text-bold">BANK</label>
                         <select class="form-control input-col input-sm" id="bank_name" name="bank_name" required="">
-                            @foreach($bankList as $bank)
-                                <option value="{{$bank["ID"]}}">{{$bank["BANK_NAME"]." (". $bank["BRANCH_NAME"] .")"}}</option>
-                            @endforeach
+                            <option value="19,Indian Overseas Bank,0621">INDIAN OVERSEAS BANK(DUM DUM PARK)</option>
+                            <option value="34,State Bank of India,012378">STATE BANK OF INDIA(Â&nbsp;DAKSHINPARA
+                                BAGUIATI)
+                            </option>
+                            <option value="44,HDFC Bank,01929">HDFC BANK(DUM DUM)</option>
+                            <option value="44,HDFC Bank,0753">HDFC BANK(JORHAT)</option>
+                            <option value="16,ICICI Bank,0104">ICICI BANK(NAGER BAZAR)</option>
+                            <option value="1,Allahabad Bank,111">ALLAHABAD BANK(IDBI)</option>
+                            <option value="51,IDFC First bank,IDFB0060114">IDFC FIRST BANK(LAKE TOWN )</option>
+                            <option value="16,ICICI Bank,001100">ICICI BANK(NAGER BAZAR 2)</option>
+                            <option value="44,HDFC Bank,019292">HDFC BANK(DUM DUM PARK)</option>
                         </select>
                     </div>
                 </div>
@@ -358,14 +288,14 @@
                     <div class="form-group">
                         <label for="s_p_no" class="text-bold mr-3"><input type="radio" name="search_by" id="s_p_no" value="part_no" checked> PART NO</label>
                         <label for="s_p_name" class="text-bold"><input type="radio" name="search_by" id="s_p_name" value="product_name"> PRODUCT NAME</label>
-                        <input type="text" class="form-control" placeholder="Part No: Enter minimum 3 characters" id="search_part_no" name="search_part_no">
-                        <input type="text" class="form-control" placeholder="Product Name: Enter minimum 3 characters" id="search_products" name="search_products" style="display:none;">
+                        <select name="search_part_no" id="search_part_no" class="form-control"></select>
+                        <select name="search_products" id="search_products" class="form-control" style="display: none"></select>
                     </div>
                 </div>
                 <div class="col-md-1">
                     <div class="form-group">
                         <label for="remarks" style="width: 100%;">&nbsp;</label>
-                        <button type="button" class="btn btn-success"><i class="icon-plus2"></i></button>
+                        <button type="button" class="btn btn-success" id="addNewProduct"><i class="icon-plus2"></i></button>
                     </div>
                 </div>
                 <div class="col-md-7">
@@ -379,7 +309,7 @@
                         <label for="remarks" style="width: 100%;">&nbsp;</label>
                         <button type="button" class="btn btn-primary">Next</button>
                     </div>
-                    </div>
+                </div>
             </div>
             {{-- <div class="col-sm-4">
                     <div class="form-group">
@@ -436,11 +366,13 @@
             border-top: 2px solid #1cc09e;
         }
     </style>
+    <link type="text/css" href="{{ URL::asset('assets/admin/js/select2/dist/css/select2.min.css') }}">
     <script type="text/javascript" src="{{ URL::asset('assets/admin/js/select2/dist/js/select2.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('assets/admin/js/jquery-validation/jquery.validate.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('assets/admin/js/jquery-validation/additional-methods.js') }}">
     </script>
     <script type="text/javascript">
+        var g_selected_product = ''
         $(document).ready(function () {
             $('#sales-person').select2();
 
@@ -463,14 +395,209 @@
             });
 
             $('input[name=search_by]').change(function () {
+                if ($('#search_part_no').data('select2')) {
+                    $('#search_part_no').select2('destroy');
+                }
+                if ($('#search_products').data('select2')) {
+                    $('#search_products').select2('destroy');
+                }
                 $('#search_part_no').hide();
                 $('#search_products').hide();
                 if ($(this).val() === 'part_no') {
+                    applySelect2Search('part_no');
                     $('#search_part_no').show();
                 } else if ($(this).val() === 'product_name') {
+                    applySelect2Search('product_name');
                     $('#search_products').show();
                 }
-            });
+            }).trigger('change');
+
+            $('#addNewProduct').click(function () {
+                let newProductRow = $(`<div class="row single_product_row">
+                    <div class="col-md-12 mt-4">
+                        <div class="row">
+                            <div class="col-md-2 text-bold">1. PART NO. (PRODUCT)</div>
+                            <div class="col-md-1 text-bold">MAKE</div>
+                            <div class="col-md-4 text-bold">SPECIFICATION</div>
+                            <div class="col-md-1 text-bold">RATE</div>
+                            <div class="col-md-2 text-bold">RC DISCOUNT</div>
+                            <div class="col-md-2 text-bold">SPECIAL DISCOUNT</div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
+                            <div class="col-md-1"><input type="text" class="form-control" readonly></div>
+                            <div class="col-md-4"><textarea class="form-control" rows="1"></textarea></div>
+                            <div class="col-md-1"><input type="number" class="form-control"></div>
+                            <div class="col-md-2"><input type="number" class="form-control"></div>
+                            <div class="col-md-2"><input type="number" class="form-control"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <div class="row">
+                            <div class="col-md-2 text-bold">DISCOUNT AMT</div>
+                            <div class="col-md-1 text-bold">UNIT</div>
+                            <div class="col-md-1 text-bold">QTY</div>
+                            <div class="col-md-2 text-bold">TAXABLE</div>
+                            <div class="col-md-1 text-bold">GST %</div>
+                            <div class="col-md-2 text-bold">GST AMT</div>
+                            <div class="col-md-1 text-bold">CGST</div>
+                            <div class="col-md-1 text-bold">SGST</div>
+                            <div class="col-md-1 text-bold">IGST</div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
+                            <div class="col-md-1">
+                                <select name="unit_1" class="form-control" id="unit_1">
+                                    <option value="ACT">ACT</option>
+                                    <option value="box">box</option>
+                                    <option value="gm">gm</option>
+                                    <option value="kg">kg</option>
+                                    <option value="Ltr">Ltr</option>
+                                    <option value="ml">ml</option>
+                                    <option value="packet">packet</option>
+                                    <option value="pair">pair</option>
+                                    <option value="pcs" selected="">pcs</option>
+                                    <option value="set">set</option>
+                                    <option value="Sqft">Sqft</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1"><input type="number" class="form-control"></div>
+                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
+                            <div class="col-md-1"><input type="number" class="form-control"></div>
+                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
+                            <div class="col-md-1"><input type="text" class="form-control" readonly></div>
+                            <div class="col-md-1"><input type="text" class="form-control" readonly></div>
+                            <div class="col-md-1"><input type="text" class="form-control" readonly></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <div class="row">
+                            <div class="col-md-2 text-bold">AMOUNT</div>
+                            <div class="col-md-8 text-bold">INSTRUMENT DESCRIPTION</div>
+                            <div class="col-md-1 text-bold">POSITION</div>
+                            <div class="col-md-1 text-bold text-center">REMOVE</div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
+                            <div class="col-md-8"><textarea rows="4" class="form-control"></textarea></div>
+                            <div class="col-md-1"><input type="text" class="form-control"></div>
+                            <div class="col-md-1 text-center">
+                                <button type="button" class="btn btn-danger removeProductRow"><i class="icon-close2"></i></button>
+                            </div>
+                        </div>
+                    </div></div>`);
+                newProductRow.find('.removeProductRow').click(function () {
+                    $(this).parents('.single_product_row').remove();
+                });
+                $('.products_main_div').append(newProductRow);
+            })
         });
+
+        function applySelect2Search(type = 'part_no') {
+            if (type === 'part_no') {
+                $("#search_part_no").select2({
+                    ajax: {
+                        url: base_url + "/admin/search-part-no",
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                q: params.term, // search term
+                                page: params.page
+                            };
+                        },
+                        processResults: function (data, params) {
+                            // parse the results into the format expected by Select2
+                            // since we are using custom formatting functions we do not need to
+                            // alter the remote JSON data, except to indicate that infinite
+                            // scrolling can be used
+                            params.page = params.page || 1;
+
+                            return {
+                                results: data,
+                            };
+                        },
+                        cache: true
+                    },
+                    placeholder: 'Part No: Enter minimum 2 characters',
+                    minimumInputLength: 2,
+                    templateResult: formatRepo,
+                    templateSelection: formatRepoSelection
+                });
+            } else {
+                $("#search_products").select2({
+                    ajax: {
+                        url: base_url + "/admin/search-products",
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                q: params.term, // search term
+                                page: params.page
+                            };
+                        },
+                        processResults: function (data, params) {
+                            // parse the results into the format expected by Select2
+                            // since we are using custom formatting functions we do not need to
+                            // alter the remote JSON data, except to indicate that infinite
+                            // scrolling can be used
+                            params.page = params.page || 1;
+
+                            return {
+                                results: data.items,
+                                pagination: {
+                                    more: (params.page * 30) < data.total_count
+                                }
+                            };
+                        },
+                        cache: true
+                    },
+                    placeholder: 'Product Name: Enter minimum 2 characters',
+                    minimumInputLength: 2,
+                    templateResult: formatRepo,
+                    templateSelection: formatRepoSelection
+                });
+            }
+        }
+
+        function formatRepo(repo) {
+            if (repo.loading) {
+                return repo.text;
+            }
+
+            var $container = $(
+                "<div class='select2-result-repository clearfix'>" +
+                "<div class='select2-result-repository__meta'>" +
+                "<div class='select2-result-repository__title'></div>" +
+                "<div class='select2-result-repository__description'></div>" +
+                "<div class='select2-result-repository__statistics'>" +
+                "<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> </div>" +
+                "<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> </div>" +
+                "<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> </div>" +
+                "</div>" +
+                "</div>" +
+                "</div>"
+            );
+
+            $container.find(".select2-result-repository__title").text(repo.YEAR + '-' + repo.PART_NO + '-' + repo.VEN_CODE);
+
+            return $container;
+            return repo.YEAR + '-' + repo.PART_NO + '-' + repo.VEN_CODE;
+        }
+
+        function formatRepoSelection(repo) {
+            console.log(repo)
+            if (repo.YEAR === undefined) {
+                return repo.text
+            } else {
+                return repo.YEAR + '-' + repo.PART_NO + '-' + repo.VEN_CODE;
+            }
+        }
     </script>
 @endsection
