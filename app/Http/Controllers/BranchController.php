@@ -114,11 +114,10 @@ class BranchController extends Controller
     public function edit($branchID)
     {
         $branchData = DB::table('branch_dtl')->find($branchID);
-        $image = DB::table('branch_dtl')->where('signature', '!=', '')->get();
         $stateList = DB::table('state_list')->pluck('state_name', 'state_id');
-        $breadcrumb_title = 'Add Branch / Edit';
+        $breadcrumb_title = 'Add / Branch / Edit';
 
-        return view('admin.branch.edit', compact('breadcrumb_title', 'branchData', 'stateList','image'));
+        return view('admin.branch.edit', compact('breadcrumb_title', 'branchData', 'stateList'));
     }
 
     /**

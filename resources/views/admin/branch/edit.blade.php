@@ -15,7 +15,7 @@
         <div class="panel-heading">
             <h3 class="panel-title text-bold">Edit & Upadte Branch</h3>
             <div class="heading-elements">
-                <a href="{{ url('admin/branch') }}" class="btn btn-primary">Go To Add Branch</a>
+                <a href="{{ url('admin/branch') }}" class="btn btn-primary">Back To Branch</a>
             </div>
         </div>
         <div class="panel-body">
@@ -148,10 +148,10 @@
                     <div class="signature col-sm-2 ">
                         <label for="signature">Signature</label>
                         {{-- <textarea class="" id="signature" name="signature" placeholder="signature">{{ $branchData->signature ?: old('signature') }}</textarea> --}}
-                        @if ($image)
-                            @foreach ($image as $item)
-                                <img src="{{ url($item->signature) }}" alt="signature-pic"  width="130px"></td>
-                            @endforeach
+                        @if ($branchData->signature)
+
+                                <img src="{{ url($branchData->signature) }}" alt="signature-pic"  width="130px"></td>
+
                         @endif
                     </div>
                   </div>
