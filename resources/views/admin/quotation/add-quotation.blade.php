@@ -222,17 +222,9 @@
                     <div class="form-group">
                         <label for="bank_name" class="text-bold">BANK</label>
                         <select class="form-control input-col input-sm" id="bank_name" name="bank_name" required="">
-                            <option value="19,Indian Overseas Bank,0621">INDIAN OVERSEAS BANK(DUM DUM PARK)</option>
-                            <option value="34,State Bank of India,012378">STATE BANK OF INDIA(Â&nbsp;DAKSHINPARA
-                                BAGUIATI)
-                            </option>
-                            <option value="44,HDFC Bank,01929">HDFC BANK(DUM DUM)</option>
-                            <option value="44,HDFC Bank,0753">HDFC BANK(JORHAT)</option>
-                            <option value="16,ICICI Bank,0104">ICICI BANK(NAGER BAZAR)</option>
-                            <option value="1,Allahabad Bank,111">ALLAHABAD BANK(IDBI)</option>
-                            <option value="51,IDFC First bank,IDFB0060114">IDFC FIRST BANK(LAKE TOWN )</option>
-                            <option value="16,ICICI Bank,001100">ICICI BANK(NAGER BAZAR 2)</option>
-                            <option value="44,HDFC Bank,019292">HDFC BANK(DUM DUM PARK)</option>
+                            @foreach($bankList as $bank)
+                                <option value="{{$bank["ID"]}}">{{$bank["BANK_NAME"]." (". $bank["BRANCH_NAME"] .")"}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
