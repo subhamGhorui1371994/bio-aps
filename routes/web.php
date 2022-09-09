@@ -100,6 +100,8 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('quotation', [QuotationController::class, 'index']);
         Route::get('add-quotation', [QuotationController::class, 'addAddQuotation']);
+        Route::get('search-part-no', [QuotationController::class, 'searchPartNo']);
+        Route::get('search-products', [QuotationController::class, 'searchProducts']);
         Route::post('add-quotation', [QuotationController::class, 'save']);
 
         // Route::get('company', [CompanyController::class, 'index']);

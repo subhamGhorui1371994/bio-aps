@@ -115,7 +115,7 @@ class BranchController extends Controller
     {
         $branchData = DB::table('branch_dtl')->find($branchID);
         $stateList = DB::table('state_list')->pluck('state_name', 'state_id');
-        $breadcrumb_title = 'Branch';
+        $breadcrumb_title = 'Add / Branch / Edit';
 
         return view('admin.branch.edit', compact('breadcrumb_title', 'branchData', 'stateList'));
     }
@@ -172,6 +172,30 @@ class BranchController extends Controller
                 $signature_file->move(public_path('assets/admin/branch/'), $fileName);
                 $signature_path = 'assets/admin/branch/' . $fileName;
             }
+            $updateData = [
+                'EMPLOYEE_CODE' => $session['EMP'],
+                'BRANCH_CODE' => $session['BRANCH_CODE'],
+                'BRANCH_NAME' => $request->post('branch-name'),
+                'USERNAME' => $session['userMail'],
+                'LOGIN_PASSWORD' => '',
+                'EMAIL' => $request->post('email'),
+                'TXT_PASS' => '',
+                'BR_DATE' => $request->post('date'),
+                'BR_CONTACT_PERSON' => $request->post('branch-person'),
+                'BR_PHONE' => $request->post('number'),
+                'BR_ADDRESS' => $request->post('address'),
+                'BR_COUNTRY' => $request->post('country'),
+                'BR_STATE' => $request->post('state'),
+                'BR_CITY' => $request->post('city'),
+                'BR_PIN' => $request->post('pin'),
+                'BR_GST' => $request->post('gst'),
+                'STAMP' => '',
+                'signature' => $signature_path ?? null,
+                'PREFIX' => $request->post('branch-bill-prefix'),
+                'ADMINorBRANCH' => $session['ADMINorBRANCH'],
+            ];
+            $branch->fill($updateData);
+            $branch->save();
 
             return redirect('admin/branch')->withSuccess('Branch updated successfully.');
         }
