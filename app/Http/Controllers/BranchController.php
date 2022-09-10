@@ -19,7 +19,7 @@ class BranchController extends Controller
 {
     public function index()
     {
-        $breadcrumb_title = 'Add / Add Brach';
+        $breadcrumb_title = 'Add / Add Branch';
         $stateList = DB::table('state_list')->pluck('state_name', 'state_id');
         $branch = DB::table('branch_dtl')->where('PREFIX', '!=', '')->get();
 
@@ -171,33 +171,63 @@ class BranchController extends Controller
                 $fileName = 'branch-' . time() . '-' . unique_id() . '.' . $signature_file->extension();
                 $signature_file->move(public_path('assets/admin/branch/'), $fileName);
                 $signature_path = 'assets/admin/branch/' . $fileName;
-            }
-            $updateData = [
-                'EMPLOYEE_CODE' => $session['EMP'],
-                'BRANCH_CODE' => $session['BRANCH_CODE'],
-                'BRANCH_NAME' => $request->post('branch-name'),
-                'USERNAME' => $session['userMail'],
-                'LOGIN_PASSWORD' => '',
-                'EMAIL' => $request->post('email'),
-                'TXT_PASS' => '',
-                'BR_DATE' => $request->post('date'),
-                'BR_CONTACT_PERSON' => $request->post('branch-person'),
-                'BR_PHONE' => $request->post('number'),
-                'BR_ADDRESS' => $request->post('address'),
-                'BR_COUNTRY' => $request->post('country'),
-                'BR_STATE' => $request->post('state'),
-                'BR_CITY' => $request->post('city'),
-                'BR_PIN' => $request->post('pin'),
-                'BR_GST' => $request->post('gst'),
-                'STAMP' => '',
-                'signature' => $signature_path ?? null,
-                'PREFIX' => $request->post('branch-bill-prefix'),
-                'ADMINorBRANCH' => $session['ADMINorBRANCH'],
-            ];
-            $branch->fill($updateData);
-            $branch->save();
 
-            return redirect('admin/branch')->withSuccess('Branch updated successfully.');
+
+                $updateData = [
+                    'EMPLOYEE_CODE' => $session['EMP'],
+                    'BRANCH_CODE' => $session['BRANCH_CODE'],
+                    'BRANCH_NAME' => $request->post('branch-name'),
+                    'USERNAME' => $session['userMail'],
+                    'LOGIN_PASSWORD' => '',
+                    'EMAIL' => $request->post('email'),
+                    'TXT_PASS' => '',
+                    'BR_DATE' => $request->post('date'),
+                    'BR_CONTACT_PERSON' => $request->post('branch-person'),
+                    'BR_PHONE' => $request->post('number'),
+                    'BR_ADDRESS' => $request->post('address'),
+                    'BR_COUNTRY' => $request->post('country'),
+                    'BR_STATE' => $request->post('state'),
+                    'BR_CITY' => $request->post('city'),
+                    'BR_PIN' => $request->post('pin'),
+                    'BR_GST' => $request->post('gst'),
+                    'STAMP' => '',
+                    'signature' => $signature_path ?? null,
+                    'PREFIX' => $request->post('branch-bill-prefix'),
+                    'ADMINorBRANCH' => $session['ADMINorBRANCH'],
+                ];
+                $branch->fill($updateData);
+                $branch->save();
+
+                return redirect('admin/branch')->withSuccess('Branch updated successfully.');
+            } else {
+
+                $updateData = [
+                    'EMPLOYEE_CODE' => $session['EMP'],
+                    'BRANCH_CODE' => $session['BRANCH_CODE'],
+                    'BRANCH_NAME' => $request->post('branch-name'),
+                    'USERNAME' => $session['userMail'],
+                    'LOGIN_PASSWORD' => '',
+                    'EMAIL' => $request->post('email'),
+                    'TXT_PASS' => '',
+                    'BR_DATE' => $request->post('date'),
+                    'BR_CONTACT_PERSON' => $request->post('branch-person'),
+                    'BR_PHONE' => $request->post('number'),
+                    'BR_ADDRESS' => $request->post('address'),
+                    'BR_COUNTRY' => $request->post('country'),
+                    'BR_STATE' => $request->post('state'),
+                    'BR_CITY' => $request->post('city'),
+                    'BR_PIN' => $request->post('pin'),
+                    'BR_GST' => $request->post('gst'),
+                    'STAMP' => '',
+                    // 'signature' => $signature_path ?? null,
+                    'PREFIX' => $request->post('branch-bill-prefix'),
+                    'ADMINorBRANCH' => $session['ADMINorBRANCH'],
+                ];
+                $branch->fill($updateData);
+                $branch->save();
+
+                return redirect('admin/branch')->withSuccess('Branch updated successfully.');
+            }
         }
     }
 
