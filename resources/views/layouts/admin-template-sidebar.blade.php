@@ -102,7 +102,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                <a href="{!! URL::to('admin/vendor') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>VENDOR</span>
                                 </a>
                             </li>
