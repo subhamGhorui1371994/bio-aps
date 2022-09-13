@@ -92,6 +92,11 @@
                                         height="50" class=""></div>
                                 <h5 class="content-group-lg">Login to your account <small class="display-block">Enter
                                         your credentials</small></h5>
+                                        <div>
+                                            @if (session('error'))
+                                                <h4 class="help-block font-red-mint alert-danger">{{ session('error') }}</h4>
+                                            @endif
+                                        </div>
                             </div>
 
                             <div class="form-group has-feedback has-feedback-left">
@@ -100,12 +105,6 @@
                                 </div>
                                 <input type="email" class="form-control" name="email" id="email"
                                     placeholder="Username">
-                                @if ($errors->has('email'))
-                                    <h4 class="help-block font-red-mint">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </h4>
-                                @endif
-
                             </div>
 
                             <div class="form-group has-feedback has-feedback-left">
@@ -114,10 +113,6 @@
                                 </div>
                                 <input type="password" class="form-control" placeholder="Password" name="password"
                                     id="password">
-                                @if ($errors->has('password'))
-                                    <span
-                                        class="help-block font-red-mint"><strong>{{ $errors->first('password') }}</strong></span>
-                                @endif
                             </div>
 
                             <div class="form-group">

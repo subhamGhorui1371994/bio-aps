@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\BasicInformation\BranchDtlController;
 use App\Http\Controllers\Admin\Setting\CompanyController;
 use App\Http\Controllers\Admin\Quotation\QuotationController;
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return redirect('/admin');
@@ -119,6 +120,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('branch', 'App\Http\Controllers\BranchController');
         Route::get('branch', [BranchController::class, 'index']);
         Route::post('branch', [BranchController::class, 'addBranch']);
+
+        Route::model('Product', 'App\Models\Product');
+        Route::resource('product', 'App\Http\Controllers\ProductController');
+        Route::get('product', [ProductController::class, 'index']);
+        Route::post('product', [ProductController::class, 'save']);
     });
 });
 // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);
