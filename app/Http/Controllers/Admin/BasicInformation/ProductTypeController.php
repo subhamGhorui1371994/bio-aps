@@ -9,6 +9,7 @@ use App\Models\ProductType;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Validator;
 
 class ProductTypeController extends Controller
 {
@@ -80,5 +81,31 @@ class ProductTypeController extends Controller
             "recordsFiltered" => $details['recordsTotal'],
             "data" => $details['data'],
         ]);
+    }
+
+    public function save(Request $request)
+    {
+        $validator = Validator::make(
+
+            [
+                'TYPE_NAME' => $request->post('type-name'),
+            ],
+            [
+                'TYPE_NAME' => 'required',
+            ]
+
+        );
+
+        if ($validator->fails()) {
+            return redirect('admin/add-product-preferences')->withErrors($validator)->withInput();
+        }
+        $ProductType = new ProductType();
+        $ProductType->fill([
+
+                'TYPE_NAME' => $request->post('type-name'),
+        ]);
+
+        $ProductType->save();
+        return redirect()->back()->withSuccess("Product Type Added Successfully");
     }
 }

@@ -87,7 +87,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{!! URL::to('admin/coming-soon') !!}" class="nav-link">
+                                <a href="{!! URL::to('admin/add-product-preferences') !!}" class="nav-link">
                                     <i class="icon-newspaper2"></i><span>CATEGORY</span>
                                 </a>
                             </li>

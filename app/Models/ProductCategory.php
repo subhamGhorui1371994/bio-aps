@@ -20,6 +20,7 @@ class ProductCategory extends Model
 
     protected $primaryKey = 'CAT_ID';
     protected $table = 'product_category';
+    public $timestamps = false;
 
     public function __construct()
     {
