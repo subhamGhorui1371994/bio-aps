@@ -20,6 +20,7 @@ class ProductType extends Model
 
     protected $primaryKey = 'TYPE_ID';
     protected $table = 'product_type';
+    public $timestamps = false;
 
     public function __construct()
     {

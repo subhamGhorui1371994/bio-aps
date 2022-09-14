@@ -21,6 +21,11 @@ use App\Http\Controllers\Admin\Setting\CompanyController;
 use App\Http\Controllers\Admin\Quotation\QuotationController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\VendorController;
+
+
+
+
 
 Route::get('/', function () {
     return redirect('/admin');
@@ -121,10 +126,22 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('branch', [BranchController::class, 'index']);
         Route::post('branch', [BranchController::class, 'addBranch']);
 
+        Route::model('Vendor', 'App\Models\Vendor');
+        Route::resource('vendor', 'App\Http\Controllers\VendorController');
+        Route::get('vendor', [VendorController::class, 'index']);
+        Route::post('vendor', [VendorController::class, 'addVendor']);
+
         Route::model('Product', 'App\Models\Product');
         Route::resource('product', 'App\Http\Controllers\ProductController');
         Route::get('product', [ProductController::class, 'index']);
         Route::post('product', [ProductController::class, 'save']);
+
+        // Route::model('Product', 'App\Models\Product');
+        // Route::resource('product', 'App\Http\Controllers\ProductController');
+        Route::get('add-product-preferences', [ProductController::class, 'addProductPreferences']);
+        Route::post('product-unit', [ProductUnitController::class, 'save']);
+        Route::post('product-category', [ProductCategoryController::class, 'save']);
+        Route::post('product-type', [ProductTypeController::class, 'save']);
     });
 });
 // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);
