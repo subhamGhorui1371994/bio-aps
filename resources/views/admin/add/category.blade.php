@@ -40,7 +40,7 @@
                             <table class="table table-bordered table-hover">
                                 <thead class="">
                                     <tr class="success">
-                                        <th>S.NO</th>
+                                        <th>ID</th>
                                         <th>Unit Name</th>
                                         <th>ACTION</th>
                                     </tr>
