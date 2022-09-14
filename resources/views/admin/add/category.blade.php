@@ -165,7 +165,7 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="unit-name" id="unitName">
+                        <input type="text" class="form-control" name="unit-name" id="unitName" placeholder="Enter Product Unit Name">
                     </div>
 
                 </div>
@@ -191,7 +191,7 @@
                     {{ Form::open(['url' => url('admin/product-category'), 'class' => '', 'id' => 'categoryForm']) }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="category-name" id="categoryName">
+                            <input type="text" class="form-control" name="category-name" id="categoryName" placeholder="Enter Product Category Name">
                         </div>
 
                     </div>
@@ -219,7 +219,7 @@
                     {{ Form::open(['url' => url('admin/product-type'), 'class' => '', 'id' => 'productTypeForm']) }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="type-name" id="productTypeName">
+                            <input type="text" class="form-control" name="type-name" id="productTypeName" placeholder="Enter Product TYPE Name">
                         </div>
 
                     </div>
