@@ -21,7 +21,6 @@ use App\Http\Controllers\Admin\Setting\CompanyController;
 use App\Http\Controllers\Admin\Quotation\QuotationController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\Admin\Add\CategoryController;
 use App\Http\Controllers\VendorController;
 
 
