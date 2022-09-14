@@ -102,7 +102,7 @@
                 <br>
             @endif
         </div>
-        <div class="panel col-md-4 ">
+        <div class="panel col-md-4">
             <div class="panel-heading bg-danger mb-3">
                 <h4 class="panel-title text-bold">TYPE</h4>
             </div>
@@ -156,17 +156,17 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                {{ Form::open(['url' => url('admin/category'), 'class' => '', 'id' => 'addUnitName', 'files' => true]) }}
+                {{ Form::open(['url' => url('admin/product-unit'), 'class' => '', 'id' => 'unitForm']) }}
                 @csrf
                 <div class="modal-body">
-                        <div class="form-group">
-                            <textarea class="form-control" name="unitName" id="message-text"></textarea>
-                        </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="unit-name" id="unitName">
+                    </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" value="Save">ADD</button>
+                    <button type="submit" class="btn btn-primary" value="Submit">ADD</button>
                 </div>
                 {{ Form::close() }}
             </div>
@@ -183,15 +183,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    {{ Form::open(['url' => url('admin/product-category'), 'class' => '', 'id' => 'categoryForm']) }}
+                    <div class="modal-body">
                         <div class="form-group">
-                            <textarea class="form-control" id="message-text"></textarea>
+                            <input type="text" class="form-control" name="category-name" id="categoryName">
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">ADD</button>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" value="Submit">ADD</button>
+                    </div>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
@@ -208,15 +211,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    {{ Form::open(['url' => url('admin/product-type'), 'class' => '', 'id' => 'productTypeForm']) }}
+                    <div class="modal-body">
                         <div class="form-group">
-                            <textarea class="form-control" id="message-text"></textarea>
+                            <input type="text" class="form-control" name="type-name" id="productTypeName">
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">ADD</button>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" value="Submit">ADD</button>
+                    </div>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>

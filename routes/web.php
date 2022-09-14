@@ -129,8 +129,10 @@ Route::group(['prefix' => 'admin'], function () {
 
         // Route::model('Product', 'App\Models\Product');
         // Route::resource('product', 'App\Http\Controllers\ProductController');
-        Route::get('category', [CategoryController::class, 'index']);
-        Route::post('category', [CategoryController::class, 'save']);
+        Route::get('add-product-preferences', [ProductController::class, 'addProductPreferences']);
+        Route::post('product-unit', [ProductUnitController::class, 'save']);
+        Route::post('product-category', [ProductCategoryController::class, 'save']);
+        Route::post('product-type', [ProductTypeController::class, 'save']);
     });
 });
 // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);

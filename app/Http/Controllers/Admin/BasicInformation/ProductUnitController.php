@@ -9,6 +9,8 @@ use App\Models\ProductUnit;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Validator;
+
 
 class ProductUnitController extends Controller
 {
@@ -80,5 +82,34 @@ class ProductUnitController extends Controller
             "recordsFiltered" => $details['recordsTotal'],
             "data" => $details['data'],
         ]);
+    }
+
+    public function save(Request $request)
+    {
+        $session = get_admin_session();
+        // p($request->post('type'));
+        $validator = Validator::make(
+
+            [
+                'UNIT_NAME' => $request->post('unit-name'),
+            ],
+            [
+                'UNIT_NAME' => 'required',
+            ]
+
+        );
+
+        if ($validator->fails()) {
+            return redirect('admin/add-product-preferences')->withErrors($validator)->withInput();
+        }
+        $unit = new ProductUnit();
+        $unit->fill([
+
+                'UNIT_NAME' => $request->post('unit-name'),
+        ]);
+
+        // p($priceList);
+        $unit->save();
+        return redirect()->back()->withSuccess("Product Unit Added Successfully");
     }
 }

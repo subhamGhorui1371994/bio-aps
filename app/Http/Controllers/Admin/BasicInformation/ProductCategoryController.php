@@ -9,6 +9,8 @@ use App\Models\ProductCategory;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Validator;
+
 
 class ProductCategoryController extends Controller
 {
@@ -80,5 +82,30 @@ class ProductCategoryController extends Controller
             "recordsFiltered" => $details['recordsTotal'],
             "data" => $details['data'],
         ]);
+    }
+    public function save(Request $request)
+    {
+        $validator = Validator::make(
+
+            [
+                'CATEGORY_NAME' => $request->post('category-name'),
+            ],
+            [
+                'CATEGORY_NAME' => 'required',
+            ]
+
+        );
+
+        if ($validator->fails()) {
+            return redirect('admin/add-product-preferences')->withErrors($validator)->withInput();
+        }
+        $category = new ProductCategory();
+        $category->fill([
+
+                'CATEGORY_NAME' => $request->post('category-name'),
+        ]);
+
+        $category->save();
+        return redirect()->back()->withSuccess("Product Category Added Successfully");
     }
 }
