@@ -12,134 +12,142 @@
         }
     </style>
 
-    <div class="">
-        <h3 class="text-bold alert alert-primary">ADD PRODUCT PREFERENCES:</h3>
-    </div>
 
 
-    <div class="row col-md-12">
 
-        <div class="panel col-sm-4">
-            <div class="panel-heading bg-success mb-3">
-                <div style="width: fit-content;display: inline-block;">
-                    <h1 class="p-0 m-0">Unit Details:</h1>
-                </div>
-                <div style="width: fit-content;display: inline-block;float: right;">
-                    <h1 class="p-0 m-0">
-                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#unitName"
-                            data-whatever=""><i class="icon-plus2"></i></button>
-                    </h1>
-                </div>
-            </div>
-            @if ($unit)
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            <thead class="">
-                                <tr class="success">
-                                    <th>S.NO</th>
-                                    <th>Unit Name</th>
-                                    <th>ACTION</th>
-                                </tr>
-                            </thead>
-                            @foreach ($unit as $item)
-                                <tbody>
-                                    <tr>
-                                        <td>{{ $item->UNIT_ID }}</td>
-                                        <td>{{ $item->UNIT_NAME }}</td>
-                                        <td>
-                                            <a href="{{ url('/admin/product/' . $item->UNIT_ID . '/edit') }}">View &
-                                                Edit</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            @endforeach
-                        </table>
-                    </div>
-                </div>
-                <br>
-            @endif
+    <div class=" panel row col-md-12">
+
+        <div class="">
+            <h3 class="text-bold alert alert-primary">ADD PRODUCT PREFERENCES:</h3>
         </div>
-        <div class="panel col-md-4">
-            <div class="panel-heading bg-info mb-3">
-                <div style="width: fit-content;display: inline-block;">
-                    <h1 class="p-0 m-0">Category Details:</h1>
-                </div>
-                <div style="width: fit-content;display: inline-block;float: right;">
-                    <h1 class="p-0 m-0">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#catName"
-                            data-whatever=""><i class="icon-plus2"></i></button>
-                    </h1>
-                </div>
-            </div>
-            @if ($category)
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            <thead class="">
-                                <tr class="success">
-                                    <th>ID</th>
-                                    <th>Category Name</th>
-                                    <th>ACTION</th>
-                                </tr>
-                            </thead>
-                            @foreach ($category as $item)
-                                <tbody>
-                                    <tr>
-                                        <td>{{ $item->CAT_ID }}</td>
-                                        <td>{{ $item->CATEGORY_NAME }}</td>
-                                        <td>
-                                            <a href="{{ url('/admin/product/' . $item->CAT_ID . '/edit') }}">View & Edit</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            @endforeach
-                        </table>
+
+        <div class="col-sm-4">
+            <div class="panel">
+                <div class="panel-heading bg-success mb-3">
+                    <div style="width: fit-content;display: inline-block;">
+                        <h1 class="p-0 m-0">Unit Details:</h1>
+                    </div>
+                    <div style="width: fit-content;display: inline-block;float: right;">
+                        <h1 class="p-0 m-0">
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#unitName"
+                                data-whatever=""><i class="icon-plus2"></i></button>
+                        </h1>
                     </div>
                 </div>
-                <br>
-            @endif
+                @if ($unit)
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead class="">
+                                    <tr class="success">
+                                        <th>S.NO</th>
+                                        <th>Unit Name</th>
+                                        <th>ACTION</th>
+                                    </tr>
+                                </thead>
+                                @foreach ($unit as $item)
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ $item->UNIT_ID }}</td>
+                                            <td>{{ $item->UNIT_NAME }}</td>
+                                            <td>
+                                                <a href="{{ url('/admin/product/' . $item->UNIT_ID . '/edit') }}">View &
+                                                    Edit</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                @endforeach
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                @endif
+            </div>
         </div>
-        <div class="panel col-md-4">
-            <div class="panel-heading bg-danger mb-3">
-                <div style="width: fit-content;display: inline-block;">
-                    <h1 class="p-0 m-0">Type Details:</h1>
-                </div>
-                <div style="width: fit-content;display: inline-block;float: right;">
-                    <h1 class="p-0 m-0">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#typeName"
-                            data-whatever=""><i class="icon-plus2"></i></button>
-                    </h1>
-                </div>
-            </div>
-            @if ($type)
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover">
-                            <thead class="">
-                                <tr class="success">
-                                    <th>ID</th>
-                                    <th>Type Name</th>
-                                    <th>ACTION</th>
-                                </tr>
-                            </thead>
-                            @foreach ($type as $item)
-                                <tbody>
-                                    <tr>
-                                        <td>{{ $item->TYPE_ID }}</td>
-                                        <td>{{ $item->TYPE_NAME }}</td>
-                                        <td>
-                                            <a href="{{ url('/admin/product/' . $item->TYPE_ID . '/edit') }}">View &
-                                                Edit</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            @endforeach
-                        </table>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-heading bg-info mb-3">
+                    <div style="width: fit-content;display: inline-block;">
+                        <h1 class="p-0 m-0">Category Details:</h1>
+                    </div>
+                    <div style="width: fit-content;display: inline-block;float: right;">
+                        <h1 class="p-0 m-0">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#catName"
+                                data-whatever=""><i class="icon-plus2"></i></button>
+                        </h1>
                     </div>
                 </div>
-                <br>
-            @endif
+                @if ($category)
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead class="">
+                                    <tr class="success">
+                                        <th>ID</th>
+                                        <th>Category Name</th>
+                                        <th>ACTION</th>
+                                    </tr>
+                                </thead>
+                                @foreach ($category as $item)
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ $item->CAT_ID }}</td>
+                                            <td>{{ $item->CATEGORY_NAME }}</td>
+                                            <td>
+                                                <a href="{{ url('/admin/product/' . $item->CAT_ID . '/edit') }}">View & Edit</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                @endforeach
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                @endif
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel">
+                <div class="panel-heading bg-danger mb-3">
+                    <div style="width: fit-content;display: inline-block;">
+                        <h1 class="p-0 m-0">Type Details:</h1>
+                    </div>
+                    <div style="width: fit-content;display: inline-block;float: right;">
+                        <h1 class="p-0 m-0">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#typeName"
+                                data-whatever=""><i class="icon-plus2"></i></button>
+                        </h1>
+                    </div>
+                </div>
+                @if ($type)
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead class="">
+                                    <tr class="success">
+                                        <th>ID</th>
+                                        <th>Type Name</th>
+                                        <th>ACTION</th>
+                                    </tr>
+                                </thead>
+                                @foreach ($type as $item)
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ $item->TYPE_ID }}</td>
+                                            <td>{{ $item->TYPE_NAME }}</td>
+                                            <td>
+                                                <a href="{{ url('/admin/product/' . $item->TYPE_ID . '/edit') }}">View &
+                                                    Edit</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                @endforeach
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                @endif
+            </div>
         </div>
     </div>
 
