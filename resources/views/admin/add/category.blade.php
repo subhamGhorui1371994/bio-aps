@@ -21,18 +21,17 @@
 
         <div class="panel col-sm-4">
             <div class="panel-heading bg-success mb-3">
-                <h4 class="panel-title text-bold">UNIT</h4>
-            </div>
-            <div class="panel-body">
-                <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#unitName" data-whatever=""><i
-                        class="icon-plus2"></i></button>
+                <div style="width: fit-content;display: inline-block;">
+                    <h1 class="p-0 m-0">Unit Details:</h1>
+                </div>
+                <div style="width: fit-content;display: inline-block;float: right;">
+                    <h1 class="p-0 m-0">
+                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#unitName"
+                            data-whatever=""><i class="icon-plus2"></i></button>
+                    </h1>
+                </div>
             </div>
             @if ($unit)
-                <hr>
-                <div class="">
-                    <h3 class="panel-title text-bold">Unit Details:-</h3>
-                </div>
-                <br>
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
@@ -63,18 +62,18 @@
         </div>
         <div class="panel col-md-4">
             <div class="panel-heading bg-info mb-3">
-                <h4 class="panel-title text-bold">CATEGORY</h4>
-            </div>
-            <div class="panel-body">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#catName"
+                <div style="width: fit-content;display: inline-block;">
+                    <h1 class="p-0 m-0">Category Details:</h1>
+                </div>
+                <div style="width: fit-content;display: inline-block;float: right;">
+                    <h1 class="p-0 m-0">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#catName"
                     data-whatever=""><i class="icon-plus2"></i></button>
+                    </h1>
+                </div>
             </div>
             @if ($category)
-                <hr>
-                <div class="">
-                    <h3 class="panel-title text-bold">Category Details:-</h3>
-                </div>
-                <br>
+
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
@@ -104,18 +103,17 @@
         </div>
         <div class="panel col-md-4">
             <div class="panel-heading bg-danger mb-3">
-                <h4 class="panel-title text-bold">TYPE</h4>
-            </div>
-            <div class="panel-body">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#typeName"
-                    data-whatever=""><i class="icon-plus2"></i></button>
+                <div style="width: fit-content;display: inline-block;">
+                    <h1 class="p-0 m-0">Type Details:</h1>
+                </div>
+                <div style="width: fit-content;display: inline-block;float: right;">
+                    <h1 class="p-0 m-0">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#typeName"
+                        data-whatever=""><i class="icon-plus2"></i></button>
+                    </h1>
+                </div>
             </div>
             @if ($type)
-                <hr>
-                <div class="">
-                    <h3 class="panel-title text-bold">Type Details:-</h3>
-                </div>
-                <br>
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
@@ -173,7 +171,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="catName" tabindex="-1" role="dialog" aria-labelledby="catNameabel" aria-hidden="true">
+    <div class="modal fade" id="catName" tabindex="-1" role="dialog" aria-labelledby="catNameabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
