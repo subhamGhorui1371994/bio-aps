@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\Setting\CompanyController;
 use App\Http\Controllers\Admin\Quotation\QuotationController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\Add\CategoryController;
 
 Route::get('/', function () {
     return redirect('/admin');
@@ -125,6 +126,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('product', 'App\Http\Controllers\ProductController');
         Route::get('product', [ProductController::class, 'index']);
         Route::post('product', [ProductController::class, 'save']);
+
+        // Route::model('Product', 'App\Models\Product');
+        // Route::resource('product', 'App\Http\Controllers\ProductController');
+        Route::get('category', [CategoryController::class, 'index']);
+        Route::post('category', [CategoryController::class, 'save']);
     });
 });
 // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);
