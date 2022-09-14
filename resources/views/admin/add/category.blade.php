@@ -68,12 +68,11 @@
                 <div style="width: fit-content;display: inline-block;float: right;">
                     <h1 class="p-0 m-0">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#catName"
-                    data-whatever=""><i class="icon-plus2"></i></button>
+                            data-whatever=""><i class="icon-plus2"></i></button>
                     </h1>
                 </div>
             </div>
             @if ($category)
-
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
@@ -109,7 +108,7 @@
                 <div style="width: fit-content;display: inline-block;float: right;">
                     <h1 class="p-0 m-0">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#typeName"
-                        data-whatever=""><i class="icon-plus2"></i></button>
+                            data-whatever=""><i class="icon-plus2"></i></button>
                     </h1>
                 </div>
             </div>
@@ -171,8 +170,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="catName" tabindex="-1" role="dialog" aria-labelledby="catNameabel"
-        aria-hidden="true">
+    <div class="modal fade" id="catName" tabindex="-1" role="dialog" aria-labelledby="catNameabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
