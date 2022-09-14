@@ -288,8 +288,8 @@
                     <div class="form-group">
                         <label for="s_p_no" class="text-bold mr-3"><input type="radio" name="search_by" id="s_p_no" value="part_no" checked> PART NO</label>
                         <label for="s_p_name" class="text-bold"><input type="radio" name="search_by" id="s_p_name" value="product_name"> PRODUCT NAME</label>
-                        <select name="search_part_no" id="search_part_no" class="form-control"></select>
-                        <select name="search_products" id="search_products" class="form-control" style="display: none"></select>
+                        <select name="search_part_no" id="search_part_no" class="form-control select-remote-data" style="display: none"></select>
+                        <select name="search_products" id="search_products" class="form-control select-remote-data" style="display: none"></select>
                     </div>
                 </div>
                 <div class="col-md-1">
@@ -366,8 +366,8 @@
             border-top: 2px solid #1cc09e;
         }
     </style>
-    <link type="text/css" href="{{ URL::asset('assets/admin/js/select2/dist/css/select2.min.css') }}">
-    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/select2/dist/js/select2.min.js') }}"></script>
+{{--    <link type="text/css" href="{{ URL::asset('assets/admin/js/select2-4.0.6/dist/css/select2.min.css') }}">--}}
+    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/plugins/forms/selects/select2.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('assets/admin/js/jquery-validation/jquery.validate.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('assets/admin/js/jquery-validation/additional-methods.js') }}">
     </script>
@@ -403,11 +403,11 @@
                 }
                 $('#search_part_no').hide();
                 $('#search_products').hide();
-                if ($(this).val() === 'part_no') {
-                    applySelect2Search('part_no');
+                if ($('input[name=search_by]:checked').val() === 'part_no') {
+                    // applySelect2Search('part_no');
                     $('#search_part_no').show();
-                } else if ($(this).val() === 'product_name') {
-                    applySelect2Search('product_name');
+                } else if ($('input[name=search_by]:checked').val() === 'product_name') {
+                    // applySelect2Search('product_name');
                     $('#search_products').show();
                 }
             }).trigger('change');
@@ -509,26 +509,30 @@
                         data: function (params) {
                             return {
                                 q: params.term, // search term
-                                page: params.page
+                                page: params.page || 1
                             };
                         },
                         processResults: function (data, params) {
-                            // parse the results into the format expected by Select2
-                            // since we are using custom formatting functions we do not need to
-                            // alter the remote JSON data, except to indicate that infinite
-                            // scrolling can be used
+                            console.log(data)
                             params.page = params.page || 1;
-
                             return {
                                 results: data,
+                                pagination: {
+                                more: (params.page * 30) < data.length
+                            }
                             };
                         },
-                        cache: true
                     },
                     placeholder: 'Part No: Enter minimum 2 characters',
                     minimumInputLength: 2,
+                    escapeMarkup: function (markup) {
+                        return markup;
+                    },
                     templateResult: formatRepo,
                     templateSelection: formatRepoSelection
+                });
+                $("#search_part_no").on('select2:select', function (e) {
+                    console.log(e.params)
                 });
             } else {
                 $("#search_products").select2({
@@ -543,25 +547,21 @@
                             };
                         },
                         processResults: function (data, params) {
-                            // parse the results into the format expected by Select2
-                            // since we are using custom formatting functions we do not need to
-                            // alter the remote JSON data, except to indicate that infinite
-                            // scrolling can be used
-                            params.page = params.page || 1;
-
+                            console.log(data)
                             return {
-                                results: data.items,
-                                pagination: {
-                                    more: (params.page * 30) < data.total_count
-                                }
+                                results: data,
                             };
                         },
-                        cache: true
                     },
                     placeholder: 'Product Name: Enter minimum 2 characters',
                     minimumInputLength: 2,
+                    escapeMarkup: function (markup) {
+                        return markup;
+                    },
                     templateResult: formatRepo,
                     templateSelection: formatRepoSelection
+                }).on('select2:select', function (e) {
+                    console.log(e.params)
                 });
             }
         }
@@ -586,9 +586,10 @@
             );
 
             $container.find(".select2-result-repository__title").text(repo.YEAR + '-' + repo.PART_NO + '-' + repo.VEN_CODE);
-
+            var markup = '<option value="' + repo.YEAR + '-' + repo.PART_NO + '-' + repo.VEN_CODE + '">' + repo.YEAR + '-' + repo.PART_NO + '-' + repo.VEN_CODE + '</option>';
+            // return $container;
+            // return repo.YEAR + '-' + repo.PART_NO + '-' + repo.VEN_CODE;
             return $container;
-            return repo.YEAR + '-' + repo.PART_NO + '-' + repo.VEN_CODE;
         }
 
         function formatRepoSelection(repo) {

@@ -24,7 +24,7 @@ class QuotationController extends Controller
     public function searchPartNo(Request $request)
     {
         $searchString = $request->get('q');
-        $data = DB::select("SELECT `YEAR`,`PART_NO`,`VEN_CODE` FROM `product` WHERE (`PART_NO` LIKE '%$searchString%') AND `YEAR`!='' ORDER BY `PART_NO` LIMIT 1000");
+        $data = DB::select("SELECT * FROM `product` WHERE (`PART_NO` LIKE '%$searchString%') AND `YEAR`!='' ORDER BY `PART_NO` LIMIT 1000");
         return json_encode($data);
     }
 
