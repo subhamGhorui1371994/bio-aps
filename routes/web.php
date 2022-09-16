@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\Setting\CompanyController;
 use App\Http\Controllers\Admin\Quotation\QuotationController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return redirect('/admin');
@@ -125,6 +126,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('product', 'App\Http\Controllers\ProductController');
         Route::get('product', [ProductController::class, 'index']);
         Route::post('product', [ProductController::class, 'save']);
+
+        Route::get('customer', [CustomerController::class, 'index']);
     });
 });
 // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);
