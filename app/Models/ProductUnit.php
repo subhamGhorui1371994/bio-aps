@@ -20,6 +20,7 @@ class ProductUnit extends Model
 
     protected $primaryKey = 'UNIT_ID';
     protected $table = 'product_unit';
+    public $timestamps = false;
 
     public function __construct()
     {

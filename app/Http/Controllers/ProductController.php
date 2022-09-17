@@ -78,4 +78,13 @@ class ProductController extends Controller
         $priceList->save();
         return redirect()->back()->withSuccess("Price List Added Successfully");
     }
+
+    public function addProductPreferences()
+    {
+        $breadcrumb_title = 'Add / Add Product Preferences';
+        $unit = DB::table('product_unit')->get();
+        $category = DB::table('product_category')->get();
+        $type = DB::table('product_type')->get();
+        return view('admin.add.category', compact('breadcrumb_title', 'unit','category','type'));
+    }
 }

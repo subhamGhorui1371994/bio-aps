@@ -122,12 +122,26 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('branch', [BranchController::class, 'index']);
         Route::post('branch', [BranchController::class, 'addBranch']);
 
+        Route::model('Vendor', 'App\Models\Vendor');
+        Route::resource('vendor', 'App\Http\Controllers\VendorController');
+        Route::get('vendor', [VendorController::class, 'index']);
+        Route::post('vendor', [VendorController::class, 'addVendor']);
+
         Route::model('Product', 'App\Models\Product');
         Route::resource('product', 'App\Http\Controllers\ProductController');
         Route::get('product', [ProductController::class, 'index']);
-        Route::post('product', [ProductController::class, 'save']);
+        Route::post('product', [ProductController::class, 'save']);     
 
+<<<<<<< HEAD
         Route::get('customer', [CustomerController::class, 'index']);
+=======
+        // Route::model('Product', 'App\Models\Product');
+        // Route::resource('product', 'App\Http\Controllers\ProductController');
+        Route::get('add-product-preferences', [ProductController::class, 'addProductPreferences']);
+        Route::post('product-unit', [ProductUnitController::class, 'save']);
+        Route::post('product-category', [ProductCategoryController::class, 'save']);
+        Route::post('product-type', [ProductTypeController::class, 'save']);
+>>>>>>> test
     });
 });
 // Route::get('bank-dtl-data/{ID}',[BankDtlController::class,'BankDtlData']);
