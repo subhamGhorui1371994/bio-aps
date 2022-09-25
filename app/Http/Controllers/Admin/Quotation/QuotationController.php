@@ -21,18 +21,61 @@ class QuotationController extends Controller
         // We will add Quotation list.
     }
 
+    public function searchCustomer(Request $request)
+    {
+        $searchString = $request->get('q');
+        $data = DB::select("SELECT * FROM `customer_dtl` WHERE (`CUSTOMER_NAME` LIKE '%$searchString%')  AND `APPROVAL`=1 ORDER BY `CUSTOMER_NAME` ASC");
+        if(!empty($data)) {
+            $processedData = [];
+            foreach ($data as $key => $value) {
+                $processedData[] = [
+                    'id' => $value->CUSTOMER_CODE,
+                    'text' => $value->CUSTOMER_NAME,
+                    'data' => $value
+                ];
+            }
+        } else {
+            $processedData = $data;
+        }
+        return json_encode($processedData);
+    }
+
     public function searchPartNo(Request $request)
     {
         $searchString = $request->get('q');
         $data = DB::select("SELECT * FROM `product` WHERE (`PART_NO` LIKE '%$searchString%') AND `YEAR`!='' ORDER BY `PART_NO` LIMIT 1000");
-        return json_encode($data);
+        if(!empty($data)) {
+            $processedData = [];
+            foreach ($data as $key => $value) {
+                $processedData[] = [
+                    'id' => $value->ID,
+                    'text' => $value->YEAR . '-' . $value->PART_NO . '-' . $value->VEN_CODE,
+                    'data' => $value
+                ];
+            }
+        } else {
+            $processedData = $data;
+        }
+        return json_encode($processedData);
     }
 
     public function searchProducts(Request $request)
     {
         $searchString = $request->get('q');
         $data = DB::select("SELECT * FROM `product` WHERE `DESCRIPTION` LIKE '%$searchString%' ORDER BY `DESCRIPTION` ASC LIMIT 10");
-        return json_encode($data);
+        if(!empty($data)) {
+            $processedData = [];
+            foreach ($data as $key => $value) {
+                $processedData[] = [
+                    'id' => $value->ID,
+                    'text' => $value->YEAR . '-' . $value->PART_NO . '-' . $value->VEN_CODE,
+                    'data' => $value
+                ];
+            }
+        } else {
+            $processedData = $data;
+        }
+        return json_encode($processedData);
     }
 
     public function addAddQuotation(Request $request)
@@ -57,9 +100,10 @@ class QuotationController extends Controller
             }
         }
         // $todayDatessz=date('Y-m-d'); if($todayDatessz>=$_SESSION['from'] && $todayDatessz<=$_SESSION['to']){ $Dayz=$todayDatessz; } else { $Dayz=$_SESSION['to']; }
+        $allCurrencies = DB::table('currency')->pluck('NAME', 'PRICE_CURRENCY');
         $allCustomer = DB::table('employee_dtl')->pluck('EMPLOYEE_NAME', 'ID');
         $bankList = BankDtl::where("CO_ID", 1)->get();
-        return view('admin.quotation.add-quotation', compact('allCustomer', 'validityArray', 'quotationNo', 'bankList'));
+        return view('admin.quotation.add-quotation', compact('allCustomer','allCurrencies', 'validityArray', 'quotationNo', 'bankList'));
     }
 
     /**

@@ -92,7 +92,8 @@
                 <div class="col-md-4">
                     <div class="input-group">
                         <label for="customer" style="width: 100%" class="text-bold">CUSTOMER:</label>
-                        <input class="form-control" id="customer" name="customer">
+                        <select name="customer" id="customer" class="form-control"></select>
+{{--                        <input class="form-control" id="customer" name="customer">--}}
                         <div class="input-group-btn" style="vertical-align: bottom !important;">
                             <button class="btn btn-outline-secondary" type="button" data-toggle="modal"
                                     data-target="#exampleModalCenter"><i class="icon-eye"></i></button>
@@ -144,17 +145,12 @@
                     <div class="form-group">
                         <label for="bank_name" class="text-bold">BANK</label>
                         <select class="form-control input-col input-sm" id="bank_name" name="bank_name" required="">
-                            <option value="19,Indian Overseas Bank,0621">INDIAN OVERSEAS BANK(DUM DUM PARK)</option>
-                            <option value="34,State Bank of India,012378">STATE BANK OF INDIA(Â&nbsp;DAKSHINPARA
-                                BAGUIATI)
-                            </option>
-                            <option value="44,HDFC Bank,01929">HDFC BANK(DUM DUM)</option>
-                            <option value="44,HDFC Bank,0753">HDFC BANK(JORHAT)</option>
-                            <option value="16,ICICI Bank,0104">ICICI BANK(NAGER BAZAR)</option>
-                            <option value="1,Allahabad Bank,111">ALLAHABAD BANK(IDBI)</option>
-                            <option value="51,IDFC First bank,IDFB0060114">IDFC FIRST BANK(LAKE TOWN )</option>
-                            <option value="16,ICICI Bank,001100">ICICI BANK(NAGER BAZAR 2)</option>
-                            <option value="44,HDFC Bank,019292">HDFC BANK(DUM DUM PARK)</option>
+                            <option value="">Select Bank</option>
+                            @if($bankList)
+                                @foreach($bankList as $key => $bank)
+                                    <option value="{{$bank->BANK_CODE}},{{$bank->BANK_NAME}}{{$bank->BRANCH_CODE}}">{{$bank->BANK_NAME}}({{$bank->BRANCH_NAME}})</option>
+                                @endforeach
+                            @endif
                         </select>
                     </div>
                 </div>
@@ -162,70 +158,12 @@
                     <div class="form-group curType" style="display:none;">
                         <label for="curType" class="text-bold">EXCHANGE CURRENCY</label>
                         <select class="form-control" id="curType" name="curType">
-                            <option value="USD">1 UNITED STATES DOLLARS</option>
-                            <option value="DZD">1 ALGERIA DINARS</option>
-                            <option value="EUR">1 EURO</option>
-                            <option value="GBP">1 UNITED KINGDOM POUNDS</option>
-                            <option value="ARP">1 ARGENTINA PESOS</option>
-                            <option value="AUD">1 AUSTRALIA DOLLARS</option>
-                            <option value="ATS">1 AUSTRIA SCHILLINGS</option>
-                            <option value="BSD">1 BAHAMAS DOLLARS</option>
-                            <option value="BBD">1 BARBADOS DOLLARS</option>
-                            <option value="BEF">1 BELGIUM FRANCS</option>
-                            <option value="BMD">1 BERMUDA DOLLARS</option>
-                            <option value="BRR">1 BRAZIL REAL</option>
-                            <option value="BGL">1 BULGARIA LEV</option>
-                            <option value="CAD">1 CANADA DOLLARS</option>
-                            <option value="CLP">1 CHILE PESOS</option>
-                            <option value="CNY">1 CHINA YUAN RENMIMBI</option>
-                            <option value="CYP">1 CYPRUS POUNDS</option>
-                            <option value="CSK">1 CZECH REPUBLIC KORUNA</option>
-                            <option value="DKK">1 DENMARK KRONER</option>
-                            <option value="NLG">1 DUTCH GUILDERS</option>
-                            <option value="XCD">1 EASTERN CARIBBEAN DOLLARS</option>
-                            <option value="EGP">1 EGYPT POUNDS</option>
-                            <option value="FJD">1 FIJI DOLLARS</option>
-                            <option value="FIM">1 FINLAND MARKKA</option>
-                            <option value="FRF">1 FRANCE FRANCS</option>
-                            <option value="DEM">1 GERMANY DEUTSCHE MARKS</option>
-                            <option value="XAU">1 GOLD OUNCES</option>
-                            <option value="GRD">1 GREECE DRACHMAS</option>
-                            <option value="HKD">1 HONG KONG DOLLARS</option>
-                            <option value="HUF">1 HUNGARY FORINT</option>
-                            <option value="ISK">1 ICELAND KRONA</option>
-                            <option value="INR">1 INDIA RUPEES</option>
-                            <option value="IDR">1 INDONESIA RUPIAH</option>
-                            <option value="IEP">1 IRELAND PUNT</option>
-                            <option value="ILS">1 ISRAEL NEW SHEKELS</option>
-                            <option value="ITL">1 ITALY LIRA</option>
-                            <option value="JMD">1 JAMAICA DOLLARS</option>
-                            <option value="JPY">1 JAPAN YEN</option>
-                            <option value="JOD">1 JORDAN DINAR</option>
-                            <option value="KRW">1 KOREA (SOUTH) WON</option>
-                            <option value="LBP">1 LEBANON POUNDS</option>
-                            <option value="LUF">1 LUXEMBOURG FRANCS</option>
-                            <option value="MYR">1 MALAYSIA RINGGIT</option>
-                            <option value="MXP">1 MEXICO PESOS</option>
-                            <option value="NLG">1 NETHERLANDS GUILDERS</option>
-                            <option value="NZD">1 NEW ZEALAND DOLLARS</option>
-                            <option value="NOK">1 NORWAY KRONER</option>
-                            <option value="PKR">1 PAKISTAN RUPEES</option>
-                            <option value="XPD">1 PALLADIUM OUNCES</option>
-                            <option value="PHP">1 PHILIPPINES PESOS</option>
-                            <option value="XPT">1 PLATINUM OUNCES</option>
-                            <option value="PLZ">1 POLAND ZLOTY</option>
-                            <option value="PTE">1 PORTUGAL ESCUDO</option>
-                            <option value="ROL">1 ROMANIA LEU</option>
-                            <option value="RUR">1 RUSSIA RUBLES</option>
-                            <option value="SAR">1 SAUDI ARABIA RIYAL</option>
-                            <option value="XAG">1 SILVER OUNCES</option>
-                            <option value="SGD">1 SINGAPORE DOLLARS</option>
-                            <option value="SKK">1 SLOVAKIA KORUNA</option>
-                            <option value="ZAR">1 SOUTH AFRICA RAND</option>
-                            <option value="KRW">1 SOUTH KOREA WON</option>
-                            <option value="ESP">1 SPAIN PESETAS</option>
-                            <option value="XDR">1 SPECIAL DRAWING RIGHT</option>
-                            <option value="CHF">1 SWISS FRANC</option>
+                            <option value="">Select currency</option>
+                            @if($allCurrencies)
+                                @foreach($allCurrencies as $code => $name)
+                                    <option value="{{$code}}">{{$name}}</option>
+                                @endforeach
+                            @endif
                         </select>
                     </div>
                 </div>
@@ -256,26 +194,26 @@
                             </tr>
                             <tr>
                                 <th style="width: 50%;text-align: right;font-weight: bold;">
-                                    <input type="text" class="form-control" value="OTHER EXP">
+                                    <input type="text" class="form-control text-right" value="OTHER EXP">
                                 </th>
                                 <td style="width: 50%;text-align: right;">
-                                    <input type="number" class="form-control" value="0">
-                                    <input type="number" class="form-control" value="18">
-                                    <input type="number" class="form-control" value="0.00" readonly>
+                                    <input type="number" class="form-control text-right" value="0">
+                                    <input type="number" class="form-control text-right" value="18">
+                                    <input type="number" class="form-control text-right" value="0.00" readonly>
                                 </td>
                             </tr>
                             <tr>
                                 <th style="width: 50%;text-align: right;font-weight: bold;">
-                                    <input type="number" class="form-control" value="0.075">
+                                    <input type="number" class="form-control text-right" value="0.075">
                                 </th>
                                 <td style="width: 50%;text-align: right;">
-                                    <input type="number" class="form-control" value="0.00" readonly>
+                                    <input type="number" class="form-control text-right" value="0.00" readonly>
                                 </td>
                             </tr>
                             <tr>
                                 <th style="width: 50%;text-align: right;font-weight: bold;">TOTAL AMOUNT</th>
                                 <td style="width: 50%;text-align: right;">
-                                    <input type="number" class="form-control" value="0.00">
+                                    <input type="number" class="form-control text-right" value="0.00">
                                 </td>
                             </tr>
                         </table>
@@ -366,13 +304,13 @@
             border-top: 2px solid #1cc09e;
         }
     </style>
-{{--    <link type="text/css" href="{{ URL::asset('assets/admin/js/select2-4.0.6/dist/css/select2.min.css') }}">--}}
+    <link type="text/css" href="{{ URL::asset('assets/admin/js/select2-4.0.6/dist/css/select2.min.css') }}">
     <script type="text/javascript" src="{{ URL::asset('assets/admin/js/plugins/forms/selects/select2.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('assets/admin/js/jquery-validation/jquery.validate.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/jquery-validation/additional-methods.js') }}">
-    </script>
+    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/jquery-validation/additional-methods.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('assets/admin/js/bootbox.min.js') }}"></script>
     <script type="text/javascript">
-        var g_selected_product = ''
+        var g_selected_product, g_selected_customer;
         $(document).ready(function () {
             $('#sales-person').select2();
 
@@ -394,6 +332,38 @@
                 }
             });
 
+            $("#customer").select2({
+                ajax: {
+                    url: base_url + "/admin/search-customer",
+                    dataType: 'json',
+                    delay: 250,
+                    data: function (params) {
+                        return {
+                            q: params.term, // search term
+                            page: params.page || 1
+                        };
+                    },
+                    processResults: function (data, params) {
+                        console.log(data)
+                        params.page = params.page || 1;
+                        return {
+                            results: data,
+                            pagination: {
+                                more: (params.page * 30) < data.length
+                            }
+                        };
+                    },
+                },
+                placeholder: 'Customer: Enter minimum 2 characters',
+                minimumInputLength: 2,
+                escapeMarkup: function (markup) {
+                    return markup;
+                },
+            }).on('select2:select', function (e) {
+                console.log('select2', e.params)
+                g_selected_customer = e.params.data.data;
+            });
+
             $('input[name=search_by]').change(function () {
                 if ($('#search_part_no').data('select2')) {
                     $('#search_part_no').select2('destroy');
@@ -404,16 +374,22 @@
                 $('#search_part_no').hide();
                 $('#search_products').hide();
                 if ($('input[name=search_by]:checked').val() === 'part_no') {
-                    // applySelect2Search('part_no');
+                    applySelect2Search('part_no');
                     $('#search_part_no').show();
                 } else if ($('input[name=search_by]:checked').val() === 'product_name') {
-                    // applySelect2Search('product_name');
+                    applySelect2Search('product_name');
                     $('#search_products').show();
                 }
             }).trigger('change');
 
             $('#addNewProduct').click(function () {
-                let newProductRow = $(`<div class="row single_product_row">
+                if(g_selected_product === undefined) {
+                    bootbox.dialog({
+                        message: '<p class="text-center mb-0">Please select a product or part no first.</p>',
+                    });
+                }else {
+                    let productName = ($('input[name=search_by]:checked').val() === 'part_no') ? g_selected_product.PART_NO : g_selected_product.PRO_NAME;
+                    let newProductRow = $(`<div class="row single_product_row" >
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-2 text-bold">1. PART NO. (PRODUCT)</div>
@@ -426,10 +402,10 @@
                     </div>
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-1"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-4"><textarea class="form-control" rows="1"></textarea></div>
-                            <div class="col-md-1"><input type="number" class="form-control"></div>
+                            <div class="col-md-2"><input type="text" class="form-control" readonly value="${productName}"></div>
+                            <div class="col-md-1"><input type="text" class="form-control" readonly value="${g_selected_product.MAKE}"></div>
+                            <div class="col-md-4"><textarea class="form-control" rows="1">${g_selected_product.DESCRIPTION}</textarea></div>
+                            <div class="col-md-1"><input type="number" class="form-control" value="${g_selected_product.LIST_PRICE}"></div>
                             <div class="col-md-2"><input type="number" class="form-control"></div>
                             <div class="col-md-2"><input type="number" class="form-control"></div>
                         </div>
@@ -492,10 +468,14 @@
                             </div>
                         </div>
                     </div></div>`);
-                newProductRow.find('.removeProductRow').click(function () {
-                    $(this).parents('.single_product_row').remove();
-                });
-                $('.products_main_div').append(newProductRow);
+                    newProductRow.find('.removeProductRow').click(function () {
+                        $(this).parents('.single_product_row').remove();
+                    });
+                    $('.products_main_div').append(newProductRow);
+                    g_selected_product = undefined;
+                    $('#search_part_no').val(null). trigger('change');
+                    $('#search_products').val(null). trigger('change');
+                }
             })
         });
 
@@ -518,8 +498,8 @@
                             return {
                                 results: data,
                                 pagination: {
-                                more: (params.page * 30) < data.length
-                            }
+                                    more: (params.page * 30) < data.length
+                                }
                             };
                         },
                     },
@@ -528,11 +508,9 @@
                     escapeMarkup: function (markup) {
                         return markup;
                     },
-                    templateResult: formatRepo,
-                    templateSelection: formatRepoSelection
-                });
-                $("#search_part_no").on('select2:select', function (e) {
-                    console.log(e.params)
+                }).on('select2:select', function (e) {
+                    console.log('select2', e.params)
+                    g_selected_product = e.params.data.data;
                 });
             } else {
                 $("#search_products").select2({
@@ -558,47 +536,12 @@
                     escapeMarkup: function (markup) {
                         return markup;
                     },
-                    templateResult: formatRepo,
-                    templateSelection: formatRepoSelection
                 }).on('select2:select', function (e) {
-                    console.log(e.params)
+                    console.log('select2', e.params);
+                    g_selected_product = e.params.data.data;
                 });
             }
         }
 
-        function formatRepo(repo) {
-            if (repo.loading) {
-                return repo.text;
-            }
-
-            var $container = $(
-                "<div class='select2-result-repository clearfix'>" +
-                "<div class='select2-result-repository__meta'>" +
-                "<div class='select2-result-repository__title'></div>" +
-                "<div class='select2-result-repository__description'></div>" +
-                "<div class='select2-result-repository__statistics'>" +
-                "<div class='select2-result-repository__forks'><i class='fa fa-flash'></i> </div>" +
-                "<div class='select2-result-repository__stargazers'><i class='fa fa-star'></i> </div>" +
-                "<div class='select2-result-repository__watchers'><i class='fa fa-eye'></i> </div>" +
-                "</div>" +
-                "</div>" +
-                "</div>"
-            );
-
-            $container.find(".select2-result-repository__title").text(repo.YEAR + '-' + repo.PART_NO + '-' + repo.VEN_CODE);
-            var markup = '<option value="' + repo.YEAR + '-' + repo.PART_NO + '-' + repo.VEN_CODE + '">' + repo.YEAR + '-' + repo.PART_NO + '-' + repo.VEN_CODE + '</option>';
-            // return $container;
-            // return repo.YEAR + '-' + repo.PART_NO + '-' + repo.VEN_CODE;
-            return $container;
-        }
-
-        function formatRepoSelection(repo) {
-            console.log(repo)
-            if (repo.YEAR === undefined) {
-                return repo.text
-            } else {
-                return repo.YEAR + '-' + repo.PART_NO + '-' + repo.VEN_CODE;
-            }
-        }
     </script>
 @endsection
