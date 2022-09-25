@@ -93,10 +93,10 @@
                     <div class="input-group">
                         <label for="customer" style="width: 100%" class="text-bold">CUSTOMER:</label>
                         <select name="customer" id="customer" class="form-control"></select>
-{{--                        <input class="form-control" id="customer" name="customer">--}}
+                        {{--                        <input class="form-control" id="customer" name="customer">--}}
                         <div class="input-group-btn" style="vertical-align: bottom !important;">
                             <button class="btn btn-outline-secondary" type="button" data-toggle="modal"
-                                    data-target="#exampleModalCenter"><i class="icon-eye"></i></button>
+                                    data-target="#customerDetailModal"><i class="icon-eye"></i></button>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                             <option value="" selected disabled>SELECT EMPLOYEE</option>
                             @if ($allCustomer)
                                 @foreach ($allCustomer as $k => $customer)
-                                    <option value="{{ $customer }}">{{ $customer }}</option>
+                                    <option value="{{ $customer }}">{{ strtoupper($customer) }}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -130,12 +130,6 @@
             <hr>
             <div class="row">
                 <div class="col-md-12 text-center text-bold">PRODUCT</div>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-6 text-bold">SAMPLE COMPANY NAME</div>
-                        <div class="col-md-6 text-right text-bold">SAMPLE MANAGER NAME</div>
-                    </div>
-                </div>
                 <div class="col-md-12 products_main_div">
                 </div>
             </div>
@@ -148,7 +142,7 @@
                             <option value="">Select Bank</option>
                             @if($bankList)
                                 @foreach($bankList as $key => $bank)
-                                    <option value="{{$bank->BANK_CODE}},{{$bank->BANK_NAME}}{{$bank->BRANCH_CODE}}">{{$bank->BANK_NAME}}({{$bank->BRANCH_NAME}})</option>
+                                    <option value="{{$bank->BANK_CODE}},{{$bank->BANK_NAME}}{{$bank->BRANCH_CODE}}">{{strtoupper($bank->BANK_NAME)}}({{strtoupper($bank->BRANCH_NAME)}})</option>
                                 @endforeach
                             @endif
                         </select>
@@ -161,7 +155,7 @@
                             <option value="">Select currency</option>
                             @if($allCurrencies)
                                 @foreach($allCurrencies as $code => $name)
-                                    <option value="{{$code}}">{{$name}}</option>
+                                    <option value="{{$code}}">{{strtoupper($name)}}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -259,8 +253,8 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="customerDetailModal" tabindex="-1" role="dialog"
+         aria-labelledby="customerDetailModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -279,8 +273,8 @@
                                 <td style="width: 30%;text-align: left;border-top: unset;" id="c_email"></td>
                             </tr>
                             <tr>
-                                <th style="width: 5%;text-align: left;border-top: unset;" id="c_pan">PAN:</th>
-                                <td style="width: 30%;text-align: left;border-top: unset;"></td>
+                                <th style="width: 5%;text-align: left;border-top: unset;">PAN:</th>
+                                <td style="width: 30%;text-align: left;border-top: unset;" id="c_pan"></td>
                                 <th style="width: 30%;text-align: left;border-top: unset;">Contact Person:</th>
                                 <td style="width: 30%;text-align: left;border-top: unset;" id="c_c_p"></td>
                             </tr>
@@ -303,6 +297,17 @@
         hr {
             border-top: 2px solid #1cc09e;
         }
+
+        .select2-results__option, .select2-selection__rendered {
+            text-transform: uppercase !important;
+        }
+
+        .products_main_div .single_product_row {
+            border-bottom: 1px solid gainsboro;
+        }
+        .products_main_div .single_product_row:last-child {
+            border-bottom: unset !important;
+        }
     </style>
     <link type="text/css" href="{{ URL::asset('assets/admin/js/select2-4.0.6/dist/css/select2.min.css') }}">
     <script type="text/javascript" src="{{ URL::asset('assets/admin/js/plugins/forms/selects/select2.min.js') }}"></script>
@@ -310,7 +315,7 @@
     <script type="text/javascript" src="{{ URL::asset('assets/admin/js/jquery-validation/additional-methods.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('assets/admin/js/bootbox.min.js') }}"></script>
     <script type="text/javascript">
-        var g_selected_product, g_selected_customer;
+        var g_selected_product, g_selected_customer, productUnits = {!! json_encode($productUnits) !!}, vendor_Data = {!! json_encode($vendor_dtl) !!};
         $(document).ready(function () {
             $('#sales-person').select2();
 
@@ -344,7 +349,6 @@
                         };
                     },
                     processResults: function (data, params) {
-                        console.log(data)
                         params.page = params.page || 1;
                         return {
                             results: data,
@@ -360,8 +364,13 @@
                     return markup;
                 },
             }).on('select2:select', function (e) {
-                console.log('select2', e.params)
                 g_selected_customer = e.params.data.data;
+                $('#customerDetailModal #c_address').html(g_selected_customer.ADDRESS || '');
+                $('#customerDetailModal #c_pan').html(g_selected_customer.PAN || '');
+                $('#customerDetailModal #c_gstn').html(g_selected_customer.GSTIN || '');
+                $('#customerDetailModal #c_email').html(g_selected_customer.EMAIL || '');
+                $('#customerDetailModal #c_c_p').html(g_selected_customer.CONTACT_PERSON || '');
+                $('#customerDetailModal #c_no').html(g_selected_customer.CONTACT_NO || '');
             });
 
             $('input[name=search_by]').change(function () {
@@ -383,13 +392,33 @@
             }).trigger('change');
 
             $('#addNewProduct').click(function () {
-                if(g_selected_product === undefined) {
+                if (g_selected_customer === undefined) {
+                    bootbox.dialog({
+                        message: '<p class="text-center mb-0">Please select a customer first.</p>',
+                    });
+                } else if (g_selected_product === undefined) {
                     bootbox.dialog({
                         message: '<p class="text-center mb-0">Please select a product or part no first.</p>',
                     });
-                }else {
+                } else {
+                    let productRowIndex = $('.products_main_div .single_product_row').length;
                     let productName = ($('input[name=search_by]:checked').val() === 'part_no') ? g_selected_product.PART_NO : g_selected_product.PRO_NAME;
-                    let newProductRow = $(`<div class="row single_product_row" >
+                    let productUnitOptions = '';
+                    let vendorDetails = vendor_Data.filter((v) => v.VENDOR_CODE === g_selected_product.VEN_CODE);
+                    Object.keys(productUnits).forEach((key) => {
+                        if ('pcs' === key) {
+                            productUnitOptions += `<option value="${key}" selected>${productUnits[key].toUpperCase()}</option>`;
+                        } else {
+                            productUnitOptions += `<option value="${key}">${productUnits[key].toUpperCase()}</option>`;
+                        }
+                    });
+                    let newProductRow = $(`<div class="row single_product_row">
+                    <div class="col-md-12 mt-4">
+                        <div class="row">
+                            <div class="col-md-6 text-bold">${vendorDetails[0] !== undefined ? (vendorDetails[0].VEN_NAME.toUpperCase() + ' ( ' + vendorDetails[0].STATE_NAME.toUpperCase() + ' )') : ''}</div>
+                            <div class="col-md-6 text-right text-bold">${vendorDetails[0] !== undefined ? ('MANAGER :- ' + vendorDetails[0].MANAGER.toUpperCase()) : ''} <input type="hidden" id="man_" value="${vendorDetails[0] !== undefined ? vendorDetails[0].MANAGER : ''}"></div>
+                        </div>
+                    </div>
                     <div class="col-md-12 mt-4">
                         <div class="row">
                             <div class="col-md-2 text-bold">1. PART NO. (PRODUCT)</div>
@@ -402,12 +431,12 @@
                     </div>
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-2"><input type="text" class="form-control" readonly value="${productName}"></div>
-                            <div class="col-md-1"><input type="text" class="form-control" readonly value="${g_selected_product.MAKE}"></div>
-                            <div class="col-md-4"><textarea class="form-control" rows="1">${g_selected_product.DESCRIPTION}</textarea></div>
-                            <div class="col-md-1"><input type="number" class="form-control" value="${g_selected_product.LIST_PRICE}"></div>
-                            <div class="col-md-2"><input type="number" class="form-control"></div>
-                            <div class="col-md-2"><input type="number" class="form-control"></div>
+                            <div class="col-md-2"><input type="text" class="form-control" name="products[${productRowIndex}][]" readonly value="${g_selected_product.PART_NO}"></div>
+                            <div class="col-md-1"><input type="text" class="form-control" name="products[${productRowIndex}][]" readonly value="${g_selected_product.MAKE}"></div>
+                            <div class="col-md-4"><textarea class="form-control" rows="1" name="products[${productRowIndex}][]">${g_selected_product.DESCRIPTION}</textarea></div>
+                            <div class="col-md-1"><input type="number" class="form-control" name="products[${productRowIndex}][]" value="${g_selected_product.LIST_PRICE}"></div>
+                            <div class="col-md-2"><input type="number" class="form-control" name="products[${productRowIndex}][]"></div>
+                            <div class="col-md-2"><input type="number" class="form-control" name="products[${productRowIndex}][]"></div>
                         </div>
                     </div>
                     <div class="col-md-12 mt-5">
@@ -427,27 +456,15 @@
                         <div class="row">
                             <div class="col-md-2"><input type="text" class="form-control" readonly></div>
                             <div class="col-md-1">
-                                <select name="unit_1" class="form-control" id="unit_1">
-                                    <option value="ACT">ACT</option>
-                                    <option value="box">box</option>
-                                    <option value="gm">gm</option>
-                                    <option value="kg">kg</option>
-                                    <option value="Ltr">Ltr</option>
-                                    <option value="ml">ml</option>
-                                    <option value="packet">packet</option>
-                                    <option value="pair">pair</option>
-                                    <option value="pcs" selected="">pcs</option>
-                                    <option value="set">set</option>
-                                    <option value="Sqft">Sqft</option>
-                                </select>
+                                <select name="products[${productRowIndex}][]" class="form-control" id="unit_1">${productUnitOptions}</select>
                             </div>
-                            <div class="col-md-1"><input type="number" class="form-control"></div>
-                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-1"><input type="number" class="form-control"></div>
-                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-1"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-1"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-1"><input type="text" class="form-control" readonly></div>
+                            <div class="col-md-1"><input type="number" class="form-control" name="products[${productRowIndex}][]"></div>
+                            <div class="col-md-2"><input type="text" class="form-control" name="products[${productRowIndex}][]" readonly></div>
+                            <div class="col-md-1"><input type="number" class="form-control" name="products[${productRowIndex}][]"></div>
+                            <div class="col-md-2"><input type="text" class="form-control" name="products[${productRowIndex}][]" readonly></div>
+                            <div class="col-md-1"><input type="text" class="form-control" name="products[${productRowIndex}][]" readonly></div>
+                            <div class="col-md-1"><input type="text" class="form-control" name="products[${productRowIndex}][]" readonly></div>
+                            <div class="col-md-1"><input type="text" class="form-control" name="products[${productRowIndex}][]" readonly></div>
                         </div>
                     </div>
                     <div class="col-md-12 mt-5">
@@ -459,10 +476,10 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-2"><input type="text" class="form-control" readonly></div>
-                            <div class="col-md-8"><textarea rows="4" class="form-control"></textarea></div>
-                            <div class="col-md-1"><input type="text" class="form-control"></div>
+                        <div class="row mb-4">
+                            <div class="col-md-2"><input type="text" class="form-control" name="products[${productRowIndex}][]" readonly></div>
+                            <div class="col-md-8"><textarea rows="4" class="form-control" name="products[${productRowIndex}][]"></textarea></div>
+                            <div class="col-md-1"><input type="text" class="form-control" name="products[${productRowIndex}][]" value="${productRowIndex}"></div>
                             <div class="col-md-1 text-center">
                                 <button type="button" class="btn btn-danger removeProductRow"><i class="icon-close2"></i></button>
                             </div>
@@ -470,11 +487,16 @@
                     </div></div>`);
                     newProductRow.find('.removeProductRow').click(function () {
                         $(this).parents('.single_product_row').remove();
+                        $('.products_main_div .single_product_row').each(function (index, elm) {
+                           $(elm).find('input').attr('name', `products[${index}][]`);
+                           $(elm).find('select').attr('name', `products[${index}][]`);
+                           $(elm).find('textarea').attr('name', `products[${index}][]`);
+                        });
                     });
                     $('.products_main_div').append(newProductRow);
                     g_selected_product = undefined;
-                    $('#search_part_no').val(null). trigger('change');
-                    $('#search_products').val(null). trigger('change');
+                    $('#search_part_no').val(null).trigger('change');
+                    $('#search_products').val(null).trigger('change');
                 }
             })
         });
@@ -493,7 +515,6 @@
                             };
                         },
                         processResults: function (data, params) {
-                            console.log(data)
                             params.page = params.page || 1;
                             return {
                                 results: data,
@@ -509,7 +530,6 @@
                         return markup;
                     },
                 }).on('select2:select', function (e) {
-                    console.log('select2', e.params)
                     g_selected_product = e.params.data.data;
                 });
             } else {
@@ -525,7 +545,6 @@
                             };
                         },
                         processResults: function (data, params) {
-                            console.log(data)
                             return {
                                 results: data,
                             };
@@ -537,7 +556,6 @@
                         return markup;
                     },
                 }).on('select2:select', function (e) {
-                    console.log('select2', e.params);
                     g_selected_product = e.params.data.data;
                 });
             }

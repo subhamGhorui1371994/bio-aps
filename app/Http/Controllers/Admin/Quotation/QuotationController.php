@@ -102,8 +102,10 @@ class QuotationController extends Controller
         // $todayDatessz=date('Y-m-d'); if($todayDatessz>=$_SESSION['from'] && $todayDatessz<=$_SESSION['to']){ $Dayz=$todayDatessz; } else { $Dayz=$_SESSION['to']; }
         $allCurrencies = DB::table('currency')->pluck('NAME', 'PRICE_CURRENCY');
         $allCustomer = DB::table('employee_dtl')->pluck('EMPLOYEE_NAME', 'ID');
+        $productUnits = DB::table('product_unit')->pluck('UNIT_NAME', 'UNIT_NAME');
+        $vendor_dtl = DB::table('vendor_dtl')->get();
         $bankList = BankDtl::where("CO_ID", 1)->get();
-        return view('admin.quotation.add-quotation', compact('allCustomer','allCurrencies', 'validityArray', 'quotationNo', 'bankList'));
+        return view('admin.quotation.add-quotation', compact('allCustomer', 'vendor_dtl', 'productUnits','allCurrencies', 'validityArray', 'quotationNo', 'bankList'));
     }
 
     /**
